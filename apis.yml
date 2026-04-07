@@ -10,9 +10,9 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - MLOps
-  - Machine Learning
   - AI
+  - Machine Learning
+  - MLOps
   - Pipelines
 created: '2025-02-08'
 modified: '2026-03-16'
@@ -29,8 +29,8 @@ apis:
       with CI/CD systems and MLOps workflows.
     humanURL: https://docs.zenml.io/
     tags:
-      - MLOps
       - Machine Learning
+      - MLOps
       - Pipelines
     properties:
       - type: Documentation
