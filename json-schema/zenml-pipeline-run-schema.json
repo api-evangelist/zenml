@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zenml/main/json-schema/zenml-pipeline-run-schema.json",
+  "title": "ZenML Pipeline Run",
+  "description": "A single execution instance of a ZenML pipeline, including status, timing, and the stack used.",
+  "type": "object",
+  "required": ["id", "pipeline_id", "status"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "pipeline_id": { "type": "string", "format": "uuid" },
+    "stack_id": { "type": "string", "format": "uuid" },
+    "status": {
+      "type": "string",
+      "enum": ["initializing", "running", "completed", "failed", "cached", "stopped"]
+    },
+    "start_time": { "type": "string", "format": "date-time" },
+    "end_time": { "type": "string", "format": "date-time" },
+    "user_id": { "type": "string", "format": "uuid" },
+    "created": { "type": "string", "format": "date-time" }
+  }
+}

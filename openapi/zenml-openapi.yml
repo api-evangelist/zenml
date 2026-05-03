@@ -1,0 +1,799 @@
+openapi: 3.0.3
+info:
+  title: ZenML OSS REST API
+  version: '1'
+  description: >-
+    REST API for the ZenML server, exposing operations to manage pipelines,
+    stacks, components, artifacts, models, deployments, runs, schedules,
+    secrets, users, projects, and triggers in a self-hosted ZenML deployment.
+    The API is consumed by the ZenML Python SDK and CLI and can also be
+    called directly for automation and CI/CD integration.
+  contact:
+    name: ZenML
+    url: https://docs.zenml.io/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: https://your-zenml-server.example.com/api/v1
+    description: ZenML server REST API (self-hosted)
+security:
+  - bearerAuth: []
+tags:
+  - name: Auth
+    description: Authentication and token management
+  - name: Pipelines
+    description: ML pipeline definitions
+  - name: Pipeline Runs
+    description: Pipeline run instances and their steps
+  - name: Stacks
+    description: ZenML stacks and their components
+  - name: Stack Components
+    description: Individual stack components such as orchestrators, artifact stores, and experiment trackers
+  - name: Artifacts
+    description: Artifact metadata and versions produced by pipeline runs
+  - name: Models
+    description: Registered models and their versions
+  - name: Deployments
+    description: Pipeline deployments
+  - name: Schedules
+    description: Scheduled pipeline runs
+  - name: Secrets
+    description: Encrypted secret storage
+  - name: Users
+    description: User accounts
+  - name: Projects
+    description: Project workspaces
+  - name: Service Connectors
+    description: Connectors to external infrastructure providers
+paths:
+  /login:
+    post:
+      tags: [Auth]
+      summary: Login and Obtain Access Token
+      operationId: login
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [username, password]
+              properties:
+                username: { type: string }
+                password: { type: string, format: password }
+      responses:
+        '200':
+          description: Authentication succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          description: Invalid credentials
+  /current-user:
+    get:
+      tags: [Users, Auth]
+      summary: Get Current Authenticated User
+      operationId: getCurrentUser
+      responses:
+        '200':
+          description: The current user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /pipelines:
+    get:
+      tags: [Pipelines]
+      summary: List Pipelines
+      operationId: listPipelines
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - in: query
+          name: name
+          schema: { type: string }
+        - in: query
+          name: project_id
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Page of pipelines
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelinePage'
+    post:
+      tags: [Pipelines]
+      summary: Create Pipeline
+      operationId: createPipeline
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PipelineRequest'
+      responses:
+        '201':
+          description: Pipeline created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pipeline'
+  /pipelines/{pipeline_id}:
+    parameters:
+      - $ref: '#/components/parameters/PipelineId'
+    get:
+      tags: [Pipelines]
+      summary: Get Pipeline
+      operationId: getPipeline
+      responses:
+        '200':
+          description: Pipeline detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pipeline'
+        '404':
+          description: Pipeline not found
+    delete:
+      tags: [Pipelines]
+      summary: Delete Pipeline
+      operationId: deletePipeline
+      responses:
+        '204': { description: Pipeline deleted }
+  /runs:
+    get:
+      tags: [Pipeline Runs]
+      summary: List Pipeline Runs
+      operationId: listPipelineRuns
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - in: query
+          name: pipeline_id
+          schema: { type: string, format: uuid }
+        - in: query
+          name: status
+          schema: { $ref: '#/components/schemas/RunStatus' }
+      responses:
+        '200':
+          description: Page of pipeline runs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineRunPage'
+  /runs/{run_id}:
+    parameters:
+      - $ref: '#/components/parameters/RunId'
+    get:
+      tags: [Pipeline Runs]
+      summary: Get Pipeline Run
+      operationId: getPipelineRun
+      responses:
+        '200':
+          description: Pipeline run detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineRun'
+  /stacks:
+    get:
+      tags: [Stacks]
+      summary: List Stacks
+      operationId: listStacks
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+      responses:
+        '200':
+          description: Page of stacks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StackPage'
+    post:
+      tags: [Stacks]
+      summary: Create Stack
+      operationId: createStack
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StackRequest'
+      responses:
+        '201':
+          description: Stack created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stack'
+  /stacks/{stack_id}:
+    parameters:
+      - $ref: '#/components/parameters/StackId'
+    get:
+      tags: [Stacks]
+      summary: Get Stack
+      operationId: getStack
+      responses:
+        '200':
+          description: Stack detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stack'
+    delete:
+      tags: [Stacks]
+      summary: Delete Stack
+      operationId: deleteStack
+      responses:
+        '204': { description: Stack deleted }
+  /components:
+    get:
+      tags: [Stack Components]
+      summary: List Stack Components
+      operationId: listStackComponents
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - in: query
+          name: type
+          schema: { type: string }
+      responses:
+        '200':
+          description: Page of stack components
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StackComponentPage'
+  /artifacts:
+    get:
+      tags: [Artifacts]
+      summary: List Artifacts
+      operationId: listArtifacts
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+      responses:
+        '200':
+          description: Page of artifacts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtifactPage'
+  /artifacts/{artifact_id}:
+    parameters:
+      - in: path
+        name: artifact_id
+        required: true
+        schema: { type: string, format: uuid }
+    get:
+      tags: [Artifacts]
+      summary: Get Artifact
+      operationId: getArtifact
+      responses:
+        '200':
+          description: Artifact detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artifact'
+  /models:
+    get:
+      tags: [Models]
+      summary: List Models
+      operationId: listModels
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+      responses:
+        '200':
+          description: Page of models
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelPage'
+    post:
+      tags: [Models]
+      summary: Create Model
+      operationId: createModel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelRequest'
+      responses:
+        '201':
+          description: Model created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+  /model_versions:
+    get:
+      tags: [Models]
+      summary: List Model Versions
+      operationId: listModelVersions
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - in: query
+          name: model_id
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Page of model versions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelVersionPage'
+  /deployments:
+    get:
+      tags: [Deployments]
+      summary: List Pipeline Deployments
+      operationId: listDeployments
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+      responses:
+        '200':
+          description: Page of deployments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentPage'
+  /schedules:
+    get:
+      tags: [Schedules]
+      summary: List Schedules
+      operationId: listSchedules
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+      responses:
+        '200':
+          description: Page of schedules
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchedulePage'
+  /secrets:
+    get:
+      tags: [Secrets]
+      summary: List Secrets
+      operationId: listSecrets
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+      responses:
+        '200':
+          description: Page of secrets (without values)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecretPage'
+    post:
+      tags: [Secrets]
+      summary: Create Secret
+      operationId: createSecret
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SecretRequest'
+      responses:
+        '201':
+          description: Secret created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Secret'
+  /users:
+    get:
+      tags: [Users]
+      summary: List Users
+      operationId: listUsers
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+      responses:
+        '200':
+          description: Page of users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPage'
+  /projects:
+    get:
+      tags: [Projects]
+      summary: List Projects
+      operationId: listProjects
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+      responses:
+        '200':
+          description: Page of projects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectPage'
+  /service_connectors:
+    get:
+      tags: [Service Connectors]
+      summary: List Service Connectors
+      operationId: listServiceConnectors
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+      responses:
+        '200':
+          description: Page of service connectors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceConnectorPage'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    Page:
+      in: query
+      name: page
+      schema: { type: integer, minimum: 1, default: 1 }
+    Size:
+      in: query
+      name: size
+      schema: { type: integer, minimum: 1, maximum: 1000, default: 20 }
+    PipelineId:
+      in: path
+      name: pipeline_id
+      required: true
+      schema: { type: string, format: uuid }
+    RunId:
+      in: path
+      name: run_id
+      required: true
+      schema: { type: string, format: uuid }
+    StackId:
+      in: path
+      name: stack_id
+      required: true
+      schema: { type: string, format: uuid }
+  schemas:
+    TokenResponse:
+      type: object
+      required: [access_token, token_type]
+      properties:
+        access_token: { type: string }
+        token_type: { type: string, example: bearer }
+        expires_in: { type: integer }
+        refresh_token: { type: string }
+    User:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        full_name: { type: string }
+        email: { type: string, format: email }
+        active: { type: boolean }
+        is_admin: { type: boolean }
+        created: { type: string, format: date-time }
+        updated: { type: string, format: date-time }
+    UserPage:
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - type: object
+          properties:
+            items:
+              type: array
+              items: { $ref: '#/components/schemas/User' }
+    Pipeline:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        description: { type: string }
+        version: { type: string }
+        spec:
+          type: object
+          additionalProperties: true
+        project_id: { type: string, format: uuid }
+        user_id: { type: string, format: uuid }
+        created: { type: string, format: date-time }
+        updated: { type: string, format: date-time }
+    PipelineRequest:
+      type: object
+      required: [name]
+      properties:
+        name: { type: string }
+        description: { type: string }
+        version: { type: string }
+        project_id: { type: string, format: uuid }
+        spec:
+          type: object
+          additionalProperties: true
+    PipelinePage:
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - type: object
+          properties:
+            items:
+              type: array
+              items: { $ref: '#/components/schemas/Pipeline' }
+    RunStatus:
+      type: string
+      enum:
+        - initializing
+        - running
+        - completed
+        - failed
+        - cached
+        - stopped
+    PipelineRun:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        pipeline_id: { type: string, format: uuid }
+        stack_id: { type: string, format: uuid }
+        status: { $ref: '#/components/schemas/RunStatus' }
+        start_time: { type: string, format: date-time }
+        end_time: { type: string, format: date-time }
+        user_id: { type: string, format: uuid }
+        created: { type: string, format: date-time }
+    PipelineRunPage:
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - type: object
+          properties:
+            items:
+              type: array
+              items: { $ref: '#/components/schemas/PipelineRun' }
+    Stack:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        description: { type: string }
+        components:
+          type: object
+          additionalProperties:
+            type: array
+            items: { type: string, format: uuid }
+        user_id: { type: string, format: uuid }
+        created: { type: string, format: date-time }
+    StackRequest:
+      type: object
+      required: [name]
+      properties:
+        name: { type: string }
+        description: { type: string }
+        components:
+          type: object
+          additionalProperties:
+            type: array
+            items: { type: string, format: uuid }
+    StackPage:
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - type: object
+          properties:
+            items:
+              type: array
+              items: { $ref: '#/components/schemas/Stack' }
+    StackComponent:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        type:
+          type: string
+          enum:
+            - orchestrator
+            - artifact_store
+            - container_registry
+            - step_operator
+            - experiment_tracker
+            - model_deployer
+            - alerter
+            - annotator
+            - data_validator
+            - feature_store
+            - image_builder
+            - model_registry
+        flavor: { type: string }
+        configuration:
+          type: object
+          additionalProperties: true
+        created: { type: string, format: date-time }
+    StackComponentPage:
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - type: object
+          properties:
+            items:
+              type: array
+              items: { $ref: '#/components/schemas/StackComponent' }
+    Artifact:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        version: { type: string }
+        type: { type: string }
+        uri: { type: string, format: uri }
+        materializer: { type: string }
+        producer_step_run_id: { type: string, format: uuid }
+        created: { type: string, format: date-time }
+    ArtifactPage:
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - type: object
+          properties:
+            items:
+              type: array
+              items: { $ref: '#/components/schemas/Artifact' }
+    Model:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        description: { type: string }
+        license: { type: string }
+        ethical_considerations: { type: string }
+        trade_offs: { type: string }
+        limitations: { type: string }
+        audience: { type: string }
+        use_cases: { type: string }
+        created: { type: string, format: date-time }
+    ModelRequest:
+      type: object
+      required: [name]
+      properties:
+        name: { type: string }
+        description: { type: string }
+        license: { type: string }
+        use_cases: { type: string }
+    ModelPage:
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - type: object
+          properties:
+            items:
+              type: array
+              items: { $ref: '#/components/schemas/Model' }
+    ModelVersion:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        model_id: { type: string, format: uuid }
+        name: { type: string }
+        number: { type: integer }
+        stage:
+          type: string
+          enum: [none, staging, production, archived]
+        description: { type: string }
+        created: { type: string, format: date-time }
+    ModelVersionPage:
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - type: object
+          properties:
+            items:
+              type: array
+              items: { $ref: '#/components/schemas/ModelVersion' }
+    Deployment:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        pipeline_id: { type: string, format: uuid }
+        stack_id: { type: string, format: uuid }
+        status: { type: string }
+        created: { type: string, format: date-time }
+    DeploymentPage:
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - type: object
+          properties:
+            items:
+              type: array
+              items: { $ref: '#/components/schemas/Deployment' }
+    Schedule:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        cron_expression: { type: string }
+        start_time: { type: string, format: date-time }
+        end_time: { type: string, format: date-time }
+        interval_seconds: { type: integer }
+        active: { type: boolean }
+        pipeline_id: { type: string, format: uuid }
+        created: { type: string, format: date-time }
+    SchedulePage:
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - type: object
+          properties:
+            items:
+              type: array
+              items: { $ref: '#/components/schemas/Schedule' }
+    Secret:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        scope: { type: string, enum: [user, workspace] }
+        values:
+          type: object
+          additionalProperties: { type: string }
+        created: { type: string, format: date-time }
+    SecretRequest:
+      type: object
+      required: [name, values]
+      properties:
+        name: { type: string }
+        scope: { type: string, enum: [user, workspace], default: workspace }
+        values:
+          type: object
+          additionalProperties: { type: string }
+    SecretPage:
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - type: object
+          properties:
+            items:
+              type: array
+              items: { $ref: '#/components/schemas/Secret' }
+    Project:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        description: { type: string }
+        created: { type: string, format: date-time }
+    ProjectPage:
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - type: object
+          properties:
+            items:
+              type: array
+              items: { $ref: '#/components/schemas/Project' }
+    ServiceConnector:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        connector_type: { type: string }
+        auth_method: { type: string }
+        resource_types:
+          type: array
+          items: { type: string }
+        configuration:
+          type: object
+          additionalProperties: true
+        created: { type: string, format: date-time }
+    ServiceConnectorPage:
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - type: object
+          properties:
+            items:
+              type: array
+              items: { $ref: '#/components/schemas/ServiceConnector' }
+    Page:
+      type: object
+      properties:
+        index: { type: integer }
+        max_size: { type: integer }
+        total_pages: { type: integer }
+        total: { type: integer }

@@ -1,0 +1,48 @@
+extends:
+  - spectral:oas
+rules:
+  zenml-operation-id-camelcase:
+    description: Operation IDs MUST be camelCase
+    given: $.paths[*][*].operationId
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+  zenml-summary-title-case:
+    description: Operation summaries MUST be in Title Case.
+    given: $.paths[*][*].summary
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z0-9]*( [A-Z][A-Za-z0-9]*)*$"
+  zenml-tag-required:
+    description: Every operation MUST have at least one tag.
+    given: $.paths[*][*]
+    severity: error
+    then:
+      field: tags
+      function: truthy
+  zenml-bearer-auth-required:
+    description: Operations MUST require bearer authentication unless explicitly public.
+    given: $
+    severity: warn
+    then:
+      field: components.securitySchemes.bearerAuth
+      function: truthy
+  zenml-pagination-params:
+    description: List operations should expose page and size query parameters.
+    given: $.paths[*].get.parameters
+    severity: info
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+  zenml-uuid-path-ids:
+    description: Resource path identifiers MUST be UUIDs.
+    given: $.paths[?(@property.match(/\{[a-z_]+_id\}/))]
+    severity: warn
+    then:
+      function: truthy

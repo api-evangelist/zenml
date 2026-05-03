@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zenml/main/json-schema/zenml-stack-schema.json",
+  "title": "ZenML Stack",
+  "description": "A ZenML stack is a configurable composition of stack components (orchestrator, artifact store, container registry, etc.) used to execute pipelines on a target infrastructure.",
+  "type": "object",
+  "required": ["id", "name", "components"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "components": {
+      "type": "object",
+      "description": "Map of component type to one or more component IDs",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string", "format": "uuid" }
+      }
+    },
+    "user_id": { "type": "string", "format": "uuid" },
+    "created": { "type": "string", "format": "date-time" }
+  }
+}

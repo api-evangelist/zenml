@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft-00/schema",
+  "name": "ZenMLPipelineStructure",
+  "type": "object",
+  "description": "Structural definition of a ZenML pipeline resource for documentation and tooling.",
+  "properties": {
+    "id": { "type": "string", "description": "Unique pipeline UUID" },
+    "name": { "type": "string", "description": "Pipeline name" },
+    "description": { "type": "string", "description": "Long description of the pipeline" },
+    "version": { "type": "string", "description": "Pipeline version label" },
+    "project_id": { "type": "string", "description": "Project this pipeline belongs to" },
+    "spec": { "type": "object", "description": "DAG and configuration spec" },
+    "created": { "type": "string", "description": "Creation timestamp (ISO 8601)" },
+    "updated": { "type": "string", "description": "Last update timestamp (ISO 8601)" }
+  }
+}

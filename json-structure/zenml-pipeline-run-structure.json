@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/draft-00/schema",
+  "name": "ZenMLPipelineRunStructure",
+  "type": "object",
+  "description": "Structural definition of a ZenML pipeline run.",
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "pipeline_id": { "type": "string" },
+    "stack_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["initializing", "running", "completed", "failed", "cached", "stopped"] },
+    "start_time": { "type": "string" },
+    "end_time": { "type": "string" }
+  }
+}

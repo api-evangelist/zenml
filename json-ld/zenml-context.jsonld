@@ -1,0 +1,33 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "zenml": "https://zenml.io/vocab#",
+    "Pipeline": "zenml:Pipeline",
+    "PipelineRun": "zenml:PipelineRun",
+    "Stack": "zenml:Stack",
+    "StackComponent": "zenml:StackComponent",
+    "Artifact": "zenml:Artifact",
+    "Model": "zenml:Model",
+    "ModelVersion": "zenml:ModelVersion",
+    "Deployment": "zenml:Deployment",
+    "Schedule": "zenml:Schedule",
+    "Project": "zenml:Project",
+    "ServiceConnector": "zenml:ServiceConnector",
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "version": "schema:version",
+    "license": "schema:license",
+    "created": "schema:dateCreated",
+    "updated": "schema:dateModified",
+    "start_time": "schema:startTime",
+    "end_time": "schema:endTime",
+    "status": "zenml:status",
+    "pipeline_id": { "@id": "zenml:pipeline", "@type": "@id" },
+    "stack_id": { "@id": "zenml:stack", "@type": "@id" },
+    "model_id": { "@id": "zenml:model", "@type": "@id" },
+    "components": "zenml:components",
+    "uri": "schema:url"
+  }
+}

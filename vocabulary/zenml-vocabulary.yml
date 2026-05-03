@@ -1,0 +1,80 @@
+name: ZenML Vocabulary
+description: >-
+  Domain vocabulary for the ZenML MLOps and LLMOps platform, covering
+  pipelines, stacks, components, runs, artifacts, models, deployments,
+  schedules, secrets, projects, service connectors, and the broader ZenML
+  governance and integration concepts.
+modified: '2026-05-03'
+terms:
+  - term: Pipeline
+    definition: A directed acyclic graph (DAG) of steps that processes data and produces artifacts and models.
+    related: [Step, PipelineRun, Stack]
+  - term: Step
+    definition: A single, decorated Python function that becomes a node in a pipeline DAG.
+    related: [Pipeline, Artifact, Materializer]
+  - term: PipelineRun
+    definition: An execution instance of a pipeline against a specific stack at a specific time.
+    related: [Pipeline, Stack, Status]
+  - term: Stack
+    definition: A configurable collection of stack components used to execute a pipeline against target infrastructure.
+    related: [StackComponent, Orchestrator, ArtifactStore]
+  - term: StackComponent
+    definition: An individual capability registered against a stack, such as an orchestrator, artifact store, or experiment tracker.
+    related: [Stack, Flavor]
+  - term: Orchestrator
+    definition: A stack component that schedules and runs the steps of a pipeline (Kubernetes, Airflow, SageMaker, Vertex, etc.).
+    related: [StackComponent]
+  - term: ArtifactStore
+    definition: A stack component that persists artifacts produced by pipeline steps (S3, GCS, Azure Blob, local).
+    related: [StackComponent, Artifact]
+  - term: ContainerRegistry
+    definition: A stack component that hosts container images used by the orchestrator and step operators.
+    related: [StackComponent]
+  - term: ExperimentTracker
+    definition: A stack component that records run metadata, metrics, and parameters (MLflow, W&B, Neptune, Comet).
+    related: [StackComponent, PipelineRun]
+  - term: ModelDeployer
+    definition: A stack component responsible for serving registered models behind real-time or batch endpoints.
+    related: [StackComponent, Model]
+  - term: Artifact
+    definition: A typed, materialized output of a step, persisted to the configured artifact store.
+    related: [Materializer, ArtifactStore]
+  - term: Materializer
+    definition: A serialization/deserialization adapter that defines how an artifact type is read and written.
+    related: [Artifact]
+  - term: Model
+    definition: A registered ML or LLM model in the ZenML Model Control Plane, with model card metadata and a chain of versions.
+    related: [ModelVersion]
+  - term: ModelVersion
+    definition: A specific iteration of a model, tagged with a stage (none, staging, production, archived).
+    related: [Model, Stage]
+  - term: Stage
+    definition: The lifecycle stage of a model version (none, staging, production, archived).
+    related: [ModelVersion]
+  - term: Deployment
+    definition: A serving deployment that exposes a pipeline or a model behind an endpoint.
+    related: [ModelDeployer, Pipeline]
+  - term: Schedule
+    definition: A cron- or interval-based trigger for repeatedly running a pipeline.
+    related: [Pipeline, PipelineRun]
+  - term: Secret
+    definition: An encrypted credential or configuration value stored in the ZenML server.
+    related: [ServiceConnector, Stack]
+  - term: ServiceConnector
+    definition: A reusable, scoped credential and configuration bundle for connecting to external infrastructure (AWS, GCP, Azure, Kubernetes).
+    related: [Secret, Stack]
+  - term: Project
+    definition: A workspace boundary within a ZenML server for organizing pipelines, models, and runs.
+    related: [Pipeline, Model]
+  - term: Trigger
+    definition: An external event source that initiates a pipeline run (webhook, schedule, manual).
+    related: [Schedule, PipelineRun]
+  - term: ControlPlane
+    definition: The ZenML server component that hosts metadata, governance, and orchestration coordination.
+    related: [Stack, PipelineRun]
+  - term: Flavor
+    definition: A specific implementation of a stack component type (e.g. kubeflow, sagemaker, mlflow).
+    related: [StackComponent]
+  - term: ZenMLPro
+    definition: The managed ZenML control plane offering with multi-tenant governance, RBAC, and audit logs.
+    related: [ControlPlane]

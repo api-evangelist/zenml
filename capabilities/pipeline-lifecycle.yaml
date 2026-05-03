@@ -1,0 +1,41 @@
+name: ZenML Pipeline Lifecycle
+description: >-
+  End-to-end capability composition covering the lifecycle of a ZenML
+  pipeline: registering a pipeline, configuring a stack, triggering a run,
+  monitoring its status, and inspecting produced artifacts and model versions.
+api: zenml
+version: '1.0.0'
+operations:
+  - id: registerPipeline
+    method: POST
+    path: /pipelines
+    summary: Register a new pipeline definition
+  - id: configureStack
+    method: POST
+    path: /stacks
+    summary: Create or update the execution stack
+  - id: triggerRun
+    method: POST
+    path: /runs
+    summary: Trigger a pipeline run on the configured stack
+  - id: monitorRun
+    method: GET
+    path: /runs/{run_id}
+    summary: Poll the status of a pipeline run
+  - id: listArtifacts
+    method: GET
+    path: /artifacts
+    summary: List artifacts produced by the run
+  - id: registerModelVersion
+    method: POST
+    path: /model_versions
+    summary: Register a new model version produced by the run
+workflow:
+  - step: registerPipeline
+  - step: configureStack
+  - step: triggerRun
+  - step: monitorRun
+    until:
+      status: completed
+  - step: listArtifacts
+  - step: registerModelVersion

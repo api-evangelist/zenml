@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zenml/main/json-schema/zenml-artifact-schema.json",
+  "title": "ZenML Artifact",
+  "description": "An artifact produced by a step in a ZenML pipeline run, materialized to the configured artifact store.",
+  "type": "object",
+  "required": ["id", "name", "uri"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "type": { "type": "string", "description": "Artifact type, e.g. DataAnalysisArtifact, ModelArtifact, SchemaArtifact" },
+    "uri": { "type": "string", "format": "uri", "description": "Storage URI in the artifact store (e.g. s3://, gs://, file://)" },
+    "materializer": { "type": "string" },
+    "producer_step_run_id": { "type": "string", "format": "uuid" },
+    "created": { "type": "string", "format": "date-time" }
+  }
+}

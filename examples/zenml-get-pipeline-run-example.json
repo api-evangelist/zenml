@@ -1,0 +1,23 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/api/v1/runs/8e8b1c2a-1f5e-4f0b-9d34-2c1a7b3e9c44",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "8e8b1c2a-1f5e-4f0b-9d34-2c1a7b3e9c44",
+      "name": "training_pipeline-2026_05_03-09_03_15",
+      "pipeline_id": "1c8b6a3a-4f30-4d6e-a8a3-5a9d0a9b1c01",
+      "stack_id": "5e2b9a4f-3a1d-4d6e-8a3a-4b9d0a9b1c10",
+      "status": "completed",
+      "start_time": "2026-05-03T09:03:15Z",
+      "end_time": "2026-05-03T09:11:48Z",
+      "user_id": "0fe1a3b9-7c2d-4d1e-9b80-1d4c2b3e9a45",
+      "created": "2026-05-03T09:03:15Z"
+    }
+  }
+}

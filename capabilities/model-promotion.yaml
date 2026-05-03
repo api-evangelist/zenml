@@ -1,0 +1,31 @@
+name: ZenML Model Promotion
+description: >-
+  Capability for promoting a ZenML model version through stages
+  (none -> staging -> production), recording governance metadata, and
+  triggering downstream deployment pipelines.
+api: zenml
+version: '1.0.0'
+operations:
+  - id: listModelVersions
+    method: GET
+    path: /model_versions
+    summary: List candidate model versions
+  - id: getModelVersion
+    method: GET
+    path: /model_versions/{model_version_id}
+    summary: Inspect a candidate model version
+  - id: promoteModelVersion
+    method: PUT
+    path: /model_versions/{model_version_id}
+    summary: Update the stage of the model version
+  - id: createDeployment
+    method: POST
+    path: /deployments
+    summary: Create a deployment of the promoted model
+workflow:
+  - step: listModelVersions
+  - step: getModelVersion
+  - step: promoteModelVersion
+    inputs:
+      stage: production
+  - step: createDeployment

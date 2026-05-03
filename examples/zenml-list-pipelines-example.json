@@ -1,0 +1,40 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/api/v1/pipelines?page=1&size=20",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "index": 1,
+      "max_size": 20,
+      "total_pages": 1,
+      "total": 2,
+      "items": [
+        {
+          "id": "1c8b6a3a-4f30-4d6e-a8a3-5a9d0a9b1c01",
+          "name": "training_pipeline",
+          "description": "Trains a customer churn classifier on the latest data snapshot.",
+          "version": "12",
+          "project_id": "8e1c4ad0-2b3f-4f8b-a0a4-2b9b8a4f6e21",
+          "user_id": "0fe1a3b9-7c2d-4d1e-9b80-1d4c2b3e9a45",
+          "created": "2026-04-30T14:21:09Z",
+          "updated": "2026-05-02T09:14:32Z"
+        },
+        {
+          "id": "4d0a8e21-9a5e-4b67-9f6a-2c1f0a4b6e02",
+          "name": "rag_index_pipeline",
+          "description": "Embeds and indexes the support corpus for the RAG agent.",
+          "version": "3",
+          "project_id": "8e1c4ad0-2b3f-4f8b-a0a4-2b9b8a4f6e21",
+          "user_id": "0fe1a3b9-7c2d-4d1e-9b80-1d4c2b3e9a45",
+          "created": "2026-04-21T10:02:11Z",
+          "updated": "2026-05-01T17:45:00Z"
+        }
+      ]
+    }
+  }
+}
