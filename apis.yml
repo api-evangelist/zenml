@@ -152,6 +152,72 @@ common:
   - url: capabilities/model-promotion.yaml
     name: ZenML Model Promotion Capability
     type: Resources
+integrations:
+  - name: Amazon S3 Artifact Store
+  - name: Apache Airflow Orchestrator
+  - name: Argilla Data Annotator
+  - name: AutoGen Agents
+  - name: AWS Cloud Infrastructure
+  - name: AWS Strands Agents
+  - name: Azure Blob Storage Artifact Store
+  - name: Azure Container Registry Container Registry
+  - name: AzureML Pipelines Orchestrator
+  - name: BentoML Deployer
+  - name: Comet Experiment Tracker
+  - name: CrewAI Agents
+  - name: Databricks Orchestrator
+  - name: Databricks Deployment Deployer
+  - name: Deepchecks Data Validator
+  - name: Discord Alerter
+  - name: Docker Orchestrator
+  - name: Elastic Container Registry Container Registry
+  - name: Evidently Data Validator
+  - name: Facets Data Visualization
+  - name: Feast Feature Store
+  - name: Github Actions Orchestrator
+  - name: GitHub Container Registry Container Registry
+  - name: Google ADK Agent Agents
+  - name: Google Artifact Registry Container Registry
+  - name: Google Cloud Cloud Infrastructure
+  - name: Google Cloud Storage (GCS) Artifact Store
+  - name: Google Cloud Vertex AI Pipelines Orchestrator
+  - name: Great Expectations Data Validator
+  - name: Haystack Agents
+  - name: Hugging Face Modeling
+  - name: Hugging Face (Inference Endpoints) Deployer
+  - name: HyperAI Orchestrator
+  - name: Kaniko Image Builder
+  - name: Kubeflow Orchestrator
+  - name: Kubernetes Orchestrator
+  - name: Label Studio Data Annotator
+  - name: LangChain Agents
+  - name: LangGraph Agents
+  - name: LightGBM Modeling
+  - name: Lightning AI Orchestrator
+  - name: LlamaIndex Agents
+  - name: Microsoft Azure Cloud Infrastructure
+  - name: MLflow Experiment Tracker
+  - name: Modal Orchestrator
+  - name: Neptune Experiment Tracker
+  - name: NeuralProphet Modeling
+  - name: OpenAI Agents SDK Agents
+  - name: Pigeon Data Annotator
+  - name: Pillow Modeling
+  - name: Prodigy Data Annotator
+  - name: PydanticAI Agents
+  - name: PyTorch Modeling
+  - name: PyTorch Lightning Modeling
+  - name: Sagemaker Pipelines Orchestrator
+  - name: Seldon Deployer
+  - name: Semantic Kernel Agents
+  - name: Skypilot VM Orchestrator
+  - name: Slack Alerter
+  - name: Tekton Orchestrator
+  - name: TensorBoard Experiment Tracker
+  - name: TensorFlow Modeling
+  - name: Weights & Biases Experiment Tracker
+  - name: WhyLabs whylogs Data Validator
+  - name: XGBoost Modeling
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
