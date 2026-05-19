@@ -1,0 +1,78 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: ZenML OSS REST API — Stack Components
+  description: 'ZenML OSS REST API — Stack Components. 1 operations. Lead operation: List Stack Components. Self-contained
+    Naftiko capability covering one Zenml business surface.'
+  tags:
+  - Zenml
+  - Stack Components
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENML_API_KEY: ZENML_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: zenml-stack-components
+    baseUri: https://your-zenml-server.example.com/api/v1
+    description: ZenML OSS REST API — Stack Components business capability. Self-contained, no shared references.
+    resources:
+    - name: components
+      path: /components
+      operations:
+      - name: liststackcomponents
+        method: GET
+        description: List Stack Components
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: query
+          type: string
+    authentication:
+      type: bearer
+      token: '{{env.ZENML_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: zenml-stack-components-rest
+    port: 8080
+    description: REST adapter for ZenML OSS REST API — Stack Components. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/components
+      name: components
+      description: REST surface for components.
+      operations:
+      - method: GET
+        name: liststackcomponents
+        description: List Stack Components
+        call: zenml-stack-components.liststackcomponents
+        with:
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: zenml-stack-components-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for ZenML OSS REST API — Stack Components. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-stack-components
+      description: List Stack Components
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: zenml-stack-components.liststackcomponents
+      with:
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.

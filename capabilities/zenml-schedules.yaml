@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: ZenML OSS REST API — Schedules
+  description: 'ZenML OSS REST API — Schedules. 1 operations. Lead operation: List Schedules. Self-contained Naftiko capability
+    covering one Zenml business surface.'
+  tags:
+  - Zenml
+  - Schedules
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENML_API_KEY: ZENML_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: zenml-schedules
+    baseUri: https://your-zenml-server.example.com/api/v1
+    description: ZenML OSS REST API — Schedules business capability. Self-contained, no shared references.
+    resources:
+    - name: schedules
+      path: /schedules
+      operations:
+      - name: listschedules
+        method: GET
+        description: List Schedules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.ZENML_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: zenml-schedules-rest
+    port: 8080
+    description: REST adapter for ZenML OSS REST API — Schedules. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/schedules
+      name: schedules
+      description: REST surface for schedules.
+      operations:
+      - method: GET
+        name: listschedules
+        description: List Schedules
+        call: zenml-schedules.listschedules
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: zenml-schedules-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for ZenML OSS REST API — Schedules. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-schedules
+      description: List Schedules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: zenml-schedules.listschedules
+      outputParameters:
+      - type: object
+        mapping: $.

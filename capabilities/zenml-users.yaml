@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: ZenML OSS REST API — Users
+  description: 'ZenML OSS REST API — Users. 2 operations. Lead operation: Get Current Authenticated User. Self-contained Naftiko
+    capability covering one Zenml business surface.'
+  tags:
+  - Zenml
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENML_API_KEY: ZENML_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: zenml-users
+    baseUri: https://your-zenml-server.example.com/api/v1
+    description: ZenML OSS REST API — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: current-user
+      path: /current-user
+      operations:
+      - name: getcurrentuser
+        method: GET
+        description: Get Current Authenticated User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users
+      path: /users
+      operations:
+      - name: listusers
+        method: GET
+        description: List Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.ZENML_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: zenml-users-rest
+    port: 8080
+    description: REST adapter for ZenML OSS REST API — Users. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/current-user
+      name: current-user
+      description: REST surface for current-user.
+      operations:
+      - method: GET
+        name: getcurrentuser
+        description: Get Current Authenticated User
+        call: zenml-users.getcurrentuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users
+      name: users
+      description: REST surface for users.
+      operations:
+      - method: GET
+        name: listusers
+        description: List Users
+        call: zenml-users.listusers
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: zenml-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for ZenML OSS REST API — Users. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-current-authenticated-user
+      description: Get Current Authenticated User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: zenml-users.getcurrentuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-users
+      description: List Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: zenml-users.listusers
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: ZenML OSS REST API — Service Connectors
+  description: 'ZenML OSS REST API — Service Connectors. 1 operations. Lead operation: List Service Connectors. Self-contained
+    Naftiko capability covering one Zenml business surface.'
+  tags:
+  - Zenml
+  - Service Connectors
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENML_API_KEY: ZENML_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: zenml-service-connectors
+    baseUri: https://your-zenml-server.example.com/api/v1
+    description: ZenML OSS REST API — Service Connectors business capability. Self-contained, no shared references.
+    resources:
+    - name: service_connectors
+      path: /service_connectors
+      operations:
+      - name: listserviceconnectors
+        method: GET
+        description: List Service Connectors
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.ZENML_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: zenml-service-connectors-rest
+    port: 8080
+    description: REST adapter for ZenML OSS REST API — Service Connectors. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/service-connectors
+      name: service-connectors
+      description: REST surface for service_connectors.
+      operations:
+      - method: GET
+        name: listserviceconnectors
+        description: List Service Connectors
+        call: zenml-service-connectors.listserviceconnectors
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: zenml-service-connectors-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for ZenML OSS REST API — Service Connectors. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-service-connectors
+      description: List Service Connectors
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: zenml-service-connectors.listserviceconnectors
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: ZenML OSS REST API — Auth
+  description: 'ZenML OSS REST API — Auth. 2 operations. Lead operation: Get Current Authenticated User. Self-contained Naftiko
+    capability covering one Zenml business surface.'
+  tags:
+  - Zenml
+  - Auth
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENML_API_KEY: ZENML_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: zenml-auth
+    baseUri: https://your-zenml-server.example.com/api/v1
+    description: ZenML OSS REST API — Auth business capability. Self-contained, no shared references.
+    resources:
+    - name: current-user
+      path: /current-user
+      operations:
+      - name: getcurrentuser
+        method: GET
+        description: Get Current Authenticated User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: login
+      path: /login
+      operations:
+      - name: login
+        method: POST
+        description: Login and Obtain Access Token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.ZENML_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: zenml-auth-rest
+    port: 8080
+    description: REST adapter for ZenML OSS REST API — Auth. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/current-user
+      name: current-user
+      description: REST surface for current-user.
+      operations:
+      - method: GET
+        name: getcurrentuser
+        description: Get Current Authenticated User
+        call: zenml-auth.getcurrentuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/login
+      name: login
+      description: REST surface for login.
+      operations:
+      - method: POST
+        name: login
+        description: Login and Obtain Access Token
+        call: zenml-auth.login
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: zenml-auth-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for ZenML OSS REST API — Auth. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-current-authenticated-user
+      description: Get Current Authenticated User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: zenml-auth.getcurrentuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: login-and-obtain-access-token
+      description: Login and Obtain Access Token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: zenml-auth.login
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

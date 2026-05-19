@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: ZenML OSS REST API — Artifacts
+  description: 'ZenML OSS REST API — Artifacts. 2 operations. Lead operation: List Artifacts. Self-contained Naftiko capability
+    covering one Zenml business surface.'
+  tags:
+  - Zenml
+  - Artifacts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENML_API_KEY: ZENML_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: zenml-artifacts
+    baseUri: https://your-zenml-server.example.com/api/v1
+    description: ZenML OSS REST API — Artifacts business capability. Self-contained, no shared references.
+    resources:
+    - name: artifacts
+      path: /artifacts
+      operations:
+      - name: listartifacts
+        method: GET
+        description: List Artifacts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: artifacts-artifact_id
+      path: /artifacts/{artifact_id}
+      operations:
+      - name: getartifact
+        method: GET
+        description: Get Artifact
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.ZENML_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: zenml-artifacts-rest
+    port: 8080
+    description: REST adapter for ZenML OSS REST API — Artifacts. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/artifacts
+      name: artifacts
+      description: REST surface for artifacts.
+      operations:
+      - method: GET
+        name: listartifacts
+        description: List Artifacts
+        call: zenml-artifacts.listartifacts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/artifacts/{artifact-id}
+      name: artifacts-artifact-id
+      description: REST surface for artifacts-artifact_id.
+      operations:
+      - method: GET
+        name: getartifact
+        description: Get Artifact
+        call: zenml-artifacts.getartifact
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: zenml-artifacts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for ZenML OSS REST API — Artifacts. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-artifacts
+      description: List Artifacts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: zenml-artifacts.listartifacts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-artifact
+      description: Get Artifact
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: zenml-artifacts.getartifact
+      outputParameters:
+      - type: object
+        mapping: $.

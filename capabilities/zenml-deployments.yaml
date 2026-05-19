@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: ZenML OSS REST API — Deployments
+  description: 'ZenML OSS REST API — Deployments. 1 operations. Lead operation: List Pipeline Deployments. Self-contained
+    Naftiko capability covering one Zenml business surface.'
+  tags:
+  - Zenml
+  - Deployments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENML_API_KEY: ZENML_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: zenml-deployments
+    baseUri: https://your-zenml-server.example.com/api/v1
+    description: ZenML OSS REST API — Deployments business capability. Self-contained, no shared references.
+    resources:
+    - name: deployments
+      path: /deployments
+      operations:
+      - name: listdeployments
+        method: GET
+        description: List Pipeline Deployments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.ZENML_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: zenml-deployments-rest
+    port: 8080
+    description: REST adapter for ZenML OSS REST API — Deployments. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/deployments
+      name: deployments
+      description: REST surface for deployments.
+      operations:
+      - method: GET
+        name: listdeployments
+        description: List Pipeline Deployments
+        call: zenml-deployments.listdeployments
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: zenml-deployments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for ZenML OSS REST API — Deployments. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-pipeline-deployments
+      description: List Pipeline Deployments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: zenml-deployments.listdeployments
+      outputParameters:
+      - type: object
+        mapping: $.
