@@ -21,7 +21,7 @@ tags:
   - Open Source
   - Python
 created: '2025-02-08'
-modified: '2026-05-03'
+modified: '2026-05-19'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/zenml/refs/heads/main/apis.yml
 specificationVersion: '0.19'
@@ -152,6 +152,12 @@ common:
   - url: capabilities/model-promotion.yaml
     name: ZenML Model Promotion Capability
     type: Resources
+  - name: MCP Server
+    url: https://github.com/zenml-io/mcp-zenml
+    type: MCPServer
+  - name: Agent Skills
+    url: https://www.zenml.io/blog/introducing-zenml-agent-skills-let-ai-upgrade-your-mlops-setup-in-minutes
+    type: AgentSkill
 integrations:
   - name: Amazon S3 Artifact Store
   - name: Apache Airflow Orchestrator
