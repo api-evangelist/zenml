@@ -176,6 +176,8 @@ common:
   - name: Agent Skills
     url: https://www.zenml.io/blog/introducing-zenml-agent-skills-let-ai-upgrade-your-mlops-setup-in-minutes
     type: AgentSkill
+  - type: LLMsTxt
+    url: https://docs.zenml.io/llms.txt
 integrations:
   - name: Amazon S3 Artifact Store
   - name: Apache Airflow Orchestrator
