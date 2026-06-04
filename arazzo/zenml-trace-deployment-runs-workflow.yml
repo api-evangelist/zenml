@@ -1,0 +1,92 @@
+arazzo: 1.0.1
+info:
+  title: ZenML Trace Deployment Runs
+  summary: Select a pipeline deployment, resolve its pipeline, and read the latest run it produced.
+  description: >-
+    Traces a pipeline deployment through to the runs it has produced. The
+    workflow lists deployments to select one, reads its associated pipeline for
+    context, and lists the runs scoped to that pipeline to surface the most
+    recent execution. Every step spells out its request inline, including the
+    bearer Authorization header, so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: zenmlApi
+  url: ../openapi/zenml-openapi.yml
+  type: openapi
+workflows:
+- workflowId: trace-deployment-runs
+  summary: From a deployment, read its pipeline and the latest run it produced.
+  description: >-
+    Lists deployments to select one, reads its pipeline, and lists runs for
+    that pipeline to surface the latest execution.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    properties:
+      accessToken:
+        type: string
+        description: ZenML JWT access token obtained from the login endpoint.
+  steps:
+  - stepId: listDeployments
+    description: >-
+      List pipeline deployments and select the first one to trace.
+    operationId: listDeployments
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: page
+      in: query
+      value: 1
+    - name: size
+      in: query
+      value: 20
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deploymentId: $response.body#/items/0/id
+      pipelineId: $response.body#/items/0/pipeline_id
+  - stepId: readPipeline
+    description: >-
+      Read the deployment's associated pipeline for naming context.
+    operationId: getPipeline
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: pipeline_id
+      in: path
+      value: $steps.listDeployments.outputs.pipelineId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      pipelineName: $response.body#/name
+  - stepId: listDeploymentRuns
+    description: >-
+      List the runs scoped to the deployment's pipeline, newest first, to
+      surface the most recent execution.
+    operationId: listPipelineRuns
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: pipeline_id
+      in: query
+      value: $steps.listDeployments.outputs.pipelineId
+    - name: page
+      in: query
+      value: 1
+    - name: size
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      latestRunId: $response.body#/items/0/id
+      runCount: $response.body#/total
+  outputs:
+    deploymentId: $steps.listDeployments.outputs.deploymentId
+    pipelineName: $steps.readPipeline.outputs.pipelineName
+    latestRunId: $steps.listDeploymentRuns.outputs.latestRunId

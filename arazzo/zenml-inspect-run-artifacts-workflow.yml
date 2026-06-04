@@ -1,0 +1,120 @@
+arazzo: 1.0.1
+info:
+  title: ZenML Inspect Run Artifacts
+  summary: Select a pipeline run, confirm it succeeded, and inspect an artifact produced in the deployment.
+  description: >-
+    Inspects the artifacts surfaced around a completed pipeline run. The
+    workflow lists completed runs, reads the selected run for context, lists
+    the artifact catalog, and reads a single artifact in detail. Because the
+    OSS REST surface exposes the artifact catalog globally rather than nested
+    under a run, the run and artifact lookups are chained as sibling reads.
+    Every step spells out its request inline, including the bearer Authorization
+    header, so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: zenmlApi
+  url: ../openapi/zenml-openapi.yml
+  type: openapi
+workflows:
+- workflowId: inspect-run-artifacts
+  summary: Read a completed run and inspect one artifact from the catalog in detail.
+  description: >-
+    Lists completed runs, reads the most recent one, lists artifacts, and reads
+    the first artifact in detail.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    properties:
+      accessToken:
+        type: string
+        description: ZenML JWT access token obtained from the login endpoint.
+      pipelineId:
+        type: string
+        description: Optional pipeline uuid to scope the completed-run lookup.
+  steps:
+  - stepId: listCompletedRuns
+    description: >-
+      List runs filtered to the completed status so a successful run can be
+      selected for artifact inspection.
+    operationId: listPipelineRuns
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: pipeline_id
+      in: query
+      value: $inputs.pipelineId
+    - name: status
+      in: query
+      value: completed
+    - name: page
+      in: query
+      value: 1
+    - name: size
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runId: $response.body#/items/0/id
+  - stepId: getRun
+    description: >-
+      Read the selected run to confirm its terminal status and capture its
+      stack for context.
+    operationId: getPipelineRun
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: run_id
+      in: path
+      value: $steps.listCompletedRuns.outputs.runId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runId: $response.body#/id
+      stackId: $response.body#/stack_id
+      status: $response.body#/status
+  - stepId: listArtifacts
+    description: >-
+      List the artifact catalog so an artifact can be selected for detailed
+      inspection.
+    operationId: listArtifacts
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: page
+      in: query
+      value: 1
+    - name: size
+      in: query
+      value: 20
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      artifactId: $response.body#/items/0/id
+  - stepId: getArtifact
+    description: >-
+      Read the selected artifact in detail to surface its uri, type, and
+      materializer.
+    operationId: getArtifact
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: artifact_id
+      in: path
+      value: $steps.listArtifacts.outputs.artifactId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      artifactId: $response.body#/id
+      artifactName: $response.body#/name
+      uri: $response.body#/uri
+  outputs:
+    runId: $steps.getRun.outputs.runId
+    artifactId: $steps.getArtifact.outputs.artifactId
+    artifactUri: $steps.getArtifact.outputs.uri

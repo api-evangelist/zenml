@@ -105,6 +105,45 @@ apis:
     - type: Authentication
       url: https://docs.zenml.io/pro/core-concepts/access-control
 common:
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+    - url: arazzo/zenml-audit-pipeline-runs-workflow.yml
+      name: ZenML Audit Pipeline Runs
+      summary: Walk from a named pipeline to its run history and drill into the most recent run.
+    - url: arazzo/zenml-authenticate-and-list-pipelines-workflow.yml
+      name: ZenML Authenticate and List Pipelines
+      summary: Exchange credentials for a token, confirm the session identity, and list pipelines.
+    - url: arazzo/zenml-bootstrap-project-pipeline-workflow.yml
+      name: ZenML Bootstrap Project Pipeline
+      summary: Identify the caller, resolve a project workspace, register a pipeline, and confirm it.
+    - url: arazzo/zenml-inspect-run-artifacts-workflow.yml
+      name: ZenML Inspect Run Artifacts
+      summary: Select a pipeline run, confirm it succeeded, and inspect an artifact produced in the deployment.
+    - url: arazzo/zenml-inspect-stack-topology-workflow.yml
+      name: ZenML Inspect Stack Topology
+      summary: Pick a stack, read its component wiring, and cross-reference the component catalog.
+    - url: arazzo/zenml-monitor-pipeline-run-workflow.yml
+      name: ZenML Monitor Pipeline Run
+      summary: Find the latest run of a pipeline, poll its status to completion, and branch on success or failure.
+    - url: arazzo/zenml-provision-pipeline-workflow.yml
+      name: ZenML Provision Pipeline
+      summary: Resolve a project, register a new pipeline in it, and confirm the pipeline was created.
+    - url: arazzo/zenml-provision-secret-workflow.yml
+      name: ZenML Provision Secret
+      summary: Confirm the caller identity, create a scoped secret, and confirm it appears in the secret store.
+    - url: arazzo/zenml-register-model-workflow.yml
+      name: ZenML Register Model
+      summary: Register a new model in the model control plane and enumerate its versions.
+    - url: arazzo/zenml-register-stack-workflow.yml
+      name: ZenML Register Stack
+      summary: Discover available stack components, assemble them into a new stack, and confirm the stack was created.
+    - url: arazzo/zenml-trace-deployment-runs-workflow.yml
+      name: ZenML Trace Deployment Runs
+      summary: Select a pipeline deployment, resolve its pipeline, and read the latest run it produced.
+    - url: arazzo/zenml-track-scheduled-pipeline-workflow.yml
+      name: ZenML Track Scheduled Pipeline
+      summary: Resolve a schedule, find the run it produced for its pipeline, and read that run.
   - type: LinkedIn
     url: https://www.linkedin.com/company/zenml
   - url: https://www.zenml.io/

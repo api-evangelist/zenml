@@ -1,0 +1,99 @@
+arazzo: 1.0.1
+info:
+  title: ZenML Audit Pipeline Runs
+  summary: Walk from a named pipeline to its run history and drill into the most recent run.
+  description: >-
+    Audits the execution history of a pipeline. The workflow lists pipelines to
+    resolve a pipeline by name, lists the runs scoped to that pipeline id, and
+    reads the most recent run in detail. This is the canonical read path for
+    understanding what a pipeline has done. Every step spells out its request
+    inline, including the bearer Authorization header, so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: zenmlApi
+  url: ../openapi/zenml-openapi.yml
+  type: openapi
+workflows:
+- workflowId: audit-pipeline-runs
+  summary: Resolve a pipeline by name, list its runs, and read the latest run.
+  description: >-
+    Lists pipelines filtered by name to resolve a pipeline id, lists runs for
+    that pipeline, and reads the most recent run in detail.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - pipelineName
+    properties:
+      accessToken:
+        type: string
+        description: ZenML JWT access token obtained from the login endpoint.
+      pipelineName:
+        type: string
+        description: The name of the pipeline whose run history should be audited.
+  steps:
+  - stepId: resolvePipeline
+    description: >-
+      List pipelines filtered by name to resolve the target pipeline id.
+    operationId: listPipelines
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: name
+      in: query
+      value: $inputs.pipelineName
+    - name: page
+      in: query
+      value: 1
+    - name: size
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      pipelineId: $response.body#/items/0/id
+  - stepId: listRuns
+    description: >-
+      List the runs scoped to the resolved pipeline id, newest first.
+    operationId: listPipelineRuns
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: pipeline_id
+      in: query
+      value: $steps.resolvePipeline.outputs.pipelineId
+    - name: page
+      in: query
+      value: 1
+    - name: size
+      in: query
+      value: 20
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runCount: $response.body#/total
+      latestRunId: $response.body#/items/0/id
+  - stepId: readLatestRun
+    description: >-
+      Read the most recent run in detail to surface its status and timing.
+    operationId: getPipelineRun
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: run_id
+      in: path
+      value: $steps.listRuns.outputs.latestRunId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runId: $response.body#/id
+      status: $response.body#/status
+      startTime: $response.body#/start_time
+  outputs:
+    pipelineId: $steps.resolvePipeline.outputs.pipelineId
+    runCount: $steps.listRuns.outputs.runCount
+    latestRunStatus: $steps.readLatestRun.outputs.status

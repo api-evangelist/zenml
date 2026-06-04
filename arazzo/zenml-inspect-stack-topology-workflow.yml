@@ -1,0 +1,99 @@
+arazzo: 1.0.1
+info:
+  title: ZenML Inspect Stack Topology
+  summary: Pick a stack, read its component wiring, and cross-reference the component catalog.
+  description: >-
+    Maps the topology of a ZenML stack. The workflow lists stacks to select a
+    stack, reads that stack to expose its component-type-to-id wiring, and lists
+    the stack-component catalog so the referenced component ids can be resolved
+    to concrete flavors. Every step spells out its request inline, including the
+    bearer Authorization header, so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: zenmlApi
+  url: ../openapi/zenml-openapi.yml
+  type: openapi
+workflows:
+- workflowId: inspect-stack-topology
+  summary: Read a stack's component wiring and cross-reference the component catalog.
+  description: >-
+    Lists stacks to select one, reads it to expose its component map, and lists
+    stack components to resolve the referenced ids.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    properties:
+      accessToken:
+        type: string
+        description: ZenML JWT access token obtained from the login endpoint.
+      componentType:
+        type: string
+        description: >-
+          Optional stack component type to filter the catalog lookup (e.g.
+          orchestrator, artifact_store).
+  steps:
+  - stepId: listStacks
+    description: >-
+      List stacks and select the first one to inspect.
+    operationId: listStacks
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: page
+      in: query
+      value: 1
+    - name: size
+      in: query
+      value: 20
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      stackId: $response.body#/items/0/id
+  - stepId: readStack
+    description: >-
+      Read the selected stack to expose its component-type-to-id wiring.
+    operationId: getStack
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: stack_id
+      in: path
+      value: $steps.listStacks.outputs.stackId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      stackId: $response.body#/id
+      stackName: $response.body#/name
+      components: $response.body#/components
+  - stepId: listComponents
+    description: >-
+      List the stack-component catalog, optionally filtered by type, so the
+      ids referenced by the stack can be resolved to concrete flavors.
+    operationId: listStackComponents
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: type
+      in: query
+      value: $inputs.componentType
+    - name: page
+      in: query
+      value: 1
+    - name: size
+      in: query
+      value: 100
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      componentCount: $response.body#/total
+      firstComponentFlavor: $response.body#/items/0/flavor
+  outputs:
+    stackId: $steps.readStack.outputs.stackId
+    stackName: $steps.readStack.outputs.stackName
+    components: $steps.readStack.outputs.components
+    componentCount: $steps.listComponents.outputs.componentCount

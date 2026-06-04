@@ -1,0 +1,85 @@
+arazzo: 1.0.1
+info:
+  title: ZenML Authenticate and List Pipelines
+  summary: Exchange credentials for a token, confirm the session identity, and list pipelines.
+  description: >-
+    Establishes an authenticated ZenML session and exercises it. The workflow
+    posts credentials to the login endpoint to obtain a bearer access token,
+    uses that token to read the current user, and then lists the pipelines
+    visible to the session. Every step spells out its request inline, including
+    the bearer Authorization header derived from the login step, so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: zenmlApi
+  url: ../openapi/zenml-openapi.yml
+  type: openapi
+workflows:
+- workflowId: authenticate-and-list-pipelines
+  summary: Log in for a token, confirm the user, and list visible pipelines.
+  description: >-
+    Posts credentials to obtain an access token, reads the current user with
+    that token, and lists pipelines for the session.
+  inputs:
+    type: object
+    required:
+    - username
+    - password
+    properties:
+      username:
+        type: string
+        description: ZenML account username.
+      password:
+        type: string
+        description: ZenML account password.
+  steps:
+  - stepId: login
+    description: >-
+      Exchange the username and password for a JWT access token.
+    operationId: login
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        username: $inputs.username
+        password: $inputs.password
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      accessToken: $response.body#/access_token
+  - stepId: confirmSession
+    description: >-
+      Read the current user with the freshly issued token to confirm the
+      session is valid.
+    operationId: getCurrentUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $steps.login.outputs.accessToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      userId: $response.body#/id
+      userName: $response.body#/name
+  - stepId: listPipelines
+    description: >-
+      List the pipelines visible to the authenticated session.
+    operationId: listPipelines
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $steps.login.outputs.accessToken
+    - name: page
+      in: query
+      value: 1
+    - name: size
+      in: query
+      value: 20
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      pipelineCount: $response.body#/total
+      firstPipelineId: $response.body#/items/0/id
+  outputs:
+    userId: $steps.confirmSession.outputs.userId
+    accessToken: $steps.login.outputs.accessToken
+    pipelineCount: $steps.listPipelines.outputs.pipelineCount
