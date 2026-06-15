@@ -1,0 +1,2612 @@
+{
+  "info": {
+    "_postman_id": "d720560e-e5a3-46ea-89cc-4ceb7e56c595",
+    "name": "ZenML OSS REST API",
+    "description": "REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.\n\nContact Support:\n Name: ZenML",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:43.000Z",
+    "updatedAt": "2026-06-05T15:21:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d720560e-e5a3-46ea-89cc-4ceb7e56c595"
+  },
+  "item": [
+    {
+      "name": "login",
+      "item": [
+        {
+          "name": "Login and Obtain Access Token",
+          "id": "7261cefe-5573-4d37-9971-a300b269ee68",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) ",
+                  "key": "username",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "password",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8531ecae-2201-40fd-8cb2-5bf4b14a8daa",
+              "name": "Authentication succeeded",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) ",
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"access_token\": \"<string>\",\n  \"token_type\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"refresh_token\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-8531ecae-2201-40fd-8cb2-5bf4b14a8daa"
+            },
+            {
+              "id": "028a238b-8e02-4d07-9649-988e0f420f72",
+              "name": "Invalid credentials",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) ",
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "login"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-028a238b-8e02-4d07-9649-988e0f420f72"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-7261cefe-5573-4d37-9971-a300b269ee68"
+        }
+      ],
+      "id": "b396f82e-a016-4d66-8a8a-8de58ca8961f",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-b396f82e-a016-4d66-8a8a-8de58ca8961f"
+    },
+    {
+      "name": "current-user",
+      "item": [
+        {
+          "name": "Get Current Authenticated User",
+          "id": "6f2f4755-90c9-4e2a-88db-6cb662f35090",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/current-user",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "current-user"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "40698579-d4e1-41e1-aa0b-6d9a9acf1273",
+              "name": "The current user",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/current-user",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "current-user"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"full_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"active\": \"<boolean>\",\n  \"is_admin\": \"<boolean>\",\n  \"created\": \"<dateTime>\",\n  \"updated\": \"<dateTime>\"\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-40698579-d4e1-41e1-aa0b-6d9a9acf1273"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-6f2f4755-90c9-4e2a-88db-6cb662f35090"
+        }
+      ],
+      "id": "f00d87bb-7406-423c-85aa-155e112c8f28",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-f00d87bb-7406-423c-85aa-155e112c8f28"
+    },
+    {
+      "name": "pipelines",
+      "item": [
+        {
+          "name": "{pipeline_id}",
+          "item": [
+            {
+              "name": "Get Pipeline",
+              "id": "3c27570d-f70c-4b58-8daf-31661c0de26a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pipelines/:pipeline_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pipelines",
+                    ":pipeline_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6b1f8136-0960-464f-88fe-66c2b98409a5",
+                      "key": "pipeline_id",
+                      "value": "<uuid>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "dc8a9d8f-d527-457d-9031-c56299f32e79",
+                  "name": "Pipeline detail",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pipelines/:pipeline_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pipelines",
+                        ":pipeline_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "pipeline_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"spec\": {\n    \"consequatb7b\": -55290774.328844525,\n    \"sitb67\": \"n\"\n  },\n  \"project_id\": \"<uuid>\",\n  \"user_id\": \"<uuid>\",\n  \"created\": \"<dateTime>\",\n  \"updated\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:21:43.000Z",
+                  "updatedAt": "2026-06-05T15:21:43.000Z",
+                  "uid": "35240-dc8a9d8f-d527-457d-9031-c56299f32e79"
+                },
+                {
+                  "id": "6d8adb83-3ebd-4a5f-ad56-a22bb5825080",
+                  "name": "Pipeline not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pipelines/:pipeline_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pipelines",
+                        ":pipeline_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "pipeline_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:21:43.000Z",
+                  "updatedAt": "2026-06-05T15:21:43.000Z",
+                  "uid": "35240-6d8adb83-3ebd-4a5f-ad56-a22bb5825080"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-3c27570d-f70c-4b58-8daf-31661c0de26a"
+            },
+            {
+              "name": "Delete Pipeline",
+              "id": "55aa1b95-ac1a-4065-a0d2-8f719d6c2aaa",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/pipelines/:pipeline_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pipelines",
+                    ":pipeline_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "66a6dd8e-0306-4289-b6c1-99a0246f6ffc",
+                      "key": "pipeline_id",
+                      "value": "<uuid>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "2f234cc2-bf68-4e13-bd5f-fb8da2f984ba",
+                  "name": "Pipeline deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pipelines/:pipeline_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pipelines",
+                        ":pipeline_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "pipeline_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:21:43.000Z",
+                  "updatedAt": "2026-06-05T15:21:43.000Z",
+                  "uid": "35240-2f234cc2-bf68-4e13-bd5f-fb8da2f984ba"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-55aa1b95-ac1a-4065-a0d2-8f719d6c2aaa"
+            }
+          ],
+          "id": "0a5d376f-7fdc-4138-85a1-dc6e33d57d6f",
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-0a5d376f-7fdc-4138-85a1-dc6e33d57d6f"
+        },
+        {
+          "name": "List Pipelines",
+          "id": "603a2eb3-e201-4cf3-ac7a-9c13a678a73e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pipelines?page=1&size=20&name=<string>&project_id=<uuid>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pipelines"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                },
+                {
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "key": "project_id",
+                  "value": "<uuid>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ecd552fd-d36a-4feb-b764-ad1c1f3bc092",
+              "name": "Page of pipelines",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pipelines?page=1&size=20&name=<string>&project_id=<uuid>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pipelines"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"index\": \"<integer>\",\n  \"max_size\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"version\": \"<string>\",\n      \"spec\": {\n        \"cillum_\": \"ut ut reprehen\"\n      },\n      \"project_id\": \"<uuid>\",\n      \"user_id\": \"<uuid>\",\n      \"created\": \"<dateTime>\",\n      \"updated\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"version\": \"<string>\",\n      \"spec\": {\n        \"est1c\": \"do Lorem officia\"\n      },\n      \"project_id\": \"<uuid>\",\n      \"user_id\": \"<uuid>\",\n      \"created\": \"<dateTime>\",\n      \"updated\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-ecd552fd-d36a-4feb-b764-ad1c1f3bc092"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-603a2eb3-e201-4cf3-ac7a-9c13a678a73e"
+        },
+        {
+          "name": "Create Pipeline",
+          "id": "46ae0883-f6d8-4b21-a5e4-1962e30714dd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"project_id\": \"<uuid>\",\n  \"spec\": {\n    \"anim_319\": true\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pipelines",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pipelines"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4074a05b-2df6-435c-8d1c-2136ca6c6128",
+              "name": "Pipeline created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"project_id\": \"<uuid>\",\n  \"spec\": {\n    \"anim_319\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/pipelines",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pipelines"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"spec\": {\n    \"consequatb7b\": -55290774.328844525,\n    \"sitb67\": \"n\"\n  },\n  \"project_id\": \"<uuid>\",\n  \"user_id\": \"<uuid>\",\n  \"created\": \"<dateTime>\",\n  \"updated\": \"<dateTime>\"\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-4074a05b-2df6-435c-8d1c-2136ca6c6128"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-46ae0883-f6d8-4b21-a5e4-1962e30714dd"
+        }
+      ],
+      "id": "bf802b29-39ee-4607-8aeb-f4e068efd077",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-bf802b29-39ee-4607-8aeb-f4e068efd077"
+    },
+    {
+      "name": "runs",
+      "item": [
+        {
+          "name": "{run_id}",
+          "item": [
+            {
+              "name": "Get Pipeline Run",
+              "id": "fe00856c-0828-4374-9497-474bc4cb7f2a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/runs/:run_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "runs",
+                    ":run_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "96c1bc67-e2ea-4d29-97b5-2740ddb58a79",
+                      "key": "run_id",
+                      "value": "<uuid>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "0f4ef836-4226-468f-9e4f-2ec8a890ecc8",
+                  "name": "Pipeline run detail",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/runs/:run_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "runs",
+                        ":run_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "run_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"pipeline_id\": \"<uuid>\",\n  \"stack_id\": \"<uuid>\",\n  \"status\": \"completed\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"user_id\": \"<uuid>\",\n  \"created\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:21:43.000Z",
+                  "updatedAt": "2026-06-05T15:21:43.000Z",
+                  "uid": "35240-0f4ef836-4226-468f-9e4f-2ec8a890ecc8"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-fe00856c-0828-4374-9497-474bc4cb7f2a"
+            }
+          ],
+          "id": "e48d34ec-5f37-4f62-8b06-6fb613fb9366",
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-e48d34ec-5f37-4f62-8b06-6fb613fb9366"
+        },
+        {
+          "name": "List Pipeline Runs",
+          "id": "589ff8e4-2b09-4641-a8b3-3aae9c2df179",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/runs?page=1&size=20&pipeline_id=<uuid>&status=cached",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "runs"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                },
+                {
+                  "key": "pipeline_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "key": "status",
+                  "value": "cached"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4f1cea18-26ef-4e34-a936-257d55d57406",
+              "name": "Page of pipeline runs",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/runs?page=1&size=20&pipeline_id=<uuid>&status=cached",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "runs"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pipeline_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "cached"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"index\": \"<integer>\",\n  \"max_size\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"pipeline_id\": \"<uuid>\",\n      \"stack_id\": \"<uuid>\",\n      \"status\": \"initializing\",\n      \"start_time\": \"<dateTime>\",\n      \"end_time\": \"<dateTime>\",\n      \"user_id\": \"<uuid>\",\n      \"created\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"pipeline_id\": \"<uuid>\",\n      \"stack_id\": \"<uuid>\",\n      \"status\": \"stopped\",\n      \"start_time\": \"<dateTime>\",\n      \"end_time\": \"<dateTime>\",\n      \"user_id\": \"<uuid>\",\n      \"created\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-4f1cea18-26ef-4e34-a936-257d55d57406"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-589ff8e4-2b09-4641-a8b3-3aae9c2df179"
+        }
+      ],
+      "id": "9aa28620-cd65-4b1b-8f8e-321dd6ce463e",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-9aa28620-cd65-4b1b-8f8e-321dd6ce463e"
+    },
+    {
+      "name": "stacks",
+      "item": [
+        {
+          "name": "{stack_id}",
+          "item": [
+            {
+              "name": "Get Stack",
+              "id": "01c4d8dd-87f6-492e-b416-ca1368d8bd3f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/stacks/:stack_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stacks",
+                    ":stack_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "3cdd9074-6d05-48db-86cc-466aa0b962b3",
+                      "key": "stack_id",
+                      "value": "<uuid>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "ee942319-2e20-426a-bffb-e2c36b82938f",
+                  "name": "Stack detail",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stacks/:stack_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stacks",
+                        ":stack_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "stack_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"components\": {\n    \"aute0\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"sit976\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  },\n  \"user_id\": \"<uuid>\",\n  \"created\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:21:43.000Z",
+                  "updatedAt": "2026-06-05T15:21:43.000Z",
+                  "uid": "35240-ee942319-2e20-426a-bffb-e2c36b82938f"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-01c4d8dd-87f6-492e-b416-ca1368d8bd3f"
+            },
+            {
+              "name": "Delete Stack",
+              "id": "fe6b9f9f-2304-4968-a621-76f81612c2d9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/stacks/:stack_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stacks",
+                    ":stack_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c4419696-82de-4f2c-b2b5-2df8c44cf404",
+                      "key": "stack_id",
+                      "value": "<uuid>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "29a2853d-88bb-4299-bae8-ff5610322cc2",
+                  "name": "Stack deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stacks/:stack_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stacks",
+                        ":stack_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "stack_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:21:43.000Z",
+                  "updatedAt": "2026-06-05T15:21:43.000Z",
+                  "uid": "35240-29a2853d-88bb-4299-bae8-ff5610322cc2"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-fe6b9f9f-2304-4968-a621-76f81612c2d9"
+            }
+          ],
+          "id": "88e64879-bfeb-4e4d-a755-a1e0dd75a354",
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-88e64879-bfeb-4e4d-a755-a1e0dd75a354"
+        },
+        {
+          "name": "List Stacks",
+          "id": "4b50a9a9-5de9-4e3c-a096-d0f059ff769d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/stacks?page=1&size=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "stacks"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8714d94f-63a8-40c7-991a-9f70fb8e6eaf",
+              "name": "Page of stacks",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/stacks?page=1&size=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stacks"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"index\": \"<integer>\",\n  \"max_size\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"components\": {\n        \"sunt_c8\": [\n          \"<uuid>\",\n          \"<uuid>\"\n        ]\n      },\n      \"user_id\": \"<uuid>\",\n      \"created\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"components\": {\n        \"velitbd\": [\n          \"<uuid>\",\n          \"<uuid>\"\n        ]\n      },\n      \"user_id\": \"<uuid>\",\n      \"created\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-8714d94f-63a8-40c7-991a-9f70fb8e6eaf"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-4b50a9a9-5de9-4e3c-a096-d0f059ff769d"
+        },
+        {
+          "name": "Create Stack",
+          "id": "2b082958-a5bb-45dd-98b8-c4d36bb0aeab",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"components\": {\n    \"nostrud_8\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/stacks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "stacks"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dad1d982-01ea-4ed3-a8d7-228856b922a1",
+              "name": "Stack created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"components\": {\n    \"nostrud_8\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/stacks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stacks"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"components\": {\n    \"aute0\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"sit976\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  },\n  \"user_id\": \"<uuid>\",\n  \"created\": \"<dateTime>\"\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-dad1d982-01ea-4ed3-a8d7-228856b922a1"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-2b082958-a5bb-45dd-98b8-c4d36bb0aeab"
+        }
+      ],
+      "id": "f5ab2bb3-c4ae-4792-913e-c8800c024cb5",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-f5ab2bb3-c4ae-4792-913e-c8800c024cb5"
+    },
+    {
+      "name": "components",
+      "item": [
+        {
+          "name": "List Stack Components",
+          "id": "dac2f38c-1eb4-43f7-8150-b0181ee53b1d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/components?page=1&size=20&type=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "components"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                },
+                {
+                  "key": "type",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6af2bf7d-a683-4151-8f62-4b646ee6ff40",
+              "name": "Page of stack components",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/components?page=1&size=20&type=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "components"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"index\": \"<integer>\",\n  \"max_size\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"type\": \"model_registry\",\n      \"flavor\": \"<string>\",\n      \"configuration\": {\n        \"aute_\": -20626062,\n        \"reprehenderit8\": -30824785\n      },\n      \"created\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"type\": \"alerter\",\n      \"flavor\": \"<string>\",\n      \"configuration\": {\n        \"eiusmod3\": 62770286.55836746,\n        \"dolore_b5c\": -22665302\n      },\n      \"created\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-6af2bf7d-a683-4151-8f62-4b646ee6ff40"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-dac2f38c-1eb4-43f7-8150-b0181ee53b1d"
+        }
+      ],
+      "id": "e7bebf2f-9c34-4e2f-9ed3-ce9f42defe70",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-e7bebf2f-9c34-4e2f-9ed3-ce9f42defe70"
+    },
+    {
+      "name": "artifacts",
+      "item": [
+        {
+          "name": "{artifact_id}",
+          "item": [
+            {
+              "name": "Get Artifact",
+              "id": "e2e6a4dd-929b-40d6-bc44-9a35d5914fe8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/artifacts/:artifact_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "artifacts",
+                    ":artifact_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "70d809a7-0808-44ef-b830-4f1b3e62c375",
+                      "key": "artifact_id",
+                      "value": "<uuid>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "ff23a784-5373-4645-a8ec-3cd24a34987d",
+                  "name": "Artifact detail",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/artifacts/:artifact_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "artifacts",
+                        ":artifact_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "artifact_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"type\": \"<string>\",\n  \"uri\": \"<uri>\",\n  \"materializer\": \"<string>\",\n  \"producer_step_run_id\": \"<uuid>\",\n  \"created\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:21:43.000Z",
+                  "updatedAt": "2026-06-05T15:21:43.000Z",
+                  "uid": "35240-ff23a784-5373-4645-a8ec-3cd24a34987d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-e2e6a4dd-929b-40d6-bc44-9a35d5914fe8"
+            }
+          ],
+          "id": "c78082fa-6bf5-40ec-a806-79784b170291",
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-c78082fa-6bf5-40ec-a806-79784b170291"
+        },
+        {
+          "name": "List Artifacts",
+          "id": "4551e9fc-305c-4bb6-86eb-3477bbfcdb07",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/artifacts?page=1&size=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "artifacts"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0df89ab2-ed42-4329-abef-539fdc30d16c",
+              "name": "Page of artifacts",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/artifacts?page=1&size=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "artifacts"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"index\": \"<integer>\",\n  \"max_size\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"type\": \"<string>\",\n      \"uri\": \"<uri>\",\n      \"materializer\": \"<string>\",\n      \"producer_step_run_id\": \"<uuid>\",\n      \"created\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"type\": \"<string>\",\n      \"uri\": \"<uri>\",\n      \"materializer\": \"<string>\",\n      \"producer_step_run_id\": \"<uuid>\",\n      \"created\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-0df89ab2-ed42-4329-abef-539fdc30d16c"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-4551e9fc-305c-4bb6-86eb-3477bbfcdb07"
+        }
+      ],
+      "id": "fc6562d0-ad1d-4d8f-b938-0f44681024fb",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-fc6562d0-ad1d-4d8f-b938-0f44681024fb"
+    },
+    {
+      "name": "models",
+      "item": [
+        {
+          "name": "List Models",
+          "id": "673b7d3f-079e-4c0f-b6cc-dc64eeb25f2e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/models?page=1&size=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "models"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d0e69139-f6b6-4b31-a49f-6bb5cbbe5783",
+              "name": "Page of models",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/models?page=1&size=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"index\": \"<integer>\",\n  \"max_size\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"license\": \"<string>\",\n      \"ethical_considerations\": \"<string>\",\n      \"trade_offs\": \"<string>\",\n      \"limitations\": \"<string>\",\n      \"audience\": \"<string>\",\n      \"use_cases\": \"<string>\",\n      \"created\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"license\": \"<string>\",\n      \"ethical_considerations\": \"<string>\",\n      \"trade_offs\": \"<string>\",\n      \"limitations\": \"<string>\",\n      \"audience\": \"<string>\",\n      \"use_cases\": \"<string>\",\n      \"created\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-d0e69139-f6b6-4b31-a49f-6bb5cbbe5783"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-673b7d3f-079e-4c0f-b6cc-dc64eeb25f2e"
+        },
+        {
+          "name": "Create Model",
+          "id": "f3630ee5-ee40-4fd5-9264-9060ed6fab05",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"license\": \"<string>\",\n  \"use_cases\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/models",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "models"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2c2e36f5-d844-47ab-abf3-0e60d402695c",
+              "name": "Model created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"license\": \"<string>\",\n  \"use_cases\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/models",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"license\": \"<string>\",\n  \"ethical_considerations\": \"<string>\",\n  \"trade_offs\": \"<string>\",\n  \"limitations\": \"<string>\",\n  \"audience\": \"<string>\",\n  \"use_cases\": \"<string>\",\n  \"created\": \"<dateTime>\"\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-2c2e36f5-d844-47ab-abf3-0e60d402695c"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-f3630ee5-ee40-4fd5-9264-9060ed6fab05"
+        }
+      ],
+      "id": "49ebc528-829b-4ec0-b616-ffc1513eb459",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-49ebc528-829b-4ec0-b616-ffc1513eb459"
+    },
+    {
+      "name": "model_versions",
+      "item": [
+        {
+          "name": "List Model Versions",
+          "id": "c0978962-b23a-4031-9b14-8afd7a65350b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/model_versions?page=1&size=20&model_id=<uuid>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "model_versions"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                },
+                {
+                  "key": "model_id",
+                  "value": "<uuid>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bf091a7a-a19e-4334-895b-c2d457968d43",
+              "name": "Page of model versions",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/model_versions?page=1&size=20&model_id=<uuid>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "model_versions"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "model_id",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"index\": \"<integer>\",\n  \"max_size\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"model_id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"number\": \"<integer>\",\n      \"stage\": \"archived\",\n      \"description\": \"<string>\",\n      \"created\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"model_id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"number\": \"<integer>\",\n      \"stage\": \"archived\",\n      \"description\": \"<string>\",\n      \"created\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-bf091a7a-a19e-4334-895b-c2d457968d43"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-c0978962-b23a-4031-9b14-8afd7a65350b"
+        }
+      ],
+      "id": "5c756561-b3b9-488e-8bb7-e78fde4fb393",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-5c756561-b3b9-488e-8bb7-e78fde4fb393"
+    },
+    {
+      "name": "deployments",
+      "item": [
+        {
+          "name": "List Pipeline Deployments",
+          "id": "c02b4930-671f-4f77-967e-4f78f5598aac",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/deployments?page=1&size=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "deployments"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1f22b04a-164e-4293-90f7-79c7fa1ee575",
+              "name": "Page of deployments",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/deployments?page=1&size=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deployments"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"index\": \"<integer>\",\n  \"max_size\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"pipeline_id\": \"<uuid>\",\n      \"stack_id\": \"<uuid>\",\n      \"status\": \"<string>\",\n      \"created\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"pipeline_id\": \"<uuid>\",\n      \"stack_id\": \"<uuid>\",\n      \"status\": \"<string>\",\n      \"created\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-1f22b04a-164e-4293-90f7-79c7fa1ee575"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-c02b4930-671f-4f77-967e-4f78f5598aac"
+        }
+      ],
+      "id": "34e0da82-3896-4b7d-8de2-f7ffaa5ede3d",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-34e0da82-3896-4b7d-8de2-f7ffaa5ede3d"
+    },
+    {
+      "name": "schedules",
+      "item": [
+        {
+          "name": "List Schedules",
+          "id": "a0487942-3696-4d1b-8621-b5a1eeb49b08",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/schedules?page=1&size=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schedules"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e006ff36-7cc4-4930-9236-13759509da71",
+              "name": "Page of schedules",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/schedules?page=1&size=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "schedules"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"index\": \"<integer>\",\n  \"max_size\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"cron_expression\": \"<string>\",\n      \"start_time\": \"<dateTime>\",\n      \"end_time\": \"<dateTime>\",\n      \"interval_seconds\": \"<integer>\",\n      \"active\": \"<boolean>\",\n      \"pipeline_id\": \"<uuid>\",\n      \"created\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"cron_expression\": \"<string>\",\n      \"start_time\": \"<dateTime>\",\n      \"end_time\": \"<dateTime>\",\n      \"interval_seconds\": \"<integer>\",\n      \"active\": \"<boolean>\",\n      \"pipeline_id\": \"<uuid>\",\n      \"created\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-e006ff36-7cc4-4930-9236-13759509da71"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-a0487942-3696-4d1b-8621-b5a1eeb49b08"
+        }
+      ],
+      "id": "cb5ae819-1c79-4e2d-a11a-b1bbd8ce758e",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-cb5ae819-1c79-4e2d-a11a-b1bbd8ce758e"
+    },
+    {
+      "name": "secrets",
+      "item": [
+        {
+          "name": "List Secrets",
+          "id": "22b32a7b-86c1-4813-b857-f13559c3e970",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/secrets?page=1&size=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "secrets"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "35f8faa6-1416-4e82-adb4-e3d30b623491",
+              "name": "Page of secrets (without values)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/secrets?page=1&size=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "secrets"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"index\": \"<integer>\",\n  \"max_size\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"scope\": \"workspace\",\n      \"values\": {\n        \"voluptate_2_\": \"<string>\",\n        \"nisi_b43\": \"<string>\"\n      },\n      \"created\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"scope\": \"user\",\n      \"values\": {\n        \"ullamco_69\": \"<string>\"\n      },\n      \"created\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-35f8faa6-1416-4e82-adb4-e3d30b623491"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-22b32a7b-86c1-4813-b857-f13559c3e970"
+        },
+        {
+          "name": "Create Secret",
+          "id": "bb680da5-6163-436d-a737-534dc220dbc2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"values\": {\n    \"Duis693\": \"<string>\"\n  },\n  \"scope\": \"workspace\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/secrets",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "secrets"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "83eb1b7d-843c-4786-9b95-ae13d843e355",
+              "name": "Secret created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"values\": {\n    \"Duis693\": \"<string>\"\n  },\n  \"scope\": \"workspace\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/secrets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "secrets"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"scope\": \"user\",\n  \"values\": {\n    \"eaa0\": \"<string>\"\n  },\n  \"created\": \"<dateTime>\"\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-83eb1b7d-843c-4786-9b95-ae13d843e355"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-bb680da5-6163-436d-a737-534dc220dbc2"
+        }
+      ],
+      "id": "e3e781dc-2fc5-47b2-965e-66b65b59c9d4",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-e3e781dc-2fc5-47b2-965e-66b65b59c9d4"
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "List Users",
+          "id": "2993710d-451c-43c9-9096-6bb4d1db9e39",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users?page=1&size=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c4072ab7-a350-4983-bedd-45bb77b27066",
+              "name": "Page of users",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?page=1&size=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"index\": \"<integer>\",\n  \"max_size\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"full_name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"active\": \"<boolean>\",\n      \"is_admin\": \"<boolean>\",\n      \"created\": \"<dateTime>\",\n      \"updated\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"full_name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"active\": \"<boolean>\",\n      \"is_admin\": \"<boolean>\",\n      \"created\": \"<dateTime>\",\n      \"updated\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-c4072ab7-a350-4983-bedd-45bb77b27066"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-2993710d-451c-43c9-9096-6bb4d1db9e39"
+        }
+      ],
+      "id": "d3707bf1-cf60-49ee-8d4b-8791a6b57dcb",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-d3707bf1-cf60-49ee-8d4b-8791a6b57dcb"
+    },
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "List Projects",
+          "id": "7d120c3b-88f6-4642-b46f-cc24d7a46896",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects?page=1&size=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2787e4f3-ee4c-45a4-8d3a-2f9b59e99fb5",
+              "name": "Page of projects",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects?page=1&size=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"index\": \"<integer>\",\n  \"max_size\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"created\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"created\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-2787e4f3-ee4c-45a4-8d3a-2f9b59e99fb5"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-7d120c3b-88f6-4642-b46f-cc24d7a46896"
+        }
+      ],
+      "id": "a548b59f-73c6-4e7f-8a49-0e3de0ba584a",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-a548b59f-73c6-4e7f-8a49-0e3de0ba584a"
+    },
+    {
+      "name": "service_connectors",
+      "item": [
+        {
+          "name": "List Service Connectors",
+          "id": "da8139e4-1900-421b-a1fc-8246696fefa2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/service_connectors?page=1&size=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "service_connectors"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "879c2991-d757-41e8-adbb-494ef403a797",
+              "name": "Page of service connectors",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/service_connectors?page=1&size=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "service_connectors"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"index\": \"<integer>\",\n  \"max_size\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"connector_type\": \"<string>\",\n      \"auth_method\": \"<string>\",\n      \"resource_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"configuration\": {\n        \"laborum_b_\": -45809628.442149155,\n        \"velit_543\": true,\n        \"in_7\": true\n      },\n      \"created\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"connector_type\": \"<string>\",\n      \"auth_method\": \"<string>\",\n      \"resource_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"configuration\": {\n        \"reprehenderit6b0\": false,\n        \"aliquip_46\": \"commodo deserunt fugiat proident\",\n        \"seda05\": 58826811.36308876,\n        \"Ut_03\": \"laboris do\"\n      },\n      \"created\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-879c2991-d757-41e8-adbb-494ef403a797"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-da8139e4-1900-421b-a1fc-8246696fefa2"
+        }
+      ],
+      "id": "c824b30b-7fbf-4a8c-abbb-793b75f2e724",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-c824b30b-7fbf-4a8c-abbb-793b75f2e724"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://your-zenml-server.example.com/api/v1"
+    }
+  ]
+}

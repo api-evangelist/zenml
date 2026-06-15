@@ -1,9 +1,10 @@
 aid: zenml
 name: ZenML
-description: ZenML is an open-source MLOps and LLMOps framework that unifies machine learning and generative AI workflows
-  through a single orchestration, versioning, and governance layer. It provides a Python SDK, CLI, REST API, and server for
-  managing pipelines, stacks, artifacts, models, and deployments across any infrastructure backend, with 60+ integrations
-  spanning orchestrators, ML frameworks, GenAI tools, cloud storage, and experiment tracking platforms.
+description: >-
+  ZenML is an open-source MLOps and LLMOps framework that unifies machine learning and generative AI workflows through a
+  single orchestration, versioning, and governance layer. It provides a Python SDK, CLI, REST API, and server for
+  managing pipelines, stacks, artifacts, models, and deployments across any infrastructure backend, with 60+
+  integrations spanning orchestrators, ML frameworks, GenAI tools, cloud storage, and experiment tracking platforms.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -23,127 +24,106 @@ specificationVersion: '0.19'
 apis:
   - aid: zenml:zenml-oss-api
     name: ZenML OSS REST API
-    description: The ZenML open-source REST API exposes endpoints for managing ML pipelines, stacks, components, artifacts,
-      models, deployments, runs, schedules, secrets, users, and projects in a self-hosted ZenML server. It is consumed by the
-      Python SDK and CLI and can be called directly for automation and integration with CI/CD systems and MLOps workflows.
+    description: >-
+      The ZenML open-source REST API exposes endpoints for managing ML pipelines, stacks, components, artifacts, models,
+      deployments, runs, schedules, secrets, users, and projects in a self-hosted ZenML server. It is consumed by the
+      Python SDK and CLI and can be called directly for automation and integration with CI/CD systems and MLOps
+      workflows.
     humanURL: https://docs.zenml.io/api-reference/oss-api
     tags:
-    - MLOps
-    - Pipelines
-    - Open Source
+      - MLOps
+      - Pipelines
+      - Open Source
     properties:
-    - type: Documentation
-      url: https://docs.zenml.io/api-reference/oss-api
-    - type: APIReference
-      url: https://docs.zenml.io/api-reference/oss-api
-    - type: OpenAPI
-      url: openapi/zenml-openapi.yml
-    - type: GettingStarted
-      url: https://docs.zenml.io/getting-started/installation
-    - type: Authentication
-      url: https://docs.zenml.io/getting-started/deploying-zenml
-    - type: SDK
-      url: https://docs.zenml.io/sdk-reference
-    - type: GitHubRepository
-      url: https://github.com/zenml-io/zenml
-    - type: JSONSchema
-      url: json-schema/zenml-pipeline-schema.json
-    - type: JSONSchema
-      url: json-schema/zenml-pipeline-run-schema.json
-    - type: JSONSchema
-      url: json-schema/zenml-stack-schema.json
-    - type: JSONSchema
-      url: json-schema/zenml-model-schema.json
-    - type: JSONSchema
-      url: json-schema/zenml-artifact-schema.json
-    - type: CodeExamples
-      url: examples/zenml-list-pipelines-example.json
-    - type: CodeExamples
-      url: examples/zenml-get-pipeline-run-example.json
-    - type: CodeExamples
-      url: examples/zenml-create-stack-example.json
-    - type: NaftikoCapability
-      url: capabilities/zenml-artifacts.yaml
-    - type: NaftikoCapability
-      url: capabilities/zenml-auth.yaml
-    - type: NaftikoCapability
-      url: capabilities/zenml-deployments.yaml
-    - type: NaftikoCapability
-      url: capabilities/zenml-models.yaml
-    - type: NaftikoCapability
-      url: capabilities/zenml-pipeline-runs.yaml
-    - type: NaftikoCapability
-      url: capabilities/zenml-pipelines.yaml
-    - type: NaftikoCapability
-      url: capabilities/zenml-projects.yaml
-    - type: NaftikoCapability
-      url: capabilities/zenml-schedules.yaml
-    - type: NaftikoCapability
-      url: capabilities/zenml-secrets.yaml
-    - type: NaftikoCapability
-      url: capabilities/zenml-service-connectors.yaml
-    - type: NaftikoCapability
-      url: capabilities/zenml-stack-components.yaml
-    - type: NaftikoCapability
-      url: capabilities/zenml-stacks.yaml
-    - type: NaftikoCapability
-      url: capabilities/zenml-users.yaml
+      - type: Documentation
+        url: https://docs.zenml.io/api-reference/oss-api
+      - type: APIReference
+        url: https://docs.zenml.io/api-reference/oss-api
+      - type: OpenAPI
+        url: openapi/zenml-openapi.yml
+      - type: GettingStarted
+        url: https://docs.zenml.io/getting-started/installation
+      - type: Authentication
+        url: https://docs.zenml.io/getting-started/deploying-zenml
+      - type: SDK
+        url: https://docs.zenml.io/sdk-reference
+      - type: GitHubRepository
+        url: https://github.com/zenml-io/zenml
+      - type: JSONSchema
+        url: json-schema/zenml-pipeline-schema.json
+      - type: JSONSchema
+        url: json-schema/zenml-pipeline-run-schema.json
+      - type: JSONSchema
+        url: json-schema/zenml-stack-schema.json
+      - type: JSONSchema
+        url: json-schema/zenml-model-schema.json
+      - type: JSONSchema
+        url: json-schema/zenml-artifact-schema.json
+      - type: CodeExamples
+        url: examples/zenml-list-pipelines-example.json
+      - type: CodeExamples
+        url: examples/zenml-get-pipeline-run-example.json
+      - type: CodeExamples
+        url: examples/zenml-create-stack-example.json
   - aid: zenml:zenml-pro-api
     name: ZenML Pro REST API
-    description: The ZenML Pro REST API extends the OSS API with managed control-plane features for teams, including organization
+    description: >-
+      The ZenML Pro REST API extends the OSS API with managed control-plane features for teams, including organization
       and tenant management, role-based access control, audit logs, and enterprise governance.
     humanURL: https://docs.zenml.io/api-reference/pro-api
     tags:
-    - MLOps
-    - Enterprise
-    - Governance
+      - MLOps
+      - Enterprise
+      - Governance
     properties:
-    - type: Documentation
-      url: https://docs.zenml.io/api-reference/pro-api
-    - type: APIReference
-      url: https://docs.zenml.io/api-reference/pro-api
-    - type: Authentication
-      url: https://docs.zenml.io/pro/core-concepts/access-control
+      - type: Documentation
+        url: https://docs.zenml.io/api-reference/pro-api
+      - type: APIReference
+        url: https://docs.zenml.io/api-reference/pro-api
+      - type: Authentication
+        url: https://docs.zenml.io/pro/core-concepts/access-control
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/zenml/overview
   - type: ArazzoWorkflows
     url: arazzo/
     workflows:
-    - url: arazzo/zenml-audit-pipeline-runs-workflow.yml
-      name: ZenML Audit Pipeline Runs
-      summary: Walk from a named pipeline to its run history and drill into the most recent run.
-    - url: arazzo/zenml-authenticate-and-list-pipelines-workflow.yml
-      name: ZenML Authenticate and List Pipelines
-      summary: Exchange credentials for a token, confirm the session identity, and list pipelines.
-    - url: arazzo/zenml-bootstrap-project-pipeline-workflow.yml
-      name: ZenML Bootstrap Project Pipeline
-      summary: Identify the caller, resolve a project workspace, register a pipeline, and confirm it.
-    - url: arazzo/zenml-inspect-run-artifacts-workflow.yml
-      name: ZenML Inspect Run Artifacts
-      summary: Select a pipeline run, confirm it succeeded, and inspect an artifact produced in the deployment.
-    - url: arazzo/zenml-inspect-stack-topology-workflow.yml
-      name: ZenML Inspect Stack Topology
-      summary: Pick a stack, read its component wiring, and cross-reference the component catalog.
-    - url: arazzo/zenml-monitor-pipeline-run-workflow.yml
-      name: ZenML Monitor Pipeline Run
-      summary: Find the latest run of a pipeline, poll its status to completion, and branch on success or failure.
-    - url: arazzo/zenml-provision-pipeline-workflow.yml
-      name: ZenML Provision Pipeline
-      summary: Resolve a project, register a new pipeline in it, and confirm the pipeline was created.
-    - url: arazzo/zenml-provision-secret-workflow.yml
-      name: ZenML Provision Secret
-      summary: Confirm the caller identity, create a scoped secret, and confirm it appears in the secret store.
-    - url: arazzo/zenml-register-model-workflow.yml
-      name: ZenML Register Model
-      summary: Register a new model in the model control plane and enumerate its versions.
-    - url: arazzo/zenml-register-stack-workflow.yml
-      name: ZenML Register Stack
-      summary: Discover available stack components, assemble them into a new stack, and confirm the stack was created.
-    - url: arazzo/zenml-trace-deployment-runs-workflow.yml
-      name: ZenML Trace Deployment Runs
-      summary: Select a pipeline deployment, resolve its pipeline, and read the latest run it produced.
-    - url: arazzo/zenml-track-scheduled-pipeline-workflow.yml
-      name: ZenML Track Scheduled Pipeline
-      summary: Resolve a schedule, find the run it produced for its pipeline, and read that run.
+      - url: arazzo/zenml-audit-pipeline-runs-workflow.yml
+        name: ZenML Audit Pipeline Runs
+        summary: Walk from a named pipeline to its run history and drill into the most recent run.
+      - url: arazzo/zenml-authenticate-and-list-pipelines-workflow.yml
+        name: ZenML Authenticate and List Pipelines
+        summary: Exchange credentials for a token, confirm the session identity, and list pipelines.
+      - url: arazzo/zenml-bootstrap-project-pipeline-workflow.yml
+        name: ZenML Bootstrap Project Pipeline
+        summary: Identify the caller, resolve a project workspace, register a pipeline, and confirm it.
+      - url: arazzo/zenml-inspect-run-artifacts-workflow.yml
+        name: ZenML Inspect Run Artifacts
+        summary: Select a pipeline run, confirm it succeeded, and inspect an artifact produced in the deployment.
+      - url: arazzo/zenml-inspect-stack-topology-workflow.yml
+        name: ZenML Inspect Stack Topology
+        summary: Pick a stack, read its component wiring, and cross-reference the component catalog.
+      - url: arazzo/zenml-monitor-pipeline-run-workflow.yml
+        name: ZenML Monitor Pipeline Run
+        summary: Find the latest run of a pipeline, poll its status to completion, and branch on success or failure.
+      - url: arazzo/zenml-provision-pipeline-workflow.yml
+        name: ZenML Provision Pipeline
+        summary: Resolve a project, register a new pipeline in it, and confirm the pipeline was created.
+      - url: arazzo/zenml-provision-secret-workflow.yml
+        name: ZenML Provision Secret
+        summary: Confirm the caller identity, create a scoped secret, and confirm it appears in the secret store.
+      - url: arazzo/zenml-register-model-workflow.yml
+        name: ZenML Register Model
+        summary: Register a new model in the model control plane and enumerate its versions.
+      - url: arazzo/zenml-register-stack-workflow.yml
+        name: ZenML Register Stack
+        summary: Discover available stack components, assemble them into a new stack, and confirm the stack was created.
+      - url: arazzo/zenml-trace-deployment-runs-workflow.yml
+        name: ZenML Trace Deployment Runs
+        summary: Select a pipeline deployment, resolve its pipeline, and read the latest run it produced.
+      - url: arazzo/zenml-track-scheduled-pipeline-workflow.yml
+        name: ZenML Track Scheduled Pipeline
+        summary: Resolve a schedule, find the run it produced for its pipeline, and read that run.
   - type: LinkedIn
     url: https://www.linkedin.com/company/zenml
   - url: https://www.zenml.io/

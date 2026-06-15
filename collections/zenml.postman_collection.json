@@ -1,0 +1,2761 @@
+{
+  "item": [
+    {
+      "id": "39ec0ca2-60d7-4e60-8b79-e2767d870230",
+      "name": "Auth",
+      "description": {
+        "content": "Authentication and token management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0cada7d2-b277-454f-8faa-5f497162bd6e",
+          "name": "Login and Obtain Access Token",
+          "request": {
+            "name": "Login and Obtain Access Token",
+            "description": {},
+            "url": {
+              "path": [
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<password>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f1cbc02d-9bed-43e4-b11e-46caed8b2b87",
+              "name": "Authentication succeeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<password>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_token\": \"string\",\n  \"token_type\": \"bearer\",\n  \"expires_in\": 5377,\n  \"refresh_token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9132ee5-8a2c-492e-bb1b-fa5e69121800",
+              "name": "Invalid credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<password>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c718355e-08e8-40f4-9bd3-6bf2dd3cd058",
+          "name": "Get Current Authenticated User",
+          "request": {
+            "name": "Get Current Authenticated User",
+            "description": {},
+            "url": {
+              "path": [
+                "current-user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f08c2689-0da1-4271-8a36-e89ec3421ca6",
+              "name": "The current user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "current-user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"6d6be859-c8ec-d2ac-25c5-a477fb29685a\",\n  \"name\": \"string\",\n  \"full_name\": \"string\",\n  \"email\": \"9zZ3-AWbZp0H@mjCArLeSRvLkFGce.jptl\",\n  \"active\": true,\n  \"is_admin\": true,\n  \"created\": \"1995-09-16T16:02:20.238Z\",\n  \"updated\": \"2017-08-15T08:13:47.135Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7a6cd347-f738-420f-b0a3-8cca20064f83",
+      "name": "Pipelines",
+      "description": {
+        "content": "ML pipeline definitions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8dfb533a-62f3-4b40-8c7d-a8106f75f7a0",
+          "name": "List Pipelines",
+          "request": {
+            "name": "List Pipelines",
+            "description": {},
+            "url": {
+              "path": [
+                "pipelines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "project_id",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4b6089d-dafe-4332-8c8c-d96588f5201a",
+              "name": "Page of pipelines",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 4753,\n  \"max_size\": 3680,\n  \"total_pages\": 953,\n  \"total\": 1784,\n  \"items\": [\n    {\n      \"id\": \"49a61438-2737-ee54-862c-5a4831cd7aba\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"version\": \"string\",\n      \"spec\": {\n        \"key_0\": 3460.9128538060195\n      },\n      \"project_id\": \"7355c750-5973-8bdb-8355-4d46e9a0b14c\",\n      \"user_id\": \"6604c98c-bd12-0894-c4e4-5ac4676324cb\",\n      \"created\": \"1977-02-16T22:27:26.968Z\",\n      \"updated\": \"1997-10-27T23:11:44.230Z\"\n    },\n    {\n      \"id\": \"7481bece-793e-2e1e-414c-e70dfcf4036b\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"version\": \"string\",\n      \"spec\": {\n        \"key_0\": 3135\n      },\n      \"project_id\": \"5bb1ec21-826a-88d3-69a8-0348ea8c56e2\",\n      \"user_id\": \"a2993743-ec65-8744-3d4e-f50f8f027166\",\n      \"created\": \"1992-05-11T06:45:54.338Z\",\n      \"updated\": \"1992-09-15T13:57:21.754Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7dc7791e-7135-4d4f-9ca2-2c1ce78e812a",
+          "name": "Create Pipeline",
+          "request": {
+            "name": "Create Pipeline",
+            "description": {},
+            "url": {
+              "path": [
+                "pipelines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"project_id\": \"<uuid>\",\n  \"spec\": {\n    \"key_0\": 4941\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bcefd7d7-e8e2-4e4d-be7f-0021ef77b0fa",
+              "name": "Pipeline created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"project_id\": \"<uuid>\",\n  \"spec\": {\n    \"key_0\": \"string\",\n    \"key_1\": 3001,\n    \"key_2\": \"string\",\n    \"key_3\": 8718.167776864493\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"d90ccfd0-50b2-1170-cd92-322da44cb798\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"version\": \"string\",\n  \"spec\": {\n    \"key_0\": 6877.584246671736\n  },\n  \"project_id\": \"9f54634e-8074-cf91-ac38-27379970aef1\",\n  \"user_id\": \"c7c8f84f-2b5d-644a-5d6f-1ecdbf93d217\",\n  \"created\": \"1960-10-12T05:40:09.763Z\",\n  \"updated\": \"2003-01-09T15:29:56.334Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd09708e-de52-4ec8-8951-1718a6b420b7",
+          "name": "Get Pipeline",
+          "request": {
+            "name": "Get Pipeline",
+            "description": {},
+            "url": {
+              "path": [
+                "pipelines",
+                ":pipeline_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "pipeline_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a572396-8cd5-4287-8a51-25ce9f5eb1b6",
+              "name": "Pipeline detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":pipeline_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipeline_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"d90ccfd0-50b2-1170-cd92-322da44cb798\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"version\": \"string\",\n  \"spec\": {\n    \"key_0\": 6877.584246671736\n  },\n  \"project_id\": \"9f54634e-8074-cf91-ac38-27379970aef1\",\n  \"user_id\": \"c7c8f84f-2b5d-644a-5d6f-1ecdbf93d217\",\n  \"created\": \"1960-10-12T05:40:09.763Z\",\n  \"updated\": \"2003-01-09T15:29:56.334Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f98b204c-3174-4648-858a-bd856aa4062e",
+              "name": "Pipeline not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":pipeline_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipeline_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f725a8d6-f193-4d50-b129-844dbddd9600",
+          "name": "Delete Pipeline",
+          "request": {
+            "name": "Delete Pipeline",
+            "description": {},
+            "url": {
+              "path": [
+                "pipelines",
+                ":pipeline_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "pipeline_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19d751fd-c257-4dd3-81f9-3cf9bd2e9e66",
+              "name": "Pipeline deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":pipeline_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipeline_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "fe7cb2c1-40d2-4fb3-8008-fc6cd42d8206",
+      "name": "Pipeline Runs",
+      "description": {
+        "content": "Pipeline run instances and their steps",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "44f300b2-c723-4b80-8ba6-82f5c486d461",
+          "name": "List Pipeline Runs",
+          "request": {
+            "name": "List Pipeline Runs",
+            "description": {},
+            "url": {
+              "path": [
+                "runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "pipeline_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8de3b127-bb3f-4b5b-936e-980da24092fb",
+              "name": "Page of pipeline runs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pipeline_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 4656,\n  \"max_size\": 6849,\n  \"total_pages\": 2306,\n  \"total\": 930,\n  \"items\": [\n    {\n      \"id\": \"1d26e09f-3d7a-993c-f818-e1c3f90229f4\",\n      \"name\": \"string\",\n      \"pipeline_id\": \"ae941dac-5c35-c930-5b94-f217ea1d2dfc\",\n      \"stack_id\": \"cf008559-278f-37b4-86dd-debf19603668\",\n      \"status\": \"<string>\",\n      \"start_time\": \"2018-02-05T20:41:15.388Z\",\n      \"end_time\": \"1963-01-11T21:30:37.986Z\",\n      \"user_id\": \"6b0d65dd-6c34-0c39-40d1-6fad8f24635d\",\n      \"created\": \"2018-10-27T06:57:34.697Z\"\n    },\n    {\n      \"id\": \"0deb7b93-bcdc-39b6-1595-579cb38d7aec\",\n      \"name\": \"string\",\n      \"pipeline_id\": \"29e981c6-2c58-3e32-8e21-8c7665539eae\",\n      \"stack_id\": \"c437ca5b-724b-8902-8e10-0fd7c30ef82a\",\n      \"status\": \"<string>\",\n      \"start_time\": \"2011-08-07T03:15:02.555Z\",\n      \"end_time\": \"2019-08-16T22:43:28.483Z\",\n      \"user_id\": \"644257db-a2bf-f1f0-5a9f-477f1080a1c7\",\n      \"created\": \"1971-12-27T18:55:54.486Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db8e93c8-bc0f-4ac1-83dc-886645030290",
+          "name": "Get Pipeline Run",
+          "request": {
+            "name": "Get Pipeline Run",
+            "description": {},
+            "url": {
+              "path": [
+                "runs",
+                ":run_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "run_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7955a777-e9b1-4b0c-b2be-5ff8305bf69e",
+              "name": "Pipeline run detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runs",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "run_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7aa167ef-cf4a-da6d-489c-741eb7e9928f\",\n  \"name\": \"string\",\n  \"pipeline_id\": \"c3b2e91a-f7eb-53f7-c927-476f0550715f\",\n  \"stack_id\": \"766e7a00-53ac-493e-7e51-99a4ce2717aa\",\n  \"status\": \"<string>\",\n  \"start_time\": \"1971-09-25T13:19:19.356Z\",\n  \"end_time\": \"1954-11-06T06:45:27.724Z\",\n  \"user_id\": \"e30f5024-ee4a-3223-0166-61fbd9d49d0a\",\n  \"created\": \"1991-08-30T15:23:49.518Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "045aefbe-c2db-4b1f-8e9f-ed80bea35fbc",
+      "name": "Stacks",
+      "description": {
+        "content": "ZenML stacks and their components",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "43e2937f-0674-4e31-825f-dd9e88010b97",
+          "name": "List Stacks",
+          "request": {
+            "name": "List Stacks",
+            "description": {},
+            "url": {
+              "path": [
+                "stacks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d7b7ca16-8c4f-419b-ab3c-c62c43c3fb09",
+              "name": "Page of stacks",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 1769,\n  \"max_size\": 4624,\n  \"total_pages\": 3612,\n  \"total\": 8311,\n  \"items\": [\n    {\n      \"id\": \"359c3ce6-c02f-4ab0-f284-d3c9b5f7ebd4\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"components\": {\n        \"key_0\": [\n          \"8adf02db-b393-1f4c-0cad-9f7f19002598\",\n          \"83c339ee-f904-14ab-287d-e47595abba41\"\n        ]\n      },\n      \"user_id\": \"623d5bcf-a0d7-0ca5-3938-dd7e05d9bf6b\",\n      \"created\": \"1959-06-25T17:05:11.969Z\"\n    },\n    {\n      \"id\": \"05aa2b06-208e-4993-df67-86cab2c79c46\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"components\": {\n        \"key_0\": [\n          \"001000b8-b879-0687-32fb-03e4b6118359\",\n          \"b7ef0c6c-8225-836d-444f-b1ca12027e27\"\n        ],\n        \"key_1\": [\n          \"ba279968-d842-1e1c-399a-9c7260265016\",\n          \"3e4282b2-d45f-e20e-744f-8fa074e60aa5\"\n        ],\n        \"key_2\": [\n          \"1c730454-5dd4-d4e4-2fb4-e019f3bc0f1f\",\n          \"e1f432ba-306d-08ef-eaaf-cfe65405fc6a\"\n        ]\n      },\n      \"user_id\": \"5b2923ef-5265-fa2c-cec0-3a4c3af9081a\",\n      \"created\": \"1954-11-29T09:24:05.308Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61f1870b-f29e-40bd-8088-c4da0ac91e9d",
+          "name": "Create Stack",
+          "request": {
+            "name": "Create Stack",
+            "description": {},
+            "url": {
+              "path": [
+                "stacks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"components\": {\n    \"key_0\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "afe70c36-1cc4-4156-853a-fcc8a6150fe2",
+              "name": "Stack created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"components\": {\n    \"key_0\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"d7587e41-a6e0-56cd-702a-929ae69c0ce2\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"components\": {\n    \"key_0\": [\n      \"8f17d9d1-1aa1-726d-3cf3-d0968cd958d8\",\n      \"dd9a252d-06b3-4e3c-05db-0186efea03ab\"\n    ]\n  },\n  \"user_id\": \"cef619dd-f46f-1aff-80a6-2cbad182a3b0\",\n  \"created\": \"1997-02-17T10:01:45.637Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8d4e462-8d5d-42e6-b0a1-430dd180d7c4",
+          "name": "Get Stack",
+          "request": {
+            "name": "Get Stack",
+            "description": {},
+            "url": {
+              "path": [
+                "stacks",
+                ":stack_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "stack_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d61e7d0-e9e1-4543-b88c-f0667c02b65b",
+              "name": "Stack detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks",
+                    ":stack_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "stack_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"d7587e41-a6e0-56cd-702a-929ae69c0ce2\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"components\": {\n    \"key_0\": [\n      \"8f17d9d1-1aa1-726d-3cf3-d0968cd958d8\",\n      \"dd9a252d-06b3-4e3c-05db-0186efea03ab\"\n    ]\n  },\n  \"user_id\": \"cef619dd-f46f-1aff-80a6-2cbad182a3b0\",\n  \"created\": \"1997-02-17T10:01:45.637Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "386713b2-1697-4f83-99fb-8af9f7bd8542",
+          "name": "Delete Stack",
+          "request": {
+            "name": "Delete Stack",
+            "description": {},
+            "url": {
+              "path": [
+                "stacks",
+                ":stack_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "stack_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "14fd12d8-57d9-4b1d-997c-7f4da9810c20",
+              "name": "Stack deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks",
+                    ":stack_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "stack_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "855e7430-e797-4de3-b0a5-e87cf2ab4a23",
+      "name": "Stack Components",
+      "description": {
+        "content": "Individual stack components such as orchestrators, artifact stores, and experiment trackers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d2a67996-3e73-4bdd-a4c8-32fcf229d363",
+          "name": "List Stack Components",
+          "request": {
+            "name": "List Stack Components",
+            "description": {},
+            "url": {
+              "path": [
+                "components"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b7d09e3-2b85-4c36-8d8a-2a7b3f2ca7ef",
+              "name": "Page of stack components",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 4585,\n  \"max_size\": 1245,\n  \"total_pages\": 8289,\n  \"total\": 4602,\n  \"items\": [\n    {\n      \"id\": \"f15f0195-7743-e275-c64a-c4bfdea8bf0c\",\n      \"name\": \"string\",\n      \"type\": \"experiment_tracker\",\n      \"flavor\": \"string\",\n      \"configuration\": {\n        \"key_0\": \"string\"\n      },\n      \"created\": \"1963-03-03T00:39:46.643Z\"\n    },\n    {\n      \"id\": \"1d23551c-fb4c-eb56-620a-c4d8bebae5ff\",\n      \"name\": \"string\",\n      \"type\": \"step_operator\",\n      \"flavor\": \"string\",\n      \"configuration\": {\n        \"key_0\": 8226\n      },\n      \"created\": \"2015-12-06T14:50:05.217Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4fe806c2-a239-47e3-b61b-c2631c7d217f",
+      "name": "Artifacts",
+      "description": {
+        "content": "Artifact metadata and versions produced by pipeline runs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3eb40b1b-5fd6-4ba0-8e68-50c4e4aa14c2",
+          "name": "List Artifacts",
+          "request": {
+            "name": "List Artifacts",
+            "description": {},
+            "url": {
+              "path": [
+                "artifacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33d980be-a70d-4316-8e41-9068baf71e08",
+              "name": "Page of artifacts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artifacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 2971,\n  \"max_size\": 1402,\n  \"total_pages\": 632,\n  \"total\": 2677,\n  \"items\": [\n    {\n      \"id\": \"98575db6-71fc-f673-3cf0-332225860855\",\n      \"name\": \"string\",\n      \"version\": \"string\",\n      \"type\": \"string\",\n      \"uri\": \"https://itYBDslxNsIFcLyIrBnRpHWKgHgJ.dqxxMb73C4jGQvJ,.WonmStHIOzmEB\",\n      \"materializer\": \"string\",\n      \"producer_step_run_id\": \"f8230535-328d-22c7-4ac0-a05d6de906e9\",\n      \"created\": \"1955-05-27T14:24:19.146Z\"\n    },\n    {\n      \"id\": \"26411dae-53aa-924b-ad37-9312deecda4b\",\n      \"name\": \"string\",\n      \"version\": \"string\",\n      \"type\": \"string\",\n      \"uri\": \"https://vwgsm.iqhtnYz2lJsRGD0tK+K,cmRuK9E9F8xkHN3hp,FZfikOmeBsb.aHMutc4lju9zBG+n+j\",\n      \"materializer\": \"string\",\n      \"producer_step_run_id\": \"e76cd102-7bd9-5a27-2a94-7ee74e1a1c37\",\n      \"created\": \"2009-03-26T07:02:45.516Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4393c440-2afe-42dc-9b69-495fec25d958",
+          "name": "Get Artifact",
+          "request": {
+            "name": "Get Artifact",
+            "description": {},
+            "url": {
+              "path": [
+                "artifacts",
+                ":artifact_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "artifact_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db7bd450-2225-42e6-aa11-1447fcd62291",
+              "name": "Artifact detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artifacts",
+                    ":artifact_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "artifact_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"0aded3a0-203b-4f77-ecf6-5db996b758e0\",\n  \"name\": \"string\",\n  \"version\": \"string\",\n  \"type\": \"string\",\n  \"uri\": \"http://whY.xcioHgcGqJpxA0xpgymjamcRcBj0PfAjX-riDvhL1FHokGCj7BJOr5cNkNRzZXG9g85Ifh\",\n  \"materializer\": \"string\",\n  \"producer_step_run_id\": \"ea3eded0-4db5-ea74-34dc-dc128c8bc73f\",\n  \"created\": \"1949-02-07T14:28:15.777Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d25f858e-482b-44b7-be47-221e0564e19c",
+      "name": "Models",
+      "description": {
+        "content": "Registered models and their versions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2118b10d-913f-4162-9bca-5a80200c3747",
+          "name": "List Models",
+          "request": {
+            "name": "List Models",
+            "description": {},
+            "url": {
+              "path": [
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9af6848e-f16c-46e4-97ab-878889948615",
+              "name": "Page of models",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 6128,\n  \"max_size\": 49,\n  \"total_pages\": 5025,\n  \"total\": 6973,\n  \"items\": [\n    {\n      \"id\": \"641a0756-4e3f-ad65-acd0-ce295aab219f\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"license\": \"string\",\n      \"ethical_considerations\": \"string\",\n      \"trade_offs\": \"string\",\n      \"limitations\": \"string\",\n      \"audience\": \"string\",\n      \"use_cases\": \"string\",\n      \"created\": \"1964-03-15T22:35:23.748Z\"\n    },\n    {\n      \"id\": \"c1b69b84-d373-af60-7da1-c6b76aa24e90\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"license\": \"string\",\n      \"ethical_considerations\": \"string\",\n      \"trade_offs\": \"string\",\n      \"limitations\": \"string\",\n      \"audience\": \"string\",\n      \"use_cases\": \"string\",\n      \"created\": \"1957-08-08T14:24:56.884Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e20631a-69ae-44fd-b15a-613742ab7fcb",
+          "name": "Create Model",
+          "request": {
+            "name": "Create Model",
+            "description": {},
+            "url": {
+              "path": [
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"license\": \"<string>\",\n  \"use_cases\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6bd6cba5-9886-4905-9d5a-8926e9c95d37",
+              "name": "Model created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"license\": \"<string>\",\n  \"use_cases\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"656ce862-b573-f0ae-b51c-c29f010ad95b\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"license\": \"string\",\n  \"ethical_considerations\": \"string\",\n  \"trade_offs\": \"string\",\n  \"limitations\": \"string\",\n  \"audience\": \"string\",\n  \"use_cases\": \"string\",\n  \"created\": \"1958-06-27T14:21:25.442Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebf5c2ef-5ff2-4291-a05f-f572de7b887d",
+          "name": "List Model Versions",
+          "request": {
+            "name": "List Model Versions",
+            "description": {},
+            "url": {
+              "path": [
+                "model_versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "model_id",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e657b5fe-d5eb-4992-879a-8c308548ae82",
+              "name": "Page of model versions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model_versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "model_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 2468,\n  \"max_size\": 5076,\n  \"total_pages\": 6166,\n  \"total\": 8556,\n  \"items\": [\n    {\n      \"id\": \"e2a72222-44cc-14f6-9191-244eddbad484\",\n      \"model_id\": \"02fd49fe-94bd-b6dc-8621-70099a3c8433\",\n      \"name\": \"string\",\n      \"number\": 5913,\n      \"stage\": \"archived\",\n      \"description\": \"string\",\n      \"created\": \"1971-04-29T20:01:24.193Z\"\n    },\n    {\n      \"id\": \"4eb932e5-94fe-0b38-3e2c-4d1fd09b1250\",\n      \"model_id\": \"77cc5bf3-7d59-cf48-b613-910c33995a28\",\n      \"name\": \"string\",\n      \"number\": 3834,\n      \"stage\": \"staging\",\n      \"description\": \"string\",\n      \"created\": \"2013-09-18T15:26:20.241Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "649b8494-8b60-4361-9e66-bed2dd60b38d",
+      "name": "Deployments",
+      "description": {
+        "content": "Pipeline deployments",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8455c8e1-fcf7-4e3d-8159-40cb8206ba74",
+          "name": "List Pipeline Deployments",
+          "request": {
+            "name": "List Pipeline Deployments",
+            "description": {},
+            "url": {
+              "path": [
+                "deployments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "116c0d19-1da0-4943-8164-780bcb82d2a3",
+              "name": "Page of deployments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deployments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 7652,\n  \"max_size\": 9747,\n  \"total_pages\": 7585,\n  \"total\": 103,\n  \"items\": [\n    {\n      \"id\": \"df137864-5db8-371f-6d8a-468778ea74f2\",\n      \"pipeline_id\": \"33545204-f75a-24e1-b401-af8a5dbd4fed\",\n      \"stack_id\": \"052ded49-e2b7-620d-ba38-988480b0a4e6\",\n      \"status\": \"string\",\n      \"created\": \"2014-04-24T15:03:53.336Z\"\n    },\n    {\n      \"id\": \"3ae8ea00-1453-63b7-2c36-95a6cf1518f2\",\n      \"pipeline_id\": \"d3a23b02-0841-fd49-ef6e-67713879d033\",\n      \"stack_id\": \"8cf265a5-7aef-e76b-b533-7c7bac05c503\",\n      \"status\": \"string\",\n      \"created\": \"2007-10-10T01:10:40.644Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6f9eb448-82c9-4ae9-8d0c-0a45a26fb195",
+      "name": "Schedules",
+      "description": {
+        "content": "Scheduled pipeline runs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6fbd0542-d9f6-4d47-8ff2-e006c56d1265",
+          "name": "List Schedules",
+          "request": {
+            "name": "List Schedules",
+            "description": {},
+            "url": {
+              "path": [
+                "schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66961c6e-c74a-4dd3-9e33-cfecfa6db251",
+              "name": "Page of schedules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 5033,\n  \"max_size\": 7762,\n  \"total_pages\": 4189,\n  \"total\": 9191,\n  \"items\": [\n    {\n      \"id\": \"3221f76a-5b57-2608-1d31-c1ee6baa72f2\",\n      \"name\": \"string\",\n      \"cron_expression\": \"string\",\n      \"start_time\": \"1975-09-09T17:05:07.203Z\",\n      \"end_time\": \"1965-11-22T11:11:17.882Z\",\n      \"interval_seconds\": 5600,\n      \"active\": false,\n      \"pipeline_id\": \"45ac0548-e8dd-8fc3-ce3c-12cf09d168bd\",\n      \"created\": \"1952-10-24T15:03:32.610Z\"\n    },\n    {\n      \"id\": \"c4ba9643-9e04-e061-0f23-cd07b1bf7bdf\",\n      \"name\": \"string\",\n      \"cron_expression\": \"string\",\n      \"start_time\": \"2017-04-03T16:42:02.120Z\",\n      \"end_time\": \"1973-01-19T01:17:43.202Z\",\n      \"interval_seconds\": 4912,\n      \"active\": true,\n      \"pipeline_id\": \"0820aab2-b9cd-5914-0562-19b59efed711\",\n      \"created\": \"2000-10-21T06:45:01.768Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b83ac34c-1ae9-490c-b5a4-ef5c4f64ec18",
+      "name": "Secrets",
+      "description": {
+        "content": "Encrypted secret storage",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ee421fb1-77b0-43b2-8482-e82bbf75348a",
+          "name": "List Secrets",
+          "request": {
+            "name": "List Secrets",
+            "description": {},
+            "url": {
+              "path": [
+                "secrets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "faa65426-bdd3-4645-9ba7-7b9cdf63f92e",
+              "name": "Page of secrets (without values)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "secrets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 3587,\n  \"max_size\": 9774,\n  \"total_pages\": 4569,\n  \"total\": 6184,\n  \"items\": [\n    {\n      \"id\": \"665ad105-c1d9-aeb8-a041-03c3e4c9d6ff\",\n      \"name\": \"string\",\n      \"scope\": \"user\",\n      \"values\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"created\": \"1999-09-22T08:18:37.626Z\"\n    },\n    {\n      \"id\": \"e1272eac-c795-bf6f-af70-fc82441e30f8\",\n      \"name\": \"string\",\n      \"scope\": \"workspace\",\n      \"values\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"created\": \"1946-06-14T14:19:15.879Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb6639da-64c7-449b-b54e-def830649213",
+          "name": "Create Secret",
+          "request": {
+            "name": "Create Secret",
+            "description": {},
+            "url": {
+              "path": [
+                "secrets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"values\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"scope\": \"workspace\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f073fa0f-7777-4251-b4db-340ee0d3d8d0",
+              "name": "Secret created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "secrets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"values\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"scope\": \"workspace\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"b88888ff-b5b3-4efd-5c9e-844c65a81ffe\",\n  \"name\": \"string\",\n  \"scope\": \"user\",\n  \"values\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"created\": \"1977-04-20T15:34:46.004Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "317f467a-c901-4069-bed8-b21cda315b8c",
+      "name": "Users",
+      "description": {
+        "content": "User accounts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6b77d4bd-7cc3-4ce3-940c-cb12e473e7e8",
+          "name": "Get Current Authenticated User",
+          "request": {
+            "name": "Get Current Authenticated User",
+            "description": {},
+            "url": {
+              "path": [
+                "current-user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38ad36c0-c99a-4319-95ab-08f354f41c9a",
+              "name": "The current user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "current-user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"6d6be859-c8ec-d2ac-25c5-a477fb29685a\",\n  \"name\": \"string\",\n  \"full_name\": \"string\",\n  \"email\": \"9zZ3-AWbZp0H@mjCArLeSRvLkFGce.jptl\",\n  \"active\": true,\n  \"is_admin\": true,\n  \"created\": \"1995-09-16T16:02:20.238Z\",\n  \"updated\": \"2017-08-15T08:13:47.135Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5bfe7b6f-9798-412e-85ba-441cc8f78f75",
+          "name": "List Users",
+          "request": {
+            "name": "List Users",
+            "description": {},
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e611ef09-f558-4f46-be9f-ca1710c4327b",
+              "name": "Page of users",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 3384,\n  \"max_size\": 1075,\n  \"total_pages\": 3075,\n  \"total\": 3730,\n  \"items\": [\n    {\n      \"id\": \"59145280-1d39-0351-7541-4a2af3f5be04\",\n      \"name\": \"string\",\n      \"full_name\": \"string\",\n      \"email\": \"Tln@sbKjKbj.ks\",\n      \"active\": true,\n      \"is_admin\": false,\n      \"created\": \"1977-12-20T14:42:09.063Z\",\n      \"updated\": \"1973-07-25T17:28:47.745Z\"\n    },\n    {\n      \"id\": \"a66405dd-72fc-a5c1-c62a-a2e83e284ead\",\n      \"name\": \"string\",\n      \"full_name\": \"string\",\n      \"email\": \"cy07RMstTrBRK@yGZnhMINdCWqzcQ.ozm\",\n      \"active\": false,\n      \"is_admin\": true,\n      \"created\": \"2015-11-03T14:29:49.944Z\",\n      \"updated\": \"2002-04-12T18:03:25.148Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "30c257b6-840b-4db6-9c7f-352ffc850ca1",
+      "name": "Projects",
+      "description": {
+        "content": "Project workspaces",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a7aaef85-def9-4c39-8fc1-b68cce0217fc",
+          "name": "List Projects",
+          "request": {
+            "name": "List Projects",
+            "description": {},
+            "url": {
+              "path": [
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "505df238-1ebd-4714-a331-251feb9f4823",
+              "name": "Page of projects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 218,\n  \"max_size\": 7813,\n  \"total_pages\": 3216,\n  \"total\": 2461,\n  \"items\": [\n    {\n      \"id\": \"52bb0650-3f5b-0da1-e351-cffc09acbb62\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"created\": \"1954-03-05T11:07:59.911Z\"\n    },\n    {\n      \"id\": \"78a240b6-d666-3ca5-9a48-a497a223dfaf\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"created\": \"2023-02-08T19:30:17.579Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "db0a032f-c878-4809-9e29-b21963717ff1",
+      "name": "Service Connectors",
+      "description": {
+        "content": "Connectors to external infrastructure providers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "11c557aa-3cd2-476d-a50d-f2a0121da800",
+          "name": "List Service Connectors",
+          "request": {
+            "name": "List Service Connectors",
+            "description": {},
+            "url": {
+              "path": [
+                "service_connectors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7de7a8da-3158-41ea-89f4-cf00424ea806",
+              "name": "Page of service connectors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service_connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 8727,\n  \"max_size\": 2301,\n  \"total_pages\": 6049,\n  \"total\": 2894,\n  \"items\": [\n    {\n      \"id\": \"cc6f6efd-0def-ee02-22ad-ac6322c13db6\",\n      \"name\": \"string\",\n      \"connector_type\": \"string\",\n      \"auth_method\": \"string\",\n      \"resource_types\": [\n        \"string\",\n        \"string\"\n      ],\n      \"configuration\": {\n        \"key_0\": false\n      },\n      \"created\": \"1988-03-09T19:22:26.624Z\"\n    },\n    {\n      \"id\": \"18f9f1ba-2ca8-b781-5341-36634d609705\",\n      \"name\": \"string\",\n      \"connector_type\": \"string\",\n      \"auth_method\": \"string\",\n      \"resource_types\": [\n        \"string\",\n        \"string\"\n      ],\n      \"configuration\": {\n        \"key_0\": 5475.541994032013,\n        \"key_1\": false,\n        \"key_2\": \"string\",\n        \"key_3\": 5002.505742011175\n      },\n      \"created\": \"1955-12-10T03:37:29.163Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-zenml-server.example.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cb5dcf54-fdce-4fd2-ba95-6c1257c21266",
+    "name": "ZenML OSS REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.\n\nContact Support:\n Name: ZenML",
+      "type": "text/plain"
+    }
+  }
+}

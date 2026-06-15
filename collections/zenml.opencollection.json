@@ -1,0 +1,652 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ZenML OSS REST API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Login and Obtain Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-zenml-server.example.com/api/v1/login",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "username",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Login and Obtain Access Token"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Current Authenticated User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/current-user"
+          },
+          "docs": "Get Current Authenticated User"
+        },
+        {
+          "info": {
+            "name": "List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/users",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Users"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pipelines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Pipelines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/pipelines",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Pipelines"
+        },
+        {
+          "info": {
+            "name": "Create Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-zenml-server.example.com/api/v1/pipelines",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Pipeline"
+        },
+        {
+          "info": {
+            "name": "Get Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/pipelines/:pipeline_id",
+            "params": [
+              {
+                "name": "pipeline_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Pipeline"
+        },
+        {
+          "info": {
+            "name": "Delete Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-zenml-server.example.com/api/v1/pipelines/:pipeline_id",
+            "params": [
+              {
+                "name": "pipeline_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Pipeline"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pipeline Runs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Pipeline Runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/runs",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pipeline_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Pipeline Runs"
+        },
+        {
+          "info": {
+            "name": "Get Pipeline Run",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/runs/:run_id",
+            "params": [
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Pipeline Run"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stacks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Stacks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/stacks",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Stacks"
+        },
+        {
+          "info": {
+            "name": "Create Stack",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-zenml-server.example.com/api/v1/stacks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Stack"
+        },
+        {
+          "info": {
+            "name": "Get Stack",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/stacks/:stack_id",
+            "params": [
+              {
+                "name": "stack_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Stack"
+        },
+        {
+          "info": {
+            "name": "Delete Stack",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-zenml-server.example.com/api/v1/stacks/:stack_id",
+            "params": [
+              {
+                "name": "stack_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Stack"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stack Components",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Stack Components",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/components",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Stack Components"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Artifacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Artifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/artifacts",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Artifacts"
+        },
+        {
+          "info": {
+            "name": "Get Artifact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/artifacts/:artifact_id",
+            "params": [
+              {
+                "name": "artifact_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Artifact"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/models",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Models"
+        },
+        {
+          "info": {
+            "name": "Create Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-zenml-server.example.com/api/v1/models",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Model"
+        },
+        {
+          "info": {
+            "name": "List Model Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/model_versions",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "model_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Model Versions"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Deployments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Pipeline Deployments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/deployments",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Pipeline Deployments"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Schedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/schedules",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Schedules"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Secrets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Secrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/secrets",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Secrets"
+        },
+        {
+          "info": {
+            "name": "Create Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-zenml-server.example.com/api/v1/secrets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Secret"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/projects",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Projects"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Service Connectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Service Connectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/service_connectors",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Service Connectors"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
