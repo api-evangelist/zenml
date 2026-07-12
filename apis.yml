@@ -83,6 +83,10 @@ apis:
       - type: Authentication
         url: https://docs.zenml.io/pro/core-concepts/access-control
 common:
+  - type: DomainSecurity
+    url: security/zenml-domain-security.yml
+  - type: Authentication
+    url: authentication/zenml-authentication.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/zenml/overview
   - type: Arazzo
