@@ -83,6 +83,8 @@ apis:
       - type: Authentication
         url: https://docs.zenml.io/pro/core-concepts/access-control
 common:
+  - type: AgenticAccess
+    url: agentic-access/zenml-agentic-access.yml
   - type: DomainSecurity
     url: security/zenml-domain-security.yml
   - type: Authentication
