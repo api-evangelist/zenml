@@ -1,0 +1,108 @@
+openapi: 3.0.3
+info:
+  title: ZenML OSS REST Artifacts Auth API
+  version: '1'
+  description: REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.
+  contact:
+    name: ZenML
+    url: https://docs.zenml.io/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://your-zenml-server.example.com/api/v1
+  description: ZenML server REST API (self-hosted)
+security:
+- bearerAuth: []
+tags:
+- name: Auth
+  description: Authentication and token management
+paths:
+  /login:
+    post:
+      tags:
+      - Auth
+      summary: Login and Obtain Access Token
+      operationId: login
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - username
+              - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                  format: password
+      responses:
+        '200':
+          description: Authentication succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          description: Invalid credentials
+  /current-user:
+    get:
+      tags:
+      - Auth
+      summary: Get Current Authenticated User
+      operationId: getCurrentUser
+      responses:
+        '200':
+          description: The current user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+components:
+  schemas:
+    TokenResponse:
+      type: object
+      required:
+      - access_token
+      - token_type
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          example: bearer
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        full_name:
+          type: string
+        email:
+          type: string
+          format: email
+        active:
+          type: boolean
+        is_admin:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

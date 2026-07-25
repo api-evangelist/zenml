@@ -1,0 +1,147 @@
+openapi: 3.0.3
+info:
+  title: ZenML OSS REST Artifacts Pipeline Runs API
+  version: '1'
+  description: REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.
+  contact:
+    name: ZenML
+    url: https://docs.zenml.io/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://your-zenml-server.example.com/api/v1
+  description: ZenML server REST API (self-hosted)
+security:
+- bearerAuth: []
+tags:
+- name: Pipeline Runs
+  description: Pipeline run instances and their steps
+paths:
+  /runs:
+    get:
+      tags:
+      - Pipeline Runs
+      summary: List Pipeline Runs
+      operationId: listPipelineRuns
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Size'
+      - in: query
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: status
+        schema:
+          $ref: '#/components/schemas/RunStatus'
+      responses:
+        '200':
+          description: Page of pipeline runs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineRunPage'
+  /runs/{run_id}:
+    parameters:
+    - $ref: '#/components/parameters/RunId'
+    get:
+      tags:
+      - Pipeline Runs
+      summary: Get Pipeline Run
+      operationId: getPipelineRun
+      responses:
+        '200':
+          description: Pipeline run detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineRun'
+components:
+  parameters:
+    Page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    RunId:
+      in: path
+      name: run_id
+      required: true
+      schema:
+        type: string
+        format: uuid
+    Size:
+      in: query
+      name: size
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 20
+  schemas:
+    RunStatus:
+      type: string
+      enum:
+      - initializing
+      - running
+      - completed
+      - failed
+      - cached
+      - stopped
+    Page:
+      type: object
+      properties:
+        index:
+          type: integer
+        max_size:
+          type: integer
+        total_pages:
+          type: integer
+        total:
+          type: integer
+    PipelineRunPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/PipelineRun'
+    PipelineRun:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        pipeline_id:
+          type: string
+          format: uuid
+        stack_id:
+          type: string
+          format: uuid
+        status:
+          $ref: '#/components/schemas/RunStatus'
+        start_time:
+          type: string
+          format: date-time
+        end_time:
+          type: string
+          format: date-time
+        user_id:
+          type: string
+          format: uuid
+        created:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,166 @@
+openapi: 3.0.3
+info:
+  title: ZenML OSS REST Artifacts Stacks API
+  version: '1'
+  description: REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.
+  contact:
+    name: ZenML
+    url: https://docs.zenml.io/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://your-zenml-server.example.com/api/v1
+  description: ZenML server REST API (self-hosted)
+security:
+- bearerAuth: []
+tags:
+- name: Stacks
+  description: ZenML stacks and their components
+paths:
+  /stacks:
+    get:
+      tags:
+      - Stacks
+      summary: List Stacks
+      operationId: listStacks
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Size'
+      responses:
+        '200':
+          description: Page of stacks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StackPage'
+    post:
+      tags:
+      - Stacks
+      summary: Create Stack
+      operationId: createStack
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StackRequest'
+      responses:
+        '201':
+          description: Stack created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stack'
+  /stacks/{stack_id}:
+    parameters:
+    - $ref: '#/components/parameters/StackId'
+    get:
+      tags:
+      - Stacks
+      summary: Get Stack
+      operationId: getStack
+      responses:
+        '200':
+          description: Stack detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stack'
+    delete:
+      tags:
+      - Stacks
+      summary: Delete Stack
+      operationId: deleteStack
+      responses:
+        '204':
+          description: Stack deleted
+components:
+  schemas:
+    StackPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/Stack'
+    Page:
+      type: object
+      properties:
+        index:
+          type: integer
+        max_size:
+          type: integer
+        total_pages:
+          type: integer
+        total:
+          type: integer
+    StackRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        components:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              format: uuid
+    Stack:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        components:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              format: uuid
+        user_id:
+          type: string
+          format: uuid
+        created:
+          type: string
+          format: date-time
+  parameters:
+    StackId:
+      in: path
+      name: stack_id
+      required: true
+      schema:
+        type: string
+        format: uuid
+    Page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    Size:
+      in: query
+      name: size
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 20
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
