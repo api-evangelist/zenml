@@ -6,9 +6,22 @@ description: >-
   managing pipelines, stacks, artifacts, models, and deployments across any infrastructure backend, with 60+
   integrations spanning orchestrators, ML frameworks, GenAI tools, cloud storage, and experiment tracking platforms.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zenml.png
 tags:
   - AI
   - Machine Learning
@@ -22,66 +35,505 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/zenml/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: zenml:zenml-oss-api
-    name: ZenML OSS REST API
-    description: >-
-      The ZenML open-source REST API exposes endpoints for managing ML pipelines, stacks, components, artifacts, models,
-      deployments, runs, schedules, secrets, users, and projects in a self-hosted ZenML server. It is consumed by the
-      Python SDK and CLI and can be called directly for automation and integration with CI/CD systems and MLOps
-      workflows.
-    humanURL: https://docs.zenml.io/api-reference/oss-api
-    tags:
-      - MLOps
-      - Pipelines
-      - Open Source
-    properties:
-      - type: Documentation
-        url: https://docs.zenml.io/api-reference/oss-api
-      - type: APIReference
-        url: https://docs.zenml.io/api-reference/oss-api
-      - type: OpenAPI
-        url: openapi/zenml-openapi.yml
-      - type: GettingStarted
-        url: https://docs.zenml.io/getting-started/installation
-      - type: Authentication
-        url: https://docs.zenml.io/getting-started/deploying-zenml
-      - type: SDKs
-        url: https://docs.zenml.io/sdk-reference
-      - type: GitHubRepository
-        url: https://github.com/zenml-io/zenml
-      - type: JSONSchema
-        url: json-schema/zenml-pipeline-schema.json
-      - type: JSONSchema
-        url: json-schema/zenml-pipeline-run-schema.json
-      - type: JSONSchema
-        url: json-schema/zenml-stack-schema.json
-      - type: JSONSchema
-        url: json-schema/zenml-model-schema.json
-      - type: JSONSchema
-        url: json-schema/zenml-artifact-schema.json
-      - type: CodeExamples
-        url: examples/zenml-list-pipelines-example.json
-      - type: CodeExamples
-        url: examples/zenml-get-pipeline-run-example.json
-      - type: CodeExamples
-        url: examples/zenml-create-stack-example.json
-  - aid: zenml:zenml-pro-api
-    name: ZenML Pro REST API
-    description: >-
-      The ZenML Pro REST API extends the OSS API with managed control-plane features for teams, including organization
-      and tenant management, role-based access control, audit logs, and enterprise governance.
-    humanURL: https://docs.zenml.io/api-reference/pro-api
-    tags:
-      - MLOps
-      - Enterprise
-      - Governance
-    properties:
-      - type: Documentation
-        url: https://docs.zenml.io/api-reference/pro-api
-      - type: APIReference
-        url: https://docs.zenml.io/api-reference/pro-api
-      - type: Authentication
-        url: https://docs.zenml.io/pro/core-concepts/access-control
+- aid: zenml:zenml-pro-api
+  name: ZenML Pro REST API
+  description: >-
+    The ZenML Pro REST API extends the OSS API with managed control-plane features for teams, including
+    organization and tenant management, role-based access control, audit logs, and enterprise governance.
+  humanURL: https://docs.zenml.io/api-reference/pro-api
+  tags:
+  - MLOps
+  - Enterprise
+  - Governance
+  properties:
+  - type: Documentation
+    url: https://docs.zenml.io/api-reference/pro-api
+  - type: APIReference
+    url: https://docs.zenml.io/api-reference/pro-api
+  - type: Authentication
+    url: https://docs.zenml.io/pro/core-concepts/access-control
+- aid: zenml:zenml-artifacts-api
+  name: ZenML Artifacts API
+  description: Artifact metadata and versions produced by pipeline runs
+  humanURL: https://docs.zenml.io/api-reference/oss-api
+  tags:
+  - Artifacts
+  properties:
+  - type: OpenAPI
+    url: openapi/zenml-artifacts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: APIReference
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: GettingStarted
+    url: https://docs.zenml.io/getting-started/installation
+  - type: Authentication
+    url: https://docs.zenml.io/getting-started/deploying-zenml
+  - type: SDKs
+    url: https://docs.zenml.io/sdk-reference
+  - type: GitHubRepository
+    url: https://github.com/zenml-io/zenml
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-run-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-stack-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-model-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-artifact-schema.json
+  - type: CodeExamples
+    url: examples/zenml-list-pipelines-example.json
+  - type: CodeExamples
+    url: examples/zenml-get-pipeline-run-example.json
+  - type: CodeExamples
+    url: examples/zenml-create-stack-example.json
+- aid: zenml:zenml-auth-api
+  name: ZenML Auth API
+  description: Authentication and token management
+  humanURL: https://docs.zenml.io/api-reference/oss-api
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/zenml-auth-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: APIReference
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: GettingStarted
+    url: https://docs.zenml.io/getting-started/installation
+  - type: Authentication
+    url: https://docs.zenml.io/getting-started/deploying-zenml
+  - type: SDKs
+    url: https://docs.zenml.io/sdk-reference
+  - type: GitHubRepository
+    url: https://github.com/zenml-io/zenml
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-run-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-stack-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-model-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-artifact-schema.json
+  - type: CodeExamples
+    url: examples/zenml-list-pipelines-example.json
+  - type: CodeExamples
+    url: examples/zenml-get-pipeline-run-example.json
+  - type: CodeExamples
+    url: examples/zenml-create-stack-example.json
+- aid: zenml:zenml-deployments-api
+  name: ZenML Deployments API
+  description: Pipeline deployments
+  humanURL: https://docs.zenml.io/api-reference/oss-api
+  tags:
+  - Deployments
+  properties:
+  - type: OpenAPI
+    url: openapi/zenml-deployments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: APIReference
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: GettingStarted
+    url: https://docs.zenml.io/getting-started/installation
+  - type: Authentication
+    url: https://docs.zenml.io/getting-started/deploying-zenml
+  - type: SDKs
+    url: https://docs.zenml.io/sdk-reference
+  - type: GitHubRepository
+    url: https://github.com/zenml-io/zenml
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-run-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-stack-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-model-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-artifact-schema.json
+  - type: CodeExamples
+    url: examples/zenml-list-pipelines-example.json
+  - type: CodeExamples
+    url: examples/zenml-get-pipeline-run-example.json
+  - type: CodeExamples
+    url: examples/zenml-create-stack-example.json
+- aid: zenml:zenml-models-api
+  name: ZenML Models API
+  description: Registered models and their versions
+  humanURL: https://docs.zenml.io/api-reference/oss-api
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/zenml-models-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: APIReference
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: GettingStarted
+    url: https://docs.zenml.io/getting-started/installation
+  - type: Authentication
+    url: https://docs.zenml.io/getting-started/deploying-zenml
+  - type: SDKs
+    url: https://docs.zenml.io/sdk-reference
+  - type: GitHubRepository
+    url: https://github.com/zenml-io/zenml
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-run-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-stack-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-model-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-artifact-schema.json
+  - type: CodeExamples
+    url: examples/zenml-list-pipelines-example.json
+  - type: CodeExamples
+    url: examples/zenml-get-pipeline-run-example.json
+  - type: CodeExamples
+    url: examples/zenml-create-stack-example.json
+- aid: zenml:zenml-pipeline-runs-api
+  name: ZenML Pipeline Runs API
+  description: Pipeline run instances and their steps
+  humanURL: https://docs.zenml.io/api-reference/oss-api
+  tags:
+  - Pipeline Runs
+  properties:
+  - type: OpenAPI
+    url: openapi/zenml-pipeline-runs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: APIReference
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: GettingStarted
+    url: https://docs.zenml.io/getting-started/installation
+  - type: Authentication
+    url: https://docs.zenml.io/getting-started/deploying-zenml
+  - type: SDKs
+    url: https://docs.zenml.io/sdk-reference
+  - type: GitHubRepository
+    url: https://github.com/zenml-io/zenml
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-run-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-stack-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-model-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-artifact-schema.json
+  - type: CodeExamples
+    url: examples/zenml-list-pipelines-example.json
+  - type: CodeExamples
+    url: examples/zenml-get-pipeline-run-example.json
+  - type: CodeExamples
+    url: examples/zenml-create-stack-example.json
+- aid: zenml:zenml-pipelines-api
+  name: ZenML Pipelines API
+  description: ML pipeline definitions
+  humanURL: https://docs.zenml.io/api-reference/oss-api
+  tags:
+  - Pipelines
+  properties:
+  - type: OpenAPI
+    url: openapi/zenml-pipelines-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: APIReference
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: GettingStarted
+    url: https://docs.zenml.io/getting-started/installation
+  - type: Authentication
+    url: https://docs.zenml.io/getting-started/deploying-zenml
+  - type: SDKs
+    url: https://docs.zenml.io/sdk-reference
+  - type: GitHubRepository
+    url: https://github.com/zenml-io/zenml
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-run-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-stack-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-model-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-artifact-schema.json
+  - type: CodeExamples
+    url: examples/zenml-list-pipelines-example.json
+  - type: CodeExamples
+    url: examples/zenml-get-pipeline-run-example.json
+  - type: CodeExamples
+    url: examples/zenml-create-stack-example.json
+- aid: zenml:zenml-projects-api
+  name: ZenML Projects API
+  description: Project workspaces
+  humanURL: https://docs.zenml.io/api-reference/oss-api
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/zenml-projects-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: APIReference
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: GettingStarted
+    url: https://docs.zenml.io/getting-started/installation
+  - type: Authentication
+    url: https://docs.zenml.io/getting-started/deploying-zenml
+  - type: SDKs
+    url: https://docs.zenml.io/sdk-reference
+  - type: GitHubRepository
+    url: https://github.com/zenml-io/zenml
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-run-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-stack-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-model-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-artifact-schema.json
+  - type: CodeExamples
+    url: examples/zenml-list-pipelines-example.json
+  - type: CodeExamples
+    url: examples/zenml-get-pipeline-run-example.json
+  - type: CodeExamples
+    url: examples/zenml-create-stack-example.json
+- aid: zenml:zenml-schedules-api
+  name: ZenML Schedules API
+  description: Scheduled pipeline runs
+  humanURL: https://docs.zenml.io/api-reference/oss-api
+  tags:
+  - Schedules
+  properties:
+  - type: OpenAPI
+    url: openapi/zenml-schedules-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: APIReference
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: GettingStarted
+    url: https://docs.zenml.io/getting-started/installation
+  - type: Authentication
+    url: https://docs.zenml.io/getting-started/deploying-zenml
+  - type: SDKs
+    url: https://docs.zenml.io/sdk-reference
+  - type: GitHubRepository
+    url: https://github.com/zenml-io/zenml
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-run-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-stack-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-model-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-artifact-schema.json
+  - type: CodeExamples
+    url: examples/zenml-list-pipelines-example.json
+  - type: CodeExamples
+    url: examples/zenml-get-pipeline-run-example.json
+  - type: CodeExamples
+    url: examples/zenml-create-stack-example.json
+- aid: zenml:zenml-secrets-api
+  name: ZenML Secrets API
+  description: Encrypted secret storage
+  humanURL: https://docs.zenml.io/api-reference/oss-api
+  tags:
+  - Secrets
+  properties:
+  - type: OpenAPI
+    url: openapi/zenml-secrets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: APIReference
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: GettingStarted
+    url: https://docs.zenml.io/getting-started/installation
+  - type: Authentication
+    url: https://docs.zenml.io/getting-started/deploying-zenml
+  - type: SDKs
+    url: https://docs.zenml.io/sdk-reference
+  - type: GitHubRepository
+    url: https://github.com/zenml-io/zenml
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-run-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-stack-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-model-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-artifact-schema.json
+  - type: CodeExamples
+    url: examples/zenml-list-pipelines-example.json
+  - type: CodeExamples
+    url: examples/zenml-get-pipeline-run-example.json
+  - type: CodeExamples
+    url: examples/zenml-create-stack-example.json
+- aid: zenml:zenml-service-connectors-api
+  name: ZenML Service Connectors API
+  description: Connectors to external infrastructure providers
+  humanURL: https://docs.zenml.io/api-reference/oss-api
+  tags:
+  - Service Connectors
+  properties:
+  - type: OpenAPI
+    url: openapi/zenml-service-connectors-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: APIReference
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: GettingStarted
+    url: https://docs.zenml.io/getting-started/installation
+  - type: Authentication
+    url: https://docs.zenml.io/getting-started/deploying-zenml
+  - type: SDKs
+    url: https://docs.zenml.io/sdk-reference
+  - type: GitHubRepository
+    url: https://github.com/zenml-io/zenml
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-run-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-stack-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-model-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-artifact-schema.json
+  - type: CodeExamples
+    url: examples/zenml-list-pipelines-example.json
+  - type: CodeExamples
+    url: examples/zenml-get-pipeline-run-example.json
+  - type: CodeExamples
+    url: examples/zenml-create-stack-example.json
+- aid: zenml:zenml-stack-components-api
+  name: ZenML Stack Components API
+  description: >-
+    Individual stack components such as orchestrators, artifact stores, and experiment trackers
+  humanURL: https://docs.zenml.io/api-reference/oss-api
+  tags:
+  - Stack Components
+  properties:
+  - type: OpenAPI
+    url: openapi/zenml-stack-components-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: APIReference
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: GettingStarted
+    url: https://docs.zenml.io/getting-started/installation
+  - type: Authentication
+    url: https://docs.zenml.io/getting-started/deploying-zenml
+  - type: SDKs
+    url: https://docs.zenml.io/sdk-reference
+  - type: GitHubRepository
+    url: https://github.com/zenml-io/zenml
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-run-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-stack-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-model-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-artifact-schema.json
+  - type: CodeExamples
+    url: examples/zenml-list-pipelines-example.json
+  - type: CodeExamples
+    url: examples/zenml-get-pipeline-run-example.json
+  - type: CodeExamples
+    url: examples/zenml-create-stack-example.json
+- aid: zenml:zenml-stacks-api
+  name: ZenML Stacks API
+  description: ZenML stacks and their components
+  humanURL: https://docs.zenml.io/api-reference/oss-api
+  tags:
+  - Stacks
+  properties:
+  - type: OpenAPI
+    url: openapi/zenml-stacks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: APIReference
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: GettingStarted
+    url: https://docs.zenml.io/getting-started/installation
+  - type: Authentication
+    url: https://docs.zenml.io/getting-started/deploying-zenml
+  - type: SDKs
+    url: https://docs.zenml.io/sdk-reference
+  - type: GitHubRepository
+    url: https://github.com/zenml-io/zenml
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-run-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-stack-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-model-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-artifact-schema.json
+  - type: CodeExamples
+    url: examples/zenml-list-pipelines-example.json
+  - type: CodeExamples
+    url: examples/zenml-get-pipeline-run-example.json
+  - type: CodeExamples
+    url: examples/zenml-create-stack-example.json
+- aid: zenml:zenml-users-api
+  name: ZenML Users API
+  description: User accounts
+  humanURL: https://docs.zenml.io/api-reference/oss-api
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/zenml-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: APIReference
+    url: https://docs.zenml.io/api-reference/oss-api
+  - type: GettingStarted
+    url: https://docs.zenml.io/getting-started/installation
+  - type: Authentication
+    url: https://docs.zenml.io/getting-started/deploying-zenml
+  - type: SDKs
+    url: https://docs.zenml.io/sdk-reference
+  - type: GitHubRepository
+    url: https://github.com/zenml-io/zenml
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-pipeline-run-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-stack-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-model-schema.json
+  - type: JSONSchema
+    url: json-schema/zenml-artifact-schema.json
+  - type: CodeExamples
+    url: examples/zenml-list-pipelines-example.json
+  - type: CodeExamples
+    url: examples/zenml-get-pipeline-run-example.json
+  - type: CodeExamples
+    url: examples/zenml-create-stack-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/zenml-agentic-access.yml
