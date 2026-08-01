@@ -1,0 +1,38 @@
+{
+  "provider": "zenml",
+  "sources": [
+    "zenml-artifacts-api-openapi.yml",
+    "zenml-auth-api-openapi.yml",
+    "zenml-deployments-api-openapi.yml",
+    "zenml-models-api-openapi.yml",
+    "zenml-pipeline-runs-api-openapi.yml",
+    "zenml-pipelines-api-openapi.yml",
+    "zenml-projects-api-openapi.yml",
+    "zenml-schedules-api-openapi.yml",
+    "zenml-secrets-api-openapi.yml",
+    "zenml-service-connectors-api-openapi.yml",
+    "zenml-stack-components-api-openapi.yml",
+    "zenml-stacks-api-openapi.yml",
+    "zenml-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "zenml-artifacts-api-openapi.yml",
+    "zenml-auth-api-openapi.yml",
+    "zenml-deployments-api-openapi.yml",
+    "zenml-models-api-openapi.yml",
+    "zenml-pipeline-runs-api-openapi.yml",
+    "zenml-pipelines-api-openapi.yml",
+    "zenml-projects-api-openapi.yml",
+    "zenml-schedules-api-openapi.yml",
+    "zenml-secrets-api-openapi.yml",
+    "zenml-service-connectors-api-openapi.yml",
+    "zenml-stack-components-api-openapi.yml",
+    "zenml-stacks-api-openapi.yml",
+    "zenml-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
