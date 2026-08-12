@@ -535,6 +535,9 @@ apis:
   - type: CodeExamples
     url: examples/zenml-create-stack-example.json
 common:
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/zenml-io/zenml/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/zenml-agentic-access.yml
   - type: DomainSecurity
@@ -637,12 +640,6 @@ common:
     type: Resources
   - url: rules/zenml-rules.yml
     name: ZenML Spectral Rules
-    type: Resources
-  - url: capabilities/pipeline-lifecycle.yaml
-    name: ZenML Pipeline Lifecycle Capability
-    type: Resources
-  - url: capabilities/model-promotion.yaml
-    name: ZenML Model Promotion Capability
     type: Resources
   - name: MCP Server
     url: https://github.com/zenml-io/mcp-zenml
