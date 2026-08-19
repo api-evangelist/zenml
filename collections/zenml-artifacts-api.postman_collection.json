@@ -1,0 +1,229 @@
+{
+  "item": [
+    {
+      "id": "af9d80f5-6da9-4334-9ce4-e69c965ad85a",
+      "name": "Artifacts",
+      "description": {
+        "content": "Artifact metadata and versions produced by pipeline runs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cf16fbf2-4bc3-40db-9bc0-161e22041dce",
+          "name": "List Artifacts",
+          "request": {
+            "name": "List Artifacts",
+            "description": {},
+            "url": {
+              "path": [
+                "artifacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5b4debb-0daf-40db-bc8a-b5b10e972f0a",
+              "name": "Page of artifacts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artifacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 3024,\n  \"max_size\": 7270,\n  \"total_pages\": 9771,\n  \"total\": 1767,\n  \"items\": [\n    {\n      \"id\": \"183e2083-413a-7f7a-e852-c0d149bfc525\",\n      \"name\": \"string\",\n      \"version\": \"string\",\n      \"type\": \"string\",\n      \"uri\": \"https://HunPOduhqmKeanjnxNmaewbRSvDoWWkIS.kzzhUP1UgtPklO4J33XeTGa6CQRGgQqR2scs3.Ulz2IfuhqWLE0HARhlmInKC-yhY2koQQHZ6oqhURLyMU\",\n      \"materializer\": \"string\",\n      \"producer_step_run_id\": \"7809cd20-4ac1-3518-583d-b9c783c50abd\",\n      \"created\": \"2018-11-10T17:55:24.326Z\"\n    },\n    {\n      \"id\": \"00ccda6f-7cc4-040d-95f2-6b4df44415c7\",\n      \"name\": \"string\",\n      \"version\": \"string\",\n      \"type\": \"string\",\n      \"uri\": \"https://XiUfCTNUgjWXeTMNQmPsPe.dikiPqnoaXP6yYBbRtTL6gXLhtIUqj148iZWJx\",\n      \"materializer\": \"string\",\n      \"producer_step_run_id\": \"625113da-6699-c48d-4614-04693816fe68\",\n      \"created\": \"2008-12-13T23:47:25.340Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82fca7d0-61f1-45c9-af01-3a465d34d26c",
+          "name": "Get Artifact",
+          "request": {
+            "name": "Get Artifact",
+            "description": {},
+            "url": {
+              "path": [
+                "artifacts",
+                ":artifact_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "artifact_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1f349ea-8dbf-4a39-9abb-d8470cb6c391",
+              "name": "Artifact detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artifacts",
+                    ":artifact_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "artifact_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"32a9f479-0687-4c48-ec83-8e57f29e6bac\",\n  \"name\": \"string\",\n  \"version\": \"string\",\n  \"type\": \"string\",\n  \"uri\": \"https://hIuUpIrapIlyqcdnt.qgsuXWr7ZqmaUuHaTLSoh\",\n  \"materializer\": \"string\",\n  \"producer_step_run_id\": \"acc536ce-7ea8-f0e8-9abe-471324b15505\",\n  \"created\": \"1990-08-05T14:57:35.815Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-zenml-server.example.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a61ad92f-ded4-4e6e-ac00-19fafa7e6871",
+    "name": "ZenML OSS REST Artifacts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.\n\nContact Support:\n Name: ZenML",
+      "type": "text/plain"
+    }
+  }
+}

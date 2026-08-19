@@ -1,0 +1,211 @@
+{
+  "item": [
+    {
+      "id": "60572455-1839-4f8b-872d-6e6daf07e90e",
+      "name": "Users",
+      "description": {
+        "content": "User accounts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a64e8afe-5723-419c-a10a-0dafb2d21067",
+          "name": "Get Current Authenticated User",
+          "request": {
+            "name": "Get Current Authenticated User",
+            "description": {},
+            "url": {
+              "path": [
+                "current-user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b5c2a4bd-1b34-44e6-9be0-bf3ac0af6354",
+              "name": "The current user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "current-user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4fced4ba-d96b-81c9-e7a5-a989e3d81cb6\",\n  \"name\": \"string\",\n  \"full_name\": \"string\",\n  \"email\": \"9NyiGzmCSExCA9@mcvwbMUimTPJgiBBQ.lx\",\n  \"active\": false,\n  \"is_admin\": false,\n  \"created\": \"1977-12-18T16:36:15.082Z\",\n  \"updated\": \"2008-06-11T05:52:25.242Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd95b4a5-c26d-4918-a35d-4753b4d22f0b",
+          "name": "List Users",
+          "request": {
+            "name": "List Users",
+            "description": {},
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a575761-521a-47ff-9558-ebe2301ef5b0",
+              "name": "Page of users",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 594,\n  \"max_size\": 1770,\n  \"total_pages\": 3630,\n  \"total\": 7434,\n  \"items\": [\n    {\n      \"id\": \"02e42c69-9910-94cb-aea6-7f9492527b62\",\n      \"name\": \"string\",\n      \"full_name\": \"string\",\n      \"email\": \"WgisGZnD@DsSuqvzJuOREUrtNrAmnnCTInh.svfl\",\n      \"active\": true,\n      \"is_admin\": true,\n      \"created\": \"1947-10-07T03:42:58.082Z\",\n      \"updated\": \"2024-02-25T02:05:07.125Z\"\n    },\n    {\n      \"id\": \"c6a0b90f-6760-47a2-85b5-ee7b6d921868\",\n      \"name\": \"string\",\n      \"full_name\": \"string\",\n      \"email\": \"AKuDXi9Rd@OogddtUxfRkn.yvn\",\n      \"active\": true,\n      \"is_admin\": true,\n      \"created\": \"2001-07-07T19:23:45.499Z\",\n      \"updated\": \"1968-08-25T07:08:48.911Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-zenml-server.example.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7218858f-a427-41db-9e94-08f242d0fc41",
+    "name": "ZenML OSS REST Artifacts Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.\n\nContact Support:\n Name: ZenML",
+      "type": "text/plain"
+    }
+  }
+}

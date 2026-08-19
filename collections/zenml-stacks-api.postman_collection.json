@@ -1,0 +1,408 @@
+{
+  "item": [
+    {
+      "id": "0c349451-e3b6-4a66-ae1a-841900c36652",
+      "name": "Stacks",
+      "description": {
+        "content": "ZenML stacks and their components",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "76c24a76-89f6-44ad-8811-1a8feb1be699",
+          "name": "List Stacks",
+          "request": {
+            "name": "List Stacks",
+            "description": {},
+            "url": {
+              "path": [
+                "stacks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cbecccf7-7d57-47dd-9b5f-d975922a2dc3",
+              "name": "Page of stacks",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 1984,\n  \"max_size\": 7865,\n  \"total_pages\": 1370,\n  \"total\": 8393,\n  \"items\": [\n    {\n      \"id\": \"44b02e25-57c5-fd90-7e64-6a7a1c676f25\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"components\": {\n        \"key_0\": [\n          \"7ee2463e-824a-b080-de80-4d8cd47869b2\",\n          \"18d86278-8625-f0e2-dbea-cbb1e5e06fa8\"\n        ]\n      },\n      \"user_id\": \"d1dc188e-d7ad-99a7-a9f5-782c61a744bc\",\n      \"created\": \"1974-01-26T02:46:33.112Z\"\n    },\n    {\n      \"id\": \"d6a18cc7-8bb5-e0dc-b7d1-9a1d98b45845\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"components\": {\n        \"key_0\": [\n          \"eb7ff99a-7fb9-fff3-aeac-f49be24190e7\",\n          \"fd154071-49b1-adff-3b34-4fc24f185192\"\n        ]\n      },\n      \"user_id\": \"5f61c1f3-4743-a917-f692-4a61ec0d970f\",\n      \"created\": \"1981-10-04T20:03:34.358Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37424429-17dc-495e-818e-c7b3902eb662",
+          "name": "Create Stack",
+          "request": {
+            "name": "Create Stack",
+            "description": {},
+            "url": {
+              "path": [
+                "stacks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"components\": {\n    \"key_0\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "78cbef95-d57e-4707-8133-2a9d89489441",
+              "name": "Stack created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"components\": {\n    \"key_0\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"key_1\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"key_2\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"key_3\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e4e3d6fb-2fab-59f0-9a97-372bd5d45b69\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"components\": {\n    \"key_0\": [\n      \"e75b2152-4eea-2071-dc1b-caa764432d3b\",\n      \"0f5ead15-9cad-32be-3770-8b04e7980a07\"\n    ],\n    \"key_1\": [\n      \"c31014f5-0844-7b1a-d920-8cef392fa779\",\n      \"d95d2e07-0d50-0b8a-fe10-09a38beb757b\"\n    ]\n  },\n  \"user_id\": \"9f80559e-9a2e-d485-9889-d8a7a559cb54\",\n  \"created\": \"1996-04-17T02:27:40.281Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae43d3fd-d437-4132-ab04-10c5e5281aa9",
+          "name": "Get Stack",
+          "request": {
+            "name": "Get Stack",
+            "description": {},
+            "url": {
+              "path": [
+                "stacks",
+                ":stack_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "stack_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee37a8e9-9dbb-4e2c-8885-6f0788410a76",
+              "name": "Stack detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks",
+                    ":stack_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "stack_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e4e3d6fb-2fab-59f0-9a97-372bd5d45b69\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"components\": {\n    \"key_0\": [\n      \"e75b2152-4eea-2071-dc1b-caa764432d3b\",\n      \"0f5ead15-9cad-32be-3770-8b04e7980a07\"\n    ],\n    \"key_1\": [\n      \"c31014f5-0844-7b1a-d920-8cef392fa779\",\n      \"d95d2e07-0d50-0b8a-fe10-09a38beb757b\"\n    ]\n  },\n  \"user_id\": \"9f80559e-9a2e-d485-9889-d8a7a559cb54\",\n  \"created\": \"1996-04-17T02:27:40.281Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4009b655-2261-467a-8aad-4a397c5abefa",
+          "name": "Delete Stack",
+          "request": {
+            "name": "Delete Stack",
+            "description": {},
+            "url": {
+              "path": [
+                "stacks",
+                ":stack_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "stack_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9c6379a-49d0-47be-a74b-b20338e3f2cc",
+              "name": "Stack deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks",
+                    ":stack_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "stack_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-zenml-server.example.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9d9e4f1d-e1a6-4d04-add3-196e901eadfd",
+    "name": "ZenML OSS REST Artifacts Stacks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.\n\nContact Support:\n Name: ZenML",
+      "type": "text/plain"
+    }
+  }
+}

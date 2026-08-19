@@ -1,0 +1,247 @@
+{
+  "item": [
+    {
+      "id": "3d5c5c86-e24c-4488-9da4-c074ef25aad2",
+      "name": "Pipeline Runs",
+      "description": {
+        "content": "Pipeline run instances and their steps",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1cdbe3cd-3526-4cc5-bddd-c29f2281447a",
+          "name": "List Pipeline Runs",
+          "request": {
+            "name": "List Pipeline Runs",
+            "description": {},
+            "url": {
+              "path": [
+                "runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "pipeline_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae4ac196-4bab-4cc3-9d8c-1d00b7b0cf88",
+              "name": "Page of pipeline runs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pipeline_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 3499,\n  \"max_size\": 6573,\n  \"total_pages\": 306,\n  \"total\": 8825,\n  \"items\": [\n    {\n      \"id\": \"1a763110-774e-ef4b-17e4-e8bbbdf7d033\",\n      \"name\": \"string\",\n      \"pipeline_id\": \"5c5d91fe-d6a1-b32b-34bb-f86093d000e0\",\n      \"stack_id\": \"a377866b-a507-ef50-135c-42174b5fce7f\",\n      \"status\": \"<string>\",\n      \"start_time\": \"1957-06-14T15:40:24.311Z\",\n      \"end_time\": \"2018-06-07T04:26:08.905Z\",\n      \"user_id\": \"32ead480-f474-8e6a-df79-4d02931c1e19\",\n      \"created\": \"1949-12-04T12:28:10.373Z\"\n    },\n    {\n      \"id\": \"1630b0c4-5779-2040-6bed-60476f6a126d\",\n      \"name\": \"string\",\n      \"pipeline_id\": \"dd98ed4b-c04a-45f3-d939-59015bc07ae9\",\n      \"stack_id\": \"3a3c7faa-4f42-ccf7-74c7-a02793b81ee0\",\n      \"status\": \"<string>\",\n      \"start_time\": \"1976-09-19T16:20:15.708Z\",\n      \"end_time\": \"1951-05-12T15:08:19.184Z\",\n      \"user_id\": \"c2134403-6bcf-12e1-bdc5-e8d6ea3d8b6d\",\n      \"created\": \"2018-05-12T13:36:59.727Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a57603b-177a-4fd8-a316-145622837036",
+          "name": "Get Pipeline Run",
+          "request": {
+            "name": "Get Pipeline Run",
+            "description": {},
+            "url": {
+              "path": [
+                "runs",
+                ":run_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "run_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc42a200-d1cc-4335-a4ea-36ff1ae2d5cb",
+              "name": "Pipeline run detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runs",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "run_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"eb1d96af-085f-d198-9795-942eb68ef87c\",\n  \"name\": \"string\",\n  \"pipeline_id\": \"b6d2c70b-cdd8-5608-d59b-abf7e3e99007\",\n  \"stack_id\": \"227d1840-c4df-7a57-ebc2-a4ff237aeb7f\",\n  \"status\": \"<string>\",\n  \"start_time\": \"1951-08-10T10:50:50.973Z\",\n  \"end_time\": \"1995-06-16T22:16:00.097Z\",\n  \"user_id\": \"5708e59e-1511-97e5-e909-8a19c88a5ca1\",\n  \"created\": \"1969-12-18T06:16:13.640Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-zenml-server.example.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d19306b7-ecb4-466b-987c-96149b9a7774",
+    "name": "ZenML OSS REST Artifacts Pipeline Runs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.\n\nContact Support:\n Name: ZenML",
+      "type": "text/plain"
+    }
+  }
+}

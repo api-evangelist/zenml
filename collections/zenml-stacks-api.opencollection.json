@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ZenML OSS REST Artifacts Stacks API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stacks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Stacks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/stacks",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Stacks"
+        },
+        {
+          "info": {
+            "name": "Create Stack",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-zenml-server.example.com/api/v1/stacks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Stack"
+        },
+        {
+          "info": {
+            "name": "Get Stack",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/stacks/:stack_id",
+            "params": [
+              {
+                "name": "stack_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Stack"
+        },
+        {
+          "info": {
+            "name": "Delete Stack",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-zenml-server.example.com/api/v1/stacks/:stack_id",
+            "params": [
+              {
+                "name": "stack_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Stack"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

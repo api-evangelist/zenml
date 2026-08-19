@@ -1,0 +1,136 @@
+{
+  "item": [
+    {
+      "id": "0f22b96a-19ba-4da4-9aaf-bf9ceb969a25",
+      "name": "Deployments",
+      "description": {
+        "content": "Pipeline deployments",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b70b93da-c076-4c85-9731-963b951af0a2",
+          "name": "List Pipeline Deployments",
+          "request": {
+            "name": "List Pipeline Deployments",
+            "description": {},
+            "url": {
+              "path": [
+                "deployments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60745f6f-cd3e-48dd-8d0f-263e15a1f2cf",
+              "name": "Page of deployments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deployments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 8223,\n  \"max_size\": 8330,\n  \"total_pages\": 1388,\n  \"total\": 5346,\n  \"items\": [\n    {\n      \"id\": \"ae217a67-2ba2-af41-ddb3-6d2f4b83f51b\",\n      \"pipeline_id\": \"1f0b53a4-2fd1-98e2-dd6f-0423a6d12eee\",\n      \"stack_id\": \"90aa8c8f-b9a9-c9ca-c338-4499e900bf8a\",\n      \"status\": \"string\",\n      \"created\": \"2010-05-18T01:59:57.355Z\"\n    },\n    {\n      \"id\": \"da5cade1-2a2f-b481-50de-5e5667c1b259\",\n      \"pipeline_id\": \"494d8453-1fce-561e-6fde-c6831081f247\",\n      \"stack_id\": \"da9e92dc-4a04-3e42-99f1-618622029c0e\",\n      \"status\": \"string\",\n      \"created\": \"1953-01-08T00:25:45.551Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-zenml-server.example.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bad9108a-94f9-44c2-ab81-da3e2f58d28c",
+    "name": "ZenML OSS REST Artifacts Deployments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.\n\nContact Support:\n Name: ZenML",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ZenML OSS REST Artifacts Service Connectors API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Service Connectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Service Connectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-zenml-server.example.com/api/v1/service_connectors",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Service Connectors"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

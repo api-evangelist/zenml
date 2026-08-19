@@ -1,0 +1,136 @@
+{
+  "item": [
+    {
+      "id": "f4a63e2b-2ad6-421c-ad35-95b909ac2139",
+      "name": "Schedules",
+      "description": {
+        "content": "Scheduled pipeline runs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "49453ca5-e4b4-44a3-9523-8ecaffc1fb50",
+          "name": "List Schedules",
+          "request": {
+            "name": "List Schedules",
+            "description": {},
+            "url": {
+              "path": [
+                "schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "75860c21-df8f-469d-80b7-7f2c3c8ec2ce",
+              "name": "Page of schedules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 8505,\n  \"max_size\": 6306,\n  \"total_pages\": 5523,\n  \"total\": 7356,\n  \"items\": [\n    {\n      \"id\": \"42c451e6-7bdb-fb06-9a20-29adc8c69f41\",\n      \"name\": \"string\",\n      \"cron_expression\": \"string\",\n      \"start_time\": \"1983-02-03T01:39:49.715Z\",\n      \"end_time\": \"2020-11-06T14:50:21.046Z\",\n      \"interval_seconds\": 4874,\n      \"active\": false,\n      \"pipeline_id\": \"300a8bbb-bc94-451e-ded4-a4e12eb1dfa6\",\n      \"created\": \"1948-09-03T04:40:58.463Z\"\n    },\n    {\n      \"id\": \"f3110247-7487-74f6-c6c3-42de43eba01c\",\n      \"name\": \"string\",\n      \"cron_expression\": \"string\",\n      \"start_time\": \"1990-08-09T09:04:18.193Z\",\n      \"end_time\": \"1980-05-24T14:05:08.871Z\",\n      \"interval_seconds\": 4558,\n      \"active\": false,\n      \"pipeline_id\": \"eea4a57e-13b3-037a-af8c-40a29688aaa9\",\n      \"created\": \"1965-08-23T00:03:31.159Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-zenml-server.example.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "11fdc7cc-bc6a-40e0-b474-f53838bb175a",
+    "name": "ZenML OSS REST Artifacts Schedules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.\n\nContact Support:\n Name: ZenML",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,336 @@
+{
+  "item": [
+    {
+      "id": "7aef6358-eb52-4f4d-a4b7-0791a086c777",
+      "name": "Models",
+      "description": {
+        "content": "Registered models and their versions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fa9a9c88-8c17-4571-a0a7-567af27c7ee4",
+          "name": "List Models",
+          "request": {
+            "name": "List Models",
+            "description": {},
+            "url": {
+              "path": [
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1783ece-c81f-4f75-bf30-7d558dd404c7",
+              "name": "Page of models",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 147,\n  \"max_size\": 6747,\n  \"total_pages\": 9158,\n  \"total\": 4513,\n  \"items\": [\n    {\n      \"id\": \"23879bca-1d30-ef84-0155-f191638bc529\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"license\": \"string\",\n      \"ethical_considerations\": \"string\",\n      \"trade_offs\": \"string\",\n      \"limitations\": \"string\",\n      \"audience\": \"string\",\n      \"use_cases\": \"string\",\n      \"created\": \"2011-10-25T23:03:07.436Z\"\n    },\n    {\n      \"id\": \"a5ad29ad-44f9-495f-7301-613de90169c3\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"license\": \"string\",\n      \"ethical_considerations\": \"string\",\n      \"trade_offs\": \"string\",\n      \"limitations\": \"string\",\n      \"audience\": \"string\",\n      \"use_cases\": \"string\",\n      \"created\": \"1989-07-13T12:53:31.506Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "240dce4b-54ec-4ee7-822f-eebee53e344d",
+          "name": "Create Model",
+          "request": {
+            "name": "Create Model",
+            "description": {},
+            "url": {
+              "path": [
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"license\": \"<string>\",\n  \"use_cases\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a8d19bb3-b1ef-40c8-8b94-405146a187cd",
+              "name": "Model created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"license\": \"<string>\",\n  \"use_cases\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"42300c0e-8692-8bd9-fbe9-858a50633bcf\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"license\": \"string\",\n  \"ethical_considerations\": \"string\",\n  \"trade_offs\": \"string\",\n  \"limitations\": \"string\",\n  \"audience\": \"string\",\n  \"use_cases\": \"string\",\n  \"created\": \"1982-11-30T02:59:03.586Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5b879af-c9ed-461a-8f29-0d06f4f058e9",
+          "name": "List Model Versions",
+          "request": {
+            "name": "List Model Versions",
+            "description": {},
+            "url": {
+              "path": [
+                "model_versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "model_id",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8a7042e-617a-4bd6-8963-58e34eca262b",
+              "name": "Page of model versions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model_versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "model_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 7878,\n  \"max_size\": 5167,\n  \"total_pages\": 2870,\n  \"total\": 4072,\n  \"items\": [\n    {\n      \"id\": \"4cd41b74-c9b1-d9ad-e06d-53e36c7eee49\",\n      \"model_id\": \"e51689ce-81df-8f57-1203-04cedce7e426\",\n      \"name\": \"string\",\n      \"number\": 5255,\n      \"stage\": \"production\",\n      \"description\": \"string\",\n      \"created\": \"1964-08-11T10:41:35.386Z\"\n    },\n    {\n      \"id\": \"e2778ccb-eec1-5b49-4533-90fd983a2c0b\",\n      \"model_id\": \"d97a3b1c-d65c-c33a-b831-e92775408c37\",\n      \"name\": \"string\",\n      \"number\": 6938,\n      \"stage\": \"staging\",\n      \"description\": \"string\",\n      \"created\": \"1974-09-27T22:54:45.400Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-zenml-server.example.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "43703b30-a003-419c-9320-626b40cf11cb",
+    "name": "ZenML OSS REST Artifacts Models API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.\n\nContact Support:\n Name: ZenML",
+      "type": "text/plain"
+    }
+  }
+}

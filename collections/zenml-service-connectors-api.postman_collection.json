@@ -1,0 +1,136 @@
+{
+  "item": [
+    {
+      "id": "4b68f0f9-771e-4a7d-836a-555a1589be3d",
+      "name": "Service Connectors",
+      "description": {
+        "content": "Connectors to external infrastructure providers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "18acda11-454c-4717-a406-31c8e293c591",
+          "name": "List Service Connectors",
+          "request": {
+            "name": "List Service Connectors",
+            "description": {},
+            "url": {
+              "path": [
+                "service_connectors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a6dd0ed-8251-43f1-bb39-3002c95d8d6f",
+              "name": "Page of service connectors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service_connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 7208,\n  \"max_size\": 2788,\n  \"total_pages\": 642,\n  \"total\": 5001,\n  \"items\": [\n    {\n      \"id\": \"7ba8e93f-6042-61d6-a323-1eea2582d77e\",\n      \"name\": \"string\",\n      \"connector_type\": \"string\",\n      \"auth_method\": \"string\",\n      \"resource_types\": [\n        \"string\",\n        \"string\"\n      ],\n      \"configuration\": {\n        \"key_0\": 3459,\n        \"key_1\": false\n      },\n      \"created\": \"2004-06-07T16:37:31.898Z\"\n    },\n    {\n      \"id\": \"3c5b0de6-9f21-af28-024d-691b4cedb07c\",\n      \"name\": \"string\",\n      \"connector_type\": \"string\",\n      \"auth_method\": \"string\",\n      \"resource_types\": [\n        \"string\",\n        \"string\"\n      ],\n      \"configuration\": {\n        \"key_0\": false,\n        \"key_1\": 4633\n      },\n      \"created\": \"1984-09-03T17:47:43.937Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-zenml-server.example.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6c3e5267-07ca-402d-8b8d-c8ca9c2bb38b",
+    "name": "ZenML OSS REST Artifacts Service Connectors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.\n\nContact Support:\n Name: ZenML",
+      "type": "text/plain"
+    }
+  }
+}
