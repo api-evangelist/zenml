@@ -23,6 +23,14 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zenml.png
 tags:
+  - Artificial Intelligence
+  - Machine-Learning
+  - MLOps
+  - LLMOps
+  - Pipelines
+  - Open-Source
+  - Python
+tags_raw:
   - AI
   - Machine Learning
   - MLOps
@@ -94,6 +102,8 @@ apis:
   description: Authentication and token management
   humanURL: https://docs.zenml.io/api-reference/oss-api
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
@@ -131,6 +141,8 @@ apis:
   description: Pipeline deployments
   humanURL: https://docs.zenml.io/api-reference/oss-api
   tags:
+  - Deployment
+  tags_raw:
   - Deployments
   properties:
   - type: OpenAPI
@@ -279,6 +291,8 @@ apis:
   description: Project workspaces
   humanURL: https://docs.zenml.io/api-reference/oss-api
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -502,6 +516,8 @@ apis:
   description: User accounts
   humanURL: https://docs.zenml.io/api-reference/oss-api
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
