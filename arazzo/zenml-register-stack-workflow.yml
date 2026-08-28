@@ -11,8 +11,11 @@ info:
     be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: zenmlApi
-  url: ../openapi/zenml-openapi.yml
+- name: stackComponentsApi
+  url: ../openapi/zenml-stack-components-api-openapi.yml
+  type: openapi
+- name: stacksApi
+  url: ../openapi/zenml-stacks-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: register-stack

@@ -13,8 +13,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: zenmlApi
-  url: ../openapi/zenml-openapi.yml
+- name: artifactsApi
+  url: ../openapi/zenml-artifacts-api-openapi.yml
+  type: openapi
+- name: pipelineRunsApi
+  url: ../openapi/zenml-pipeline-runs-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: inspect-run-artifacts

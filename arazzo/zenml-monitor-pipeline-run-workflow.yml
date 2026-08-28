@@ -12,8 +12,11 @@ info:
     be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: zenmlApi
-  url: ../openapi/zenml-openapi.yml
+- name: pipelineRunsApi
+  url: ../openapi/zenml-pipeline-runs-api-openapi.yml
+  type: openapi
+- name: pipelinesApi
+  url: ../openapi/zenml-pipelines-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: monitor-pipeline-run
