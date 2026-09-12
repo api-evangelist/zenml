@@ -566,6 +566,8 @@ apis:
   - type: CodeExamples
     url: examples/zenml-create-stack-example.json
 common:
+  - type: Website
+    url: https://www.zenml.io/
   - type: IssueTracker
     url: https://github.com/zenml-io/zenml/issues
   - type: Releases
