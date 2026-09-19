@@ -345,6 +345,8 @@ apis:
   description: Scheduled pipeline runs
   humanURL: https://docs.zenml.io/api-reference/oss-api
   tags:
+  - Schedule
+  tags_raw:
   - Schedules
   properties:
   - type: OpenAPI
