@@ -1,19 +1,7 @@
 {
   "provider": "zenml",
   "sources": [
-    "zenml-artifacts-api-openapi.yml",
-    "zenml-auth-api-openapi.yml",
-    "zenml-deployments-api-openapi.yml",
-    "zenml-models-api-openapi.yml",
-    "zenml-pipeline-runs-api-openapi.yml",
-    "zenml-pipelines-api-openapi.yml",
-    "zenml-projects-api-openapi.yml",
-    "zenml-schedules-api-openapi.yml",
-    "zenml-secrets-api-openapi.yml",
-    "zenml-service-connectors-api-openapi.yml",
-    "zenml-stack-components-api-openapi.yml",
-    "zenml-stacks-api-openapi.yml",
-    "zenml-users-api-openapi.yml"
+    "_original/zenml-openapi.yml"
   ],
   "outputs": [
     "zenml-artifacts-api-openapi.yml",
@@ -33,6 +21,24 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "zenml-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "zenml-artifacts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zenml-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zenml-deployments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zenml-models-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zenml-pipeline-runs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zenml-pipelines-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zenml-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zenml-schedules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zenml-secrets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zenml-service-connectors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zenml-stack-components-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zenml-stacks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zenml-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

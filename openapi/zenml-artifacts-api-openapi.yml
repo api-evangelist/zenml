@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: ZenML OSS REST Artifacts API
   version: '1'
@@ -56,26 +56,6 @@ paths:
                 $ref: '#/components/schemas/Artifact'
 components:
   schemas:
-    ArtifactPage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/Artifact'
-    Page:
-      type: object
-      properties:
-        index:
-          type: integer
-        max_size:
-          type: integer
-        total_pages:
-          type: integer
-        total:
-          type: integer
     Artifact:
       type: object
       properties:
@@ -99,14 +79,27 @@ components:
         created:
           type: string
           format: date-time
-  parameters:
     Page:
-      in: query
-      name: page
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
+      type: object
+      properties:
+        index:
+          type: integer
+        max_size:
+          type: integer
+        total_pages:
+          type: integer
+        total:
+          type: integer
+    ArtifactPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/Artifact'
+  parameters:
     Size:
       in: query
       name: size
@@ -115,6 +108,13 @@ components:
         minimum: 1
         maximum: 1000
         default: 20
+    Page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: ZenML OSS REST Artifacts Models API
+  title: ZenML OSS REST Models API
   version: '1'
   description: REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.
   contact:
@@ -74,61 +74,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/ModelVersionPage'
 components:
-  schemas:
-    ModelVersionPage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/ModelVersion'
+  parameters:
+    Size:
+      in: query
+      name: size
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 20
     Page:
-      type: object
-      properties:
-        index:
-          type: integer
-        max_size:
-          type: integer
-        total_pages:
-          type: integer
-        total:
-          type: integer
-    ModelPage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/Model'
-    Model:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        description:
-          type: string
-        license:
-          type: string
-        ethical_considerations:
-          type: string
-        trade_offs:
-          type: string
-        limitations:
-          type: string
-        audience:
-          type: string
-        use_cases:
-          type: string
-        created:
-          type: string
-          format: date-time
+      in: query
+      name: page
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+  schemas:
     ModelRequest:
       type: object
       required:
@@ -167,22 +129,60 @@ components:
         created:
           type: string
           format: date-time
-  parameters:
     Page:
-      in: query
-      name: page
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    Size:
-      in: query
-      name: size
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 1000
-        default: 20
+      type: object
+      properties:
+        index:
+          type: integer
+        max_size:
+          type: integer
+        total_pages:
+          type: integer
+        total:
+          type: integer
+    ModelVersionPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/ModelVersion'
+    Model:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        license:
+          type: string
+        ethical_considerations:
+          type: string
+        trade_offs:
+          type: string
+        limitations:
+          type: string
+        audience:
+          type: string
+        use_cases:
+          type: string
+        created:
+          type: string
+          format: date-time
+    ModelPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/Model'
   securitySchemes:
     bearerAuth:
       type: http

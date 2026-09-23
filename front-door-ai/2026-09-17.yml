@@ -1,0 +1,36 @@
+# Front Door AI Index — zenml — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: zenml
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.zenml.io
+  final_host: www.zenml.io
+  ownership: own
+  owner: zenml
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 54
+  host_score: 54
+  density: 14.99
+  words: 3603
+  tiers:
+    agentic: 7
+    core: 40
+    model: 7
+  ambiguous: 60
+  top_terms:
+    agent: 59
+    AI: 26
+    ML: 11
+    prompts: 4
+    OpenAI: 3
+    transformer: 3
+    LLMs: 2
+    inference: 2
+    Vertex AI: 1
+    fine-tune: 1
+    gen ai: 1
+    smart: 1

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: ZenML OSS REST Artifacts Pipeline Runs API
+  title: ZenML OSS REST Pipeline Runs API
   version: '1'
   description: REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.
   contact:
@@ -60,6 +60,14 @@ paths:
                 $ref: '#/components/schemas/PipelineRun'
 components:
   parameters:
+    Size:
+      in: query
+      name: size
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 20
     Page:
       in: query
       name: page
@@ -74,14 +82,6 @@ components:
       schema:
         type: string
         format: uuid
-    Size:
-      in: query
-      name: size
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 1000
-        default: 20
   schemas:
     RunStatus:
       type: string
@@ -103,15 +103,6 @@ components:
           type: integer
         total:
           type: integer
-    PipelineRunPage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/PipelineRun'
     PipelineRun:
       type: object
       properties:
@@ -140,6 +131,15 @@ components:
         created:
           type: string
           format: date-time
+    PipelineRunPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/PipelineRun'
   securitySchemes:
     bearerAuth:
       type: http

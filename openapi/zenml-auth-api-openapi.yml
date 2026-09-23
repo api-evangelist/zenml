@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: ZenML OSS REST Artifacts Auth API
+  title: ZenML OSS REST Auth API
   version: '1'
   description: REST API for the ZenML server, exposing operations to manage pipelines, stacks, components, artifacts, models, deployments, runs, schedules, secrets, users, projects, and triggers in a self-hosted ZenML deployment. The API is consumed by the ZenML Python SDK and CLI and can also be called directly for automation and CI/CD integration.
   contact:
@@ -63,21 +63,6 @@ paths:
                 $ref: '#/components/schemas/User'
 components:
   schemas:
-    TokenResponse:
-      type: object
-      required:
-      - access_token
-      - token_type
-      properties:
-        access_token:
-          type: string
-        token_type:
-          type: string
-          example: bearer
-        expires_in:
-          type: integer
-        refresh_token:
-          type: string
     User:
       type: object
       properties:
@@ -101,6 +86,21 @@ components:
         updated:
           type: string
           format: date-time
+    TokenResponse:
+      type: object
+      required:
+      - access_token
+      - token_type
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          example: bearer
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http
