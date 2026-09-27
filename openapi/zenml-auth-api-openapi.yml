@@ -63,6 +63,21 @@ paths:
                 $ref: '#/components/schemas/User'
 components:
   schemas:
+    TokenResponse:
+      type: object
+      required:
+      - access_token
+      - token_type
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          example: bearer
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
     User:
       type: object
       properties:
@@ -86,21 +101,6 @@ components:
         updated:
           type: string
           format: date-time
-    TokenResponse:
-      type: object
-      required:
-      - access_token
-      - token_type
-      properties:
-        access_token:
-          type: string
-        token_type:
-          type: string
-          example: bearer
-        expires_in:
-          type: integer
-        refresh_token:
-          type: string
   securitySchemes:
     bearerAuth:
       type: http

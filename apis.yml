@@ -39,11 +39,11 @@ access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zenml.png
 tags:
   - Artificial Intelligence
-  - Machine-Learning
+  - Machine Learning
   - MLOps
   - LLMOps
   - Pipelines
-  - Open-Source
+  - Open Source
   - Python
 tags_raw:
   - AI
@@ -53,6 +53,8 @@ tags_raw:
   - Pipelines
   - Open Source
   - Python
+  - Machine-Learning
+  - Open-Source
 created: '2025-02-08'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/zenml/refs/heads/main/apis.yml

@@ -56,6 +56,17 @@ paths:
                 $ref: '#/components/schemas/Artifact'
 components:
   schemas:
+    Page:
+      type: object
+      properties:
+        index:
+          type: integer
+        max_size:
+          type: integer
+        total_pages:
+          type: integer
+        total:
+          type: integer
     Artifact:
       type: object
       properties:
@@ -79,17 +90,6 @@ components:
         created:
           type: string
           format: date-time
-    Page:
-      type: object
-      properties:
-        index:
-          type: integer
-        max_size:
-          type: integer
-        total_pages:
-          type: integer
-        total:
-          type: integer
     ArtifactPage:
       allOf:
       - $ref: '#/components/schemas/Page'

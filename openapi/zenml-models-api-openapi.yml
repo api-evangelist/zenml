@@ -75,6 +75,13 @@ paths:
                 $ref: '#/components/schemas/ModelVersionPage'
 components:
   parameters:
+    Page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
     Size:
       in: query
       name: size
@@ -83,13 +90,6 @@ components:
         minimum: 1
         maximum: 1000
         default: 20
-    Page:
-      in: query
-      name: page
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
   schemas:
     ModelRequest:
       type: object
@@ -104,31 +104,15 @@ components:
           type: string
         use_cases:
           type: string
-    ModelVersion:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        model_id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        number:
-          type: integer
-        stage:
-          type: string
-          enum:
-          - none
-          - staging
-          - production
-          - archived
-        description:
-          type: string
-        created:
-          type: string
-          format: date-time
+    ModelPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/Model'
     Page:
       type: object
       properties:
@@ -140,15 +124,6 @@ components:
           type: integer
         total:
           type: integer
-    ModelVersionPage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/ModelVersion'
     Model:
       type: object
       properties:
@@ -174,7 +149,32 @@ components:
         created:
           type: string
           format: date-time
-    ModelPage:
+    ModelVersion:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        model_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        number:
+          type: integer
+        stage:
+          type: string
+          enum:
+          - none
+          - staging
+          - production
+          - archived
+        description:
+          type: string
+        created:
+          type: string
+          format: date-time
+    ModelVersionPage:
       allOf:
       - $ref: '#/components/schemas/Page'
       - type: object
@@ -182,7 +182,7 @@ components:
           items:
             type: array
             items:
-              $ref: '#/components/schemas/Model'
+              $ref: '#/components/schemas/ModelVersion'
   securitySchemes:
     bearerAuth:
       type: http

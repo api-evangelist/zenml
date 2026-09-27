@@ -88,6 +88,13 @@ paths:
           description: Pipeline deleted
 components:
   parameters:
+    PipelineId:
+      in: path
+      name: pipeline_id
+      required: true
+      schema:
+        type: string
+        format: uuid
     Size:
       in: query
       name: size
@@ -103,23 +110,18 @@ components:
         type: integer
         minimum: 1
         default: 1
-    PipelineId:
-      in: path
-      name: pipeline_id
-      required: true
-      schema:
-        type: string
-        format: uuid
   schemas:
-    PipelinePage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/Pipeline'
+    Page:
+      type: object
+      properties:
+        index:
+          type: integer
+        max_size:
+          type: integer
+        total_pages:
+          type: integer
+        total:
+          type: integer
     PipelineRequest:
       type: object
       required:
@@ -137,17 +139,6 @@ components:
         spec:
           type: object
           additionalProperties: true
-    Page:
-      type: object
-      properties:
-        index:
-          type: integer
-        max_size:
-          type: integer
-        total_pages:
-          type: integer
-        total:
-          type: integer
     Pipeline:
       type: object
       properties:
@@ -175,6 +166,15 @@ components:
         updated:
           type: string
           format: date-time
+    PipelinePage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/Pipeline'
   securitySchemes:
     bearerAuth:
       type: http

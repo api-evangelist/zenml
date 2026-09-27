@@ -59,39 +59,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/PipelineRun'
 components:
-  parameters:
-    Size:
-      in: query
-      name: size
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 1000
-        default: 20
-    Page:
-      in: query
-      name: page
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    RunId:
-      in: path
-      name: run_id
-      required: true
-      schema:
-        type: string
-        format: uuid
   schemas:
-    RunStatus:
-      type: string
-      enum:
-      - initializing
-      - running
-      - completed
-      - failed
-      - cached
-      - stopped
+    PipelineRunPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/PipelineRun'
     Page:
       type: object
       properties:
@@ -131,15 +108,38 @@ components:
         created:
           type: string
           format: date-time
-    PipelineRunPage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/PipelineRun'
+    RunStatus:
+      type: string
+      enum:
+      - initializing
+      - running
+      - completed
+      - failed
+      - cached
+      - stopped
+  parameters:
+    Size:
+      in: query
+      name: size
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 20
+    Page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    RunId:
+      in: path
+      name: run_id
+      required: true
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     bearerAuth:
       type: http
