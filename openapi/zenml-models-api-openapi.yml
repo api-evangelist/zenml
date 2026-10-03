@@ -75,13 +75,6 @@ paths:
                 $ref: '#/components/schemas/ModelVersionPage'
 components:
   parameters:
-    Page:
-      in: query
-      name: page
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
     Size:
       in: query
       name: size
@@ -90,29 +83,14 @@ components:
         minimum: 1
         maximum: 1000
         default: 20
+    Page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   schemas:
-    ModelRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        license:
-          type: string
-        use_cases:
-          type: string
-    ModelPage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/Model'
     Page:
       type: object
       properties:
@@ -124,31 +102,24 @@ components:
           type: integer
         total:
           type: integer
-    Model:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        description:
-          type: string
-        license:
-          type: string
-        ethical_considerations:
-          type: string
-        trade_offs:
-          type: string
-        limitations:
-          type: string
-        audience:
-          type: string
-        use_cases:
-          type: string
-        created:
-          type: string
-          format: date-time
+    ModelVersionPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/ModelVersion'
+    ModelPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/Model'
     ModelVersion:
       type: object
       properties:
@@ -174,15 +145,44 @@ components:
         created:
           type: string
           format: date-time
-    ModelVersionPage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/ModelVersion'
+    ModelRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        license:
+          type: string
+        use_cases:
+          type: string
+    Model:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        license:
+          type: string
+        ethical_considerations:
+          type: string
+        trade_offs:
+          type: string
+        limitations:
+          type: string
+        audience:
+          type: string
+        use_cases:
+          type: string
+        created:
+          type: string
+          format: date-time
   securitySchemes:
     bearerAuth:
       type: http

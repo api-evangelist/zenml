@@ -76,66 +76,6 @@ paths:
         '204':
           description: Stack deleted
 components:
-  schemas:
-    StackPage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/Stack'
-    Page:
-      type: object
-      properties:
-        index:
-          type: integer
-        max_size:
-          type: integer
-        total_pages:
-          type: integer
-        total:
-          type: integer
-    Stack:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        description:
-          type: string
-        components:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              format: uuid
-        user_id:
-          type: string
-          format: uuid
-        created:
-          type: string
-          format: date-time
-    StackRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        components:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              format: uuid
   parameters:
     StackId:
       in: path
@@ -159,6 +99,66 @@ components:
         type: integer
         minimum: 1
         default: 1
+  schemas:
+    Stack:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        components:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              format: uuid
+        user_id:
+          type: string
+          format: uuid
+        created:
+          type: string
+          format: date-time
+    Page:
+      type: object
+      properties:
+        index:
+          type: integer
+        max_size:
+          type: integer
+        total_pages:
+          type: integer
+        total:
+          type: integer
+    StackPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/Stack'
+    StackRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        components:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              format: uuid
   securitySchemes:
     bearerAuth:
       type: http

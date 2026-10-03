@@ -55,6 +55,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/Artifact'
 components:
+  parameters:
+    Size:
+      in: query
+      name: size
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 20
+    Page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   schemas:
     Page:
       type: object
@@ -67,6 +83,15 @@ components:
           type: integer
         total:
           type: integer
+    ArtifactPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/Artifact'
     Artifact:
       type: object
       properties:
@@ -90,31 +115,6 @@ components:
         created:
           type: string
           format: date-time
-    ArtifactPage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/Artifact'
-  parameters:
-    Size:
-      in: query
-      name: size
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 1000
-        default: 20
-    Page:
-      in: query
-      name: page
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
   securitySchemes:
     bearerAuth:
       type: http
