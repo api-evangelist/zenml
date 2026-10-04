@@ -1,0 +1,53 @@
+slug: zenml
+provider: ZenML
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Models
+  spec_file: zenml-models-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.85
+  evidence: '''List Models'', ''Create Model'', ''List Model Versions''; schemas ''ModelVersion'', ''ModelRequest'''
+  reason: Registration and versioning of ML models in an open-source MLOps framework is squarely AI/ML
+    model lifecycle (MLOps) management.
+- tag: Artifacts
+  spec_file: zenml-artifacts-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.75
+  evidence: '''List Artifacts'' / schemas ''Artifact'', ''ArtifactPage'' in the ''REST API for the ZenML
+    server'' managing ''pipelines, stacks, components, artifacts, models'''
+  reason: Versioned ML pipeline artifacts in an MLOps framework sit within AI/ML model lifecycle and MLOps
+    management; read-only listing keeps confidence moderate.
+- tag: Pipeline Runs
+  spec_file: zenml-pipeline-runs-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.75
+  evidence: '''List Pipeline Runs'', ''Get Pipeline Run''; schemas ''PipelineRun'', ''RunStatus'''
+  reason: Tracking executions of ML pipelines on the ZenML server is MLOps execution/lineage management,
+    part of AI/ML model lifecycle rather than generic IT operations.
+- tag: Pipelines
+  spec_file: zenml-pipelines-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.75
+  evidence: POST /pipelines createPipeline Create Pipeline; "ZenML is an open-source MLOps and LLMOps
+    framework ... managing pipelines, stacks, artifacts, models, and deployments"
+  reason: The operations create and manage ML/GenAI pipeline definitions on an MLOps server, which is
+    the AI/ML model lifecycle (MLOps) capability rather than generic workflow or data engineering.

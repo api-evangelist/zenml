@@ -570,6 +570,9 @@ apis:
   - type: CodeExamples
     url: examples/zenml-create-stack-example.json
 common:
+  - type: CapabilityMap
+    url: capabilities/zenml-capability-edges.yml
+    name: ZenML Business Capability Map
   - type: Website
     url: https://www.zenml.io/
   - type: IssueTracker
