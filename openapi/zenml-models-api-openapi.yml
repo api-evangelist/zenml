@@ -74,52 +74,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ModelVersionPage'
 components:
-  parameters:
-    Size:
-      in: query
-      name: size
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 1000
-        default: 20
-    Page:
-      in: query
-      name: page
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
   schemas:
-    Page:
-      type: object
-      properties:
-        index:
-          type: integer
-        max_size:
-          type: integer
-        total_pages:
-          type: integer
-        total:
-          type: integer
-    ModelVersionPage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/ModelVersion'
-    ModelPage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/Model'
     ModelVersion:
       type: object
       properties:
@@ -145,19 +100,17 @@ components:
         created:
           type: string
           format: date-time
-    ModelRequest:
+    Page:
       type: object
-      required:
-      - name
       properties:
-        name:
-          type: string
-        description:
-          type: string
-        license:
-          type: string
-        use_cases:
-          type: string
+        index:
+          type: integer
+        max_size:
+          type: integer
+        total_pages:
+          type: integer
+        total:
+          type: integer
     Model:
       type: object
       properties:
@@ -183,6 +136,53 @@ components:
         created:
           type: string
           format: date-time
+    ModelPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/Model'
+    ModelRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        license:
+          type: string
+        use_cases:
+          type: string
+    ModelVersionPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/ModelVersion'
+  parameters:
+    Page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    Size:
+      in: query
+      name: size
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 20
   securitySchemes:
     bearerAuth:
       type: http
