@@ -75,42 +75,6 @@ paths:
                 $ref: '#/components/schemas/ModelVersionPage'
 components:
   schemas:
-    ModelVersion:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        model_id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        number:
-          type: integer
-        stage:
-          type: string
-          enum:
-          - none
-          - staging
-          - production
-          - archived
-        description:
-          type: string
-        created:
-          type: string
-          format: date-time
-    Page:
-      type: object
-      properties:
-        index:
-          type: integer
-        max_size:
-          type: integer
-        total_pages:
-          type: integer
-        total:
-          type: integer
     Model:
       type: object
       properties:
@@ -136,6 +100,17 @@ components:
         created:
           type: string
           format: date-time
+    Page:
+      type: object
+      properties:
+        index:
+          type: integer
+        max_size:
+          type: integer
+        total_pages:
+          type: integer
+        total:
+          type: integer
     ModelPage:
       allOf:
       - $ref: '#/components/schemas/Page'
@@ -158,6 +133,31 @@ components:
           type: string
         use_cases:
           type: string
+    ModelVersion:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        model_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        number:
+          type: integer
+        stage:
+          type: string
+          enum:
+          - none
+          - staging
+          - production
+          - archived
+        description:
+          type: string
+        created:
+          type: string
+          format: date-time
     ModelVersionPage:
       allOf:
       - $ref: '#/components/schemas/Page'
@@ -168,13 +168,6 @@ components:
             items:
               $ref: '#/components/schemas/ModelVersion'
   parameters:
-    Page:
-      in: query
-      name: page
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
     Size:
       in: query
       name: size
@@ -183,6 +176,13 @@ components:
         minimum: 1
         maximum: 1000
         default: 20
+    Page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   securitySchemes:
     bearerAuth:
       type: http

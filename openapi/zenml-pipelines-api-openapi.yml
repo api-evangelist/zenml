@@ -88,6 +88,42 @@ paths:
           description: Pipeline deleted
 components:
   schemas:
+    PipelinePage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/Pipeline'
+    Pipeline:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        version:
+          type: string
+        spec:
+          type: object
+          additionalProperties: true
+        project_id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
     Page:
       type: object
       properties:
@@ -116,57 +152,7 @@ components:
         spec:
           type: object
           additionalProperties: true
-    Pipeline:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        description:
-          type: string
-        version:
-          type: string
-        spec:
-          type: object
-          additionalProperties: true
-        project_id:
-          type: string
-          format: uuid
-        user_id:
-          type: string
-          format: uuid
-        created:
-          type: string
-          format: date-time
-        updated:
-          type: string
-          format: date-time
-    PipelinePage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/Pipeline'
   parameters:
-    PipelineId:
-      in: path
-      name: pipeline_id
-      required: true
-      schema:
-        type: string
-        format: uuid
-    Page:
-      in: query
-      name: page
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
     Size:
       in: query
       name: size
@@ -175,6 +161,20 @@ components:
         minimum: 1
         maximum: 1000
         default: 20
+    Page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    PipelineId:
+      in: path
+      name: pipeline_id
+      required: true
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     bearerAuth:
       type: http

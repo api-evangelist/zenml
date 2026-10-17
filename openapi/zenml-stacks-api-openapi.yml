@@ -77,26 +77,6 @@ paths:
           description: Stack deleted
 components:
   schemas:
-    Page:
-      type: object
-      properties:
-        index:
-          type: integer
-        max_size:
-          type: integer
-        total_pages:
-          type: integer
-        total:
-          type: integer
-    StackPage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/Stack'
     Stack:
       type: object
       properties:
@@ -120,6 +100,26 @@ components:
         created:
           type: string
           format: date-time
+    StackPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/Stack'
+    Page:
+      type: object
+      properties:
+        index:
+          type: integer
+        max_size:
+          type: integer
+        total_pages:
+          type: integer
+        total:
+          type: integer
     StackRequest:
       type: object
       required:

@@ -49,6 +49,15 @@ paths:
                 $ref: '#/components/schemas/UserPage'
 components:
   schemas:
+    UserPage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
     Page:
       type: object
       properties:
@@ -60,15 +69,6 @@ components:
           type: integer
         total:
           type: integer
-    UserPage:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/User'
     User:
       type: object
       properties:
