@@ -180,6 +180,40 @@ edges:
   detected: '2026-10-21'
   detected_by: mirror-platform-listings.py
   category: infrastructure-as-code provider registry listing
+- partner_name: Hugging Face (hugging-face-hub)
+  partner: hugging-face
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: hugging-face-hub
+  evidence: https://huggingface.co/zenml
+  mirror_of: hugging-face/integrations/hugging-face-integration-edges.yml
+  apps:
+  - zenml/llmops-database
+  - zenml/mantiq-swarm-traces
+  - zenml/rag_qa_embedding_questions
+  - zenml/cuad-deepseek
+  - zenml/rag_qa_embedding_questions_0_60_0
+  - zenml/rag_qa_embedding_questions_0_60_0_distilabel
+  - zenml/zenml-codegen-v1
+  - zenml/rag_qa_embedding_questions_split-by-document
+  - zenml/finetuned-snowflake-arctic-embed-m-v1.5
+  - zenml/finetuned-all-MiniLM-L6-v2
+  - zenml/finetuned-snowflake-arctic-embed-m
+  - zenml/deepseek-cuad-gemma-3-1b-it-bnb-4bit
+  - zenml/deepseek-cuad-gemma-3-it-bnb-4bit
+  - zenml/deepseek-cuad-gemma-3-12b-it-bnb-4bit
+  - zenml/zenml
+  - zenml/argilla
+  listing_count: 3
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Hugging Face Hub datasets
+  badges:
+  - Verified publisher (Hugging Face verified organisation)
 generated: '2026-10-15'
 method: searched
 source:
@@ -201,3 +235,4 @@ checked:
 - eclipse/integrations/eclipse-integration-edges.yml
 - opentofu/integrations/opentofu-integration-edges.yml
 - terraform/integrations/terraform-integration-edges.yml
+- hugging-face/integrations/hugging-face-integration-edges.yml
